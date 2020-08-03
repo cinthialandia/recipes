@@ -1,6 +1,6 @@
 ## skecth
 
-![sketch-recipes](C:\Users\aihtn\Dev\recipes\docs\sketch-recipes.png)
+![sketch-recipes](sketch-recipes.png)
 
 ## Requirements
 
