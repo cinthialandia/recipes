@@ -1,5 +1,5 @@
 import React from "react";
-import { fakeRecipes } from "./Mock";
+import { fakeRecipes } from "../Mock";
 
 function Recipes() {
   console.log(fakeRecipes);
@@ -7,7 +7,7 @@ function Recipes() {
     <div className="Recipes">
       {fakeRecipes.map((recipe) => (
         <>
-          <div>{recipe.name}</div>
+          <button>{recipe.name}</button>
         </>
       ))}
     </div>

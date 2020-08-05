@@ -1,20 +1,29 @@
 import React from "react";
-import Recipes from "./Recipes";
-
-import "./App.css";
+import { Router, Link } from "@reach/router";
+import Home from "./Home";
+import "./App.scss";
+import Calendar from "./Calendar";
+import ShoppingList from "./ShoppingList";
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <div>Home</div>
-        <div>Calendar</div>
-        <div>Shopping list</div>
+      <header className="nav-container">
+        <Link className="nav" to="/">
+          Home
+        </Link>
+        <Link className="nav" to="calendar">
+          Calendar
+        </Link>
+        <Link className="nav" to="shopping-list">
+          Shopping List
+        </Link>
       </header>
-      <div>
-        <Recipes />
-        <div>Recipe</div>
-      </div>
+      <Router>
+        <Home path="/" />
+        <Calendar path="calendar" />
+        <ShoppingList path="shopping-list" />
+      </Router>
     </div>
   );
 }
