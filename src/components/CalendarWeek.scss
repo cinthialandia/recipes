@@ -1,0 +1,19 @@
+$border: 1px solid black;
+
+.CalendarWeek {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-rows: 20px repeat(3, 40px);
+  grid-auto-flow: column;
+  border-bottom: $border;
+  border-right: $border;
+}
+
+.CalendarWeek > * {
+  border-left: $border;
+  border-top: $border;
+}
+
+.CalendarWeek > .title {
+  font-weight: bold;
+}
