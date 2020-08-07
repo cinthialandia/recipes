@@ -3,6 +3,11 @@ export interface Recipe {
   name: string;
   photo: string;
   preparation: string;
+  menu: {
+    timestamp: number;
+    date: string;
+    type: "breakfast" | "lunch" | "dinner";
+  }[];
   ingredients: {
     id: string;
     quantity: number;

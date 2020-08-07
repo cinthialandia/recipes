@@ -4,6 +4,7 @@ import Home from "./Home";
 import "./App.scss";
 import Calendar from "./Calendar";
 import ShoppingList from "./ShoppingList";
+import CreateRecipe from "./CreateRecipe";
 
 function App() {
   return (
@@ -18,11 +19,15 @@ function App() {
         <Link className="nav" to="shopping-list">
           Shopping List
         </Link>
+        <Link className="nav" to="create-recipe">
+          Create recipe
+        </Link>
       </header>
       <Router>
         <Home path="/" />
         <Calendar path="calendar" />
         <ShoppingList path="shopping-list" />
+        <CreateRecipe path="create-recipe" />
       </Router>
     </div>
   );

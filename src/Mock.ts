@@ -7,6 +7,18 @@ export const fakeRecipes: Recipe[] = [
     photo: "/img/photo2.png",
     preparation:
       "Lorem ipsum dolor sit amet, eget varius aliquam, vestibulum aliquam dolor pede, quisque amet praesent ut, aptent etiam a sit, nostra molestie sed sit eget elit. Mauris elit commodo, consequat donec lacinia tincidunt et nec quis, in ante, ultricies id sodales ipsum. Viverra malesuada, dolor libero wisi vivamus eleifend. Libero dolor donec nisl sociis donec tempor, duis laoreet amet et, arcu lectus quam erat, scelerisque potenti phasellus aenean amet, vivamus ac vel in quis arcu. Fames morbi nec odio, dolor leo ipsum amet. Ac cursus facilisis dui id mollis eleifend, eget sed molestie ac. Vivamus sagittis vitae, facilisis in faucibus dignissim neque porttitor.",
+    menu: [
+      {
+        timestamp: 1596686319469,
+        date: "2020-10-23",
+        type: "dinner",
+      },
+      {
+        timestamp: 1596686319900,
+        date: "2020-10-23",
+        type: "lunch",
+      },
+    ],
     ingredients: [
       {
         id: "545df",
@@ -32,6 +44,18 @@ export const fakeRecipes: Recipe[] = [
     photo: "/img/photo3.jpg",
     preparation:
       "Lorem ipsum dolor sit amet, eget varius aliquam, vestibulum aliquam dolor pede, quisque amet praesent ut, aptent etiam a sit, nostra molestie sed sit eget elit. Mauris elit commodo, consequat donec lacinia tincidunt et nec quis, in ante, ultricies id sodales ipsum. Viverra malesuada, dolor libero wisi vivamus eleifend. Libero dolor donec nisl sociis donec tempor, duis laoreet amet et, arcu lectus quam erat, scelerisque potenti phasellus aenean amet, vivamus ac vel in quis arcu. Fames morbi nec odio, dolor leo ipsum amet. Ac cursus facilisis dui id mollis eleifend, eget sed molestie ac. Vivamus sagittis vitae, facilisis in faucibus dignissim neque porttitor.",
+    menu: [
+      {
+        timestamp: 1596686319469,
+        date: "2020-10-23",
+        type: "dinner",
+      },
+      {
+        timestamp: 1596686319900,
+        date: "2020-10-23",
+        type: "lunch",
+      },
+    ],
     ingredients: [
       {
         id: "545ddfgfgf",
@@ -57,6 +81,18 @@ export const fakeRecipes: Recipe[] = [
     photo: "/img/photo3.jpg",
     preparation:
       "Lorem ipsum dolor sit amet, eget varius aliquam, vestibulum aliquam dolor pede, quisque amet praesent ut, aptent etiam a sit, nostra molestie sed sit eget elit. Mauris elit commodo, consequat donec lacinia tincidunt et nec quis, in ante, ultricies id sodales ipsum. Viverra malesuada, dolor libero wisi vivamus eleifend. Libero dolor donec nisl sociis donec tempor, duis laoreet amet et, arcu lectus quam erat, scelerisque potenti phasellus aenean amet, vivamus ac vel in quis arcu. Fames morbi nec odio, dolor leo ipsum amet. Ac cursus facilisis dui id mollis eleifend, eget sed molestie ac. Vivamus sagittis vitae, facilisis in faucibus dignissim neque porttitor.",
+    menu: [
+      {
+        timestamp: 1596686319469,
+        date: "2020-10-23",
+        type: "dinner",
+      },
+      {
+        timestamp: 1596686319900,
+        date: "2020-10-23",
+        type: "lunch",
+      },
+    ],
     ingredients: [
       {
         id: "545ghfjfgjfghjdf",
@@ -82,6 +118,18 @@ export const fakeRecipes: Recipe[] = [
     photo: "/img/photo4.jpg",
     preparation:
       "Lorem ipsum dolor sit amet, eget varius aliquam, vestibulum aliquam dolor pede, quisque amet praesent ut, aptent etiam a sit, nostra molestie sed sit eget elit. Mauris elit commodo, consequat donec lacinia tincidunt et nec quis, in ante, ultricies id sodales ipsum. Viverra malesuada, dolor libero wisi vivamus eleifend. Libero dolor donec nisl sociis donec tempor, duis laoreet amet et, arcu lectus quam erat, scelerisque potenti phasellus aenean amet, vivamus ac vel in quis arcu. Fames morbi nec odio, dolor leo ipsum amet. Ac cursus facilisis dui id mollis eleifend, eget sed molestie ac. Vivamus sagittis vitae, facilisis in faucibus dignissim neque porttitor.",
+    menu: [
+      {
+        timestamp: 1596686319469,
+        date: "2020-10-23",
+        type: "dinner",
+      },
+      {
+        timestamp: 1596686319900,
+        date: "2020-10-23",
+        type: "lunch",
+      },
+    ],
     ingredients: [
       {
         id: "545dsdfgfcgjghjf",
@@ -107,6 +155,18 @@ export const fakeRecipes: Recipe[] = [
     photo: "/img/photo5.jpg",
     preparation:
       "Lorem ipsum dolor sit amet, eget varius aliquam, vestibulum aliquam dolor pede, quisque amet praesent ut, aptent etiam a sit, nostra molestie sed sit eget elit. Mauris elit commodo, consequat donec lacinia tincidunt et nec quis, in ante, ultricies id sodales ipsum. Viverra malesuada, dolor libero wisi vivamus eleifend. Libero dolor donec nisl sociis donec tempor, duis laoreet amet et, arcu lectus quam erat, scelerisque potenti phasellus aenean amet, vivamus ac vel in quis arcu. Fames morbi nec odio, dolor leo ipsum amet. Ac cursus facilisis dui id mollis eleifend, eget sed molestie ac. Vivamus sagittis vitae, facilisis in faucibus dignissim neque porttitor.",
+    menu: [
+      {
+        timestamp: 1596686319469,
+        date: "2020-10-23",
+        type: "dinner",
+      },
+      {
+        timestamp: 1596686319900,
+        date: "2020-10-23",
+        type: "lunch",
+      },
+    ],
     ingredients: [
       {
         id: "545djbfkjbsdkfbjsdbff",
@@ -132,6 +192,18 @@ export const fakeRecipes: Recipe[] = [
     photo: "/img/photo6.jpg",
     preparation:
       "Lorem ipsum dolor sit amet, eget varius aliquam, vestibulum aliquam dolor pede, quisque amet praesent ut, aptent etiam a sit, nostra molestie sed sit eget elit. Mauris elit commodo, consequat donec lacinia tincidunt et nec quis, in ante, ultricies id sodales ipsum. Viverra malesuada, dolor libero wisi vivamus eleifend. Libero dolor donec nisl sociis donec tempor, duis laoreet amet et, arcu lectus quam erat, scelerisque potenti phasellus aenean amet, vivamus ac vel in quis arcu. Fames morbi nec odio, dolor leo ipsum amet. Ac cursus facilisis dui id mollis eleifend, eget sed molestie ac. Vivamus sagittis vitae, facilisis in faucibus dignissim neque porttitor.",
+    menu: [
+      {
+        timestamp: 1596686319469,
+        date: "2020-10-23",
+        type: "dinner",
+      },
+      {
+        timestamp: 1596686319900,
+        date: "2020-10-23",
+        type: "lunch",
+      },
+    ],
     ingredients: [
       {
         id: "54kdjhfjksgdfjksf654f6545df",

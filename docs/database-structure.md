@@ -13,23 +13,20 @@ interface Recipe {
   name: string;
   photo: string;
   preparation: string;
+  menu: {
+    timestamp: number;
+    date: string;
+    type: "breakfast" | "lunch" | "dinner";
+  }[];
   ingredients: {
     id: string;
     quantity: number;
   }[];
 }
 
-interface DayMenu {
-  date: string;
-  breakfast: string;
-  lunch: string;
-  dinner: string;
-}
-
 interface DB {
   recipes: Recipe[];
   ingredients: Ingredient[];
-  menu: { [day: string]: DayMenu };
 }
 ```
 
@@ -40,8 +37,7 @@ interface DB {
 ```json
 {
   "recipes": [],
-  "ingredients": [],
-  "menu": {}
+  "ingredients": []
 }
 ```
 
@@ -65,6 +61,18 @@ interface DB {
       "name": "Salmon with salad",
       "photo": "urlverguita",
       "preparation": ".....",
+      "menu": [
+        {
+          "timestamp": 1596686319469,
+          "date": "2020-10-23",
+          "type": "dinner"
+        },
+        {
+          "timestamp": 1596686319900,
+          "date": "2020-10-23",
+          "type": "lunch"
+        }
+      ],
       "ingredientes": {
         "id": "123455",
         "quantity": 1
@@ -84,15 +92,6 @@ interface DB {
       "quantity": 3,
       "unit": "gr"
     }
-  ],
-
-  "menu": {
-    "23": {
-      "date": "02/03/21",
-      "breakfast": "5648645sdf",
-      "lunch": "545df",
-      "dinner": "545dfgfg"
-    }
-  }
+  ]
 }
 ```
