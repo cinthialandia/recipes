@@ -4,13 +4,18 @@
 }
 
 .ingredient {
-  width: 600px;
+  flex-grow: 3;
+  margin: 0 20px;
 }
 
 .quantity {
-  width: 200px;
+  flex-shrink: 2;
+  margin: 0 20px;
 }
 
 .button-save-ingredient {
-  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 0 20px;
 }

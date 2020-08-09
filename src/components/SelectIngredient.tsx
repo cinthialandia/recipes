@@ -40,6 +40,7 @@ const SelectIngredient: React.FC<Props> = ({ onInput }) => {
   return (
     <div className="select-ingredient">
       <div className="ingredient">
+        <Form.Label>Ingredient</Form.Label>
         <Typeahead
           id="select-ingredient"
           options={SelectIngredientToObject}
@@ -50,18 +51,21 @@ const SelectIngredient: React.FC<Props> = ({ onInput }) => {
         />
       </div>
       <div className="quantity">
-        <InputGroup>
-          <Form.Control
-            onChange={handleQuantityChange}
-            type="number"
-            min="0"
-            placeholder="Quantity"
-            value={ingredientQuantity}
-          />
-          <InputGroup.Append>
-            <InputGroup.Text>{ingredientSelect?.unit}</InputGroup.Text>
-          </InputGroup.Append>
-        </InputGroup>
+        <Form.Group>
+          <Form.Label>Quantity</Form.Label>
+          <InputGroup>
+            <Form.Control
+              onChange={handleQuantityChange}
+              type="number"
+              min="0"
+              placeholder="Quantity"
+              value={ingredientQuantity}
+            />
+            <InputGroup.Append>
+              <InputGroup.Text>{ingredientSelect?.unit}</InputGroup.Text>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form.Group>
       </div>
       <Button onClick={handleAddClick} className="button-save-ingredient">
         Add
