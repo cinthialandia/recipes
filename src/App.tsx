@@ -5,6 +5,7 @@ import "./App.scss";
 import Calendar from "./Calendar";
 import ShoppingList from "./ShoppingList";
 import CreateRecipe from "./CreateRecipe";
+import Recipe from "./components/Recipe";
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
         </Link>
       </header>
       <Router>
-        <Home path="/" />
+        <Home path="/">
+          <Recipe path="/recipe/:recipeId" />
+        </Home>
         <Calendar path="calendar" />
         <ShoppingList path="shopping-list" />
         <CreateRecipe path="create-recipe" />

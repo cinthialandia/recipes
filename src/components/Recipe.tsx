@@ -1,8 +1,13 @@
 import React from "react";
 import { fakeRecipe, fakeIngredients } from "../Mock";
+import { RouteComponentProps } from "@reach/router";
 
-const Recipe: React.FC = () => {
-  console.log(fakeRecipe);
+interface Props extends RouteComponentProps {
+  recipeId?: string;
+}
+
+const Recipe: React.FC<Props> = ({ recipeId }) => {
+  console.log(recipeId);
   return (
     <div className="Recipe">
       <div>{fakeRecipe.name}</div>

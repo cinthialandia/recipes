@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import SelectIngredient from "./components/SelectIngredient";
 import { fakeIngredients } from "./Mock";
 import NewIngredient from "./components/NewIngredient";
@@ -9,13 +11,23 @@ import "./CreateRecipe.scss";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
+  console.log(ingredients);
 
   const handleIngredientInput = (id: string, quantity: number) => {
     setIngredients({ ...ingredients, [id]: quantity });
   };
+
+  const handleClickRemoveButton = (idToDelete: string) => {
+    const newIngredients = { ...ingredients };
+    if (newIngredients.hasOwnProperty(idToDelete)) {
+      delete newIngredients[idToDelete];
+    }
+    setIngredients(newIngredients);
+  };
   return (
     <div className="container-Create-Recipe">
       <Form>
+        <h2 className="title-create-new-recipe">Create new recipe</h2>
         <div className="create-recipe-name-of-the-recipe">
           <Form.Group>
             <Form.Label>Name of the recipe</Form.Label>
@@ -45,16 +57,23 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
             <Form.Control as="textarea" />
           </Form.Group>
         </div>
-        {Object.entries(ingredients).map(([id, quantity]) => (
-          <div className="create-recipe-ingredient-select-container">
-            <div className="create-recipe-ingredient-select" key={id}>
-              {fakeIngredients[id].name}: {quantity} {fakeIngredients[id].unit}
-            </div>
-            <Button className="create-recipe-ingredient-select-delete">
-              Delete
-            </Button>
-          </div>
-        ))}
+        <div>
+          <h4 className="title-ingredients-create-recipe">Ingredients</h4>
+          <ul className="create-recipe-ingredient-select-container">
+            {Object.entries(ingredients).map(([id, quantity]) => (
+              <li className="create-recipe-ingredient-select" key={id}>
+                {fakeIngredients[id].name}: {quantity}{" "}
+                {fakeIngredients[id].unit}
+                <Button
+                  onClick={() => handleClickRemoveButton(id)}
+                  className="create-recipe-ingredient-select-delete"
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="create-recipe-component-select-ingredient">
           <SelectIngredient onInput={handleIngredientInput} />
         </div>

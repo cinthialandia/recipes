@@ -1,4 +1,5 @@
 import React from "react";
+import { Router, Link } from "@reach/router";
 import { fakeRecipes } from "../Mock";
 
 function Recipes() {
@@ -6,9 +7,9 @@ function Recipes() {
   return (
     <div className="Recipes">
       {fakeRecipes.map((recipe) => (
-        <>
-          <button>{recipe.name}</button>
-        </>
+        <Link key={recipe.id} to={`recipe/${recipe.id}`}>
+          {recipe.name}
+        </Link>
       ))}
     </div>
   );

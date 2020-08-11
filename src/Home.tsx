@@ -5,16 +5,14 @@ import Recipes from "./components/Recipes";
 import Recipe from "./components/Recipe";
 import "./Home.css";
 
-const Home: React.FC<RouteComponentProps> = () => {
+const Home: React.FC<RouteComponentProps> = ({ children }) => {
   console.log(fakeRecipes);
   return (
     <div className="home-container">
       <div className="recipes">
         <Recipes />
       </div>
-      <div className="recipe">
-        <Recipe />
-      </div>
+      <div className="recipe">{children}</div>
     </div>
   );
 };
