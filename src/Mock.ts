@@ -58,19 +58,19 @@ export const fakeRecipes: Recipe[] = [
     ],
     ingredients: [
       {
-        id: "545ddfgfgf",
+        id: "545df",
         quantity: 2,
       },
       {
-        id: "54gghhfghfghj5df",
+        id: "54gghhj5df",
         quantity: 1,
       },
       {
-        id: "dfgjfgjhjfgh",
+        id: "dfgfgh",
         quantity: 1,
       },
       {
-        id: "545sdhfgjgfhjfdf",
+        id: "545sdfdf",
         quantity: 1,
       },
     ],
@@ -95,19 +95,19 @@ export const fakeRecipes: Recipe[] = [
     ],
     ingredients: [
       {
-        id: "545ghfjfgjfghjdf",
+        id: "545df",
         quantity: 2,
       },
       {
-        id: "54gghhjjhgjghjghj5df",
+        id: "54gghhj5df",
         quantity: 1,
       },
       {
-        id: "dfgfhgjgfhjgh",
+        id: "dfgfgh",
         quantity: 1,
       },
       {
-        id: "545sdtyrryrtyyukfdf",
+        id: "545sdfdf",
         quantity: 1,
       },
     ],
@@ -132,19 +132,19 @@ export const fakeRecipes: Recipe[] = [
     ],
     ingredients: [
       {
-        id: "545dsdfgfcgjghjf",
+        id: "545df",
         quantity: 2,
       },
       {
-        id: "54ggtygkhjkcvbnxdfghhj5df",
+        id: "54gghhj5df",
         quantity: 1,
       },
       {
-        id: "dfgsert43w56t6fgh",
+        id: "dfgfgh",
         quantity: 1,
       },
       {
-        id: "545sdertdrge56fdf",
+        id: "545sdfdf",
         quantity: 1,
       },
     ],
@@ -169,19 +169,19 @@ export const fakeRecipes: Recipe[] = [
     ],
     ingredients: [
       {
-        id: "545djbfkjbsdkfbjsdbff",
+        id: "545df",
         quantity: 2,
       },
       {
-        id: "54gghhj56564545454545df",
+        id: "54gghhj5df",
         quantity: 1,
       },
       {
-        id: "dfgfgsdfjkbzsd65z4dgkjbsdfh",
+        id: "dfgfgh",
         quantity: 1,
       },
       {
-        id: "545skdjbfjkhsdf65456456dfdf",
+        id: "545sdfdf",
         quantity: 1,
       },
     ],
@@ -206,19 +206,19 @@ export const fakeRecipes: Recipe[] = [
     ],
     ingredients: [
       {
-        id: "54kdjhfjksgdfjksf654f6545df",
+        id: "545df",
         quantity: 2,
       },
       {
-        id: "54gghhdjkfbhjksd564654j5df",
+        id: "54gghhj5df",
         quantity: 1,
       },
       {
-        id: "df564156f41gdfggfgh",
+        id: "dfgfgh",
         quantity: 1,
       },
       {
-        id: "545s5dfgdr5544545544dfdf",
+        id: "545sdfdf",
         quantity: 1,
       },
     ],

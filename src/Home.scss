@@ -1,0 +1,21 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-home-recipe {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.home-recipe-container {
+  display: flex;
+}
+
+.home-recipes {
+  flex-basis: 25%;
+}
+
+.home-recipe {
+  flex-basis: 75%;
+}

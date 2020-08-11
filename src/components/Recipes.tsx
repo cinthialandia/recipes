@@ -1,13 +1,18 @@
 import React from "react";
-import { Router, Link } from "@reach/router";
+import { Link } from "@reach/router";
 import { fakeRecipes } from "../Mock";
+import "./Recipes.scss";
 
 function Recipes() {
   console.log(fakeRecipes);
   return (
     <div className="Recipes">
       {fakeRecipes.map((recipe) => (
-        <Link key={recipe.id} to={`recipe/${recipe.id}`}>
+        <Link
+          className="recipes-link"
+          key={recipe.id}
+          to={`recipe/${recipe.id}`}
+        >
           {recipe.name}
         </Link>
       ))}

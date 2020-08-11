@@ -1,0 +1,27 @@
+.Recipe {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-name {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.recipe-img {
+  display: flex;
+  justify-content: center;
+}
+
+.recipe-ingredient-name {
+  padding: 0 10px 0 0;
+}
+
+.recipe-ingredient-sub-title {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.recipe-preparation {
+  padding: 20px 0;
+}

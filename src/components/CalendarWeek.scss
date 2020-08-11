@@ -1,5 +1,9 @@
 $border: 1px solid black;
 
+.title-calendar {
+  text-align: center;
+  padding: 20px 0;
+}
 .CalendarWeek {
   display: grid;
   grid-auto-columns: 1fr;
