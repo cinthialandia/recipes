@@ -11,6 +11,7 @@ $border: 1px solid black;
   grid-auto-flow: column;
   border-bottom: $border;
   border-right: $border;
+  text-align: center;
 }
 
 .CalendarWeek > * {

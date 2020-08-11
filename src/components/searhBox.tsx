@@ -32,7 +32,7 @@ function SearchBox() {
     <div className="SearchBox">
       {" "}
       <Button variant="primary" onClick={() => setShow(true)}>
-        modal
+        select
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
