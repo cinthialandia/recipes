@@ -3,7 +3,6 @@ import Table from "react-bootstrap/Table";
 import { fakeRecipe } from "../Mock";
 
 const List: React.FC = () => {
-  console.log(fakeRecipe);
   return (
     <div className="List">
       <Table striped bordered hover size="sm">

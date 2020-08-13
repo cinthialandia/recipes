@@ -1,10 +1,12 @@
 import React from "react";
-import { fakeRecipe } from "../Mock";
 import "./CalendarWeek.scss";
 import CalendarDay from "./CalendarDay";
+import { RecipeType } from "../types";
 
 const CalendarWeek: React.FC = () => {
-  console.log(fakeRecipe);
+  const handleRecipeSelect = (id: string, type: RecipeType, date: string) => {
+    console.log(id, type, date);
+  };
   return (
     <>
       <h2 className="title-calendar">Calendar</h2>
@@ -14,13 +16,13 @@ const CalendarWeek: React.FC = () => {
         <div>Lunch</div>
         <div>Dinner</div>
 
-        <CalendarDay day="Monday" />
-        <CalendarDay day="Tuesday" />
-        <CalendarDay day="Wednesday" />
-        <CalendarDay day="Thursday" />
-        <CalendarDay day="Friday" />
-        <CalendarDay day="Saturday" />
-        <CalendarDay day="Sunday" />
+        <CalendarDay date="Sunday" onSelect={handleRecipeSelect} />
+        <CalendarDay date="Monday" onSelect={handleRecipeSelect} />
+        <CalendarDay date="Tuesday" onSelect={handleRecipeSelect} />
+        <CalendarDay date="Wednesday" onSelect={handleRecipeSelect} />
+        <CalendarDay date="Thursday" onSelect={handleRecipeSelect} />
+        <CalendarDay date="Friday" onSelect={handleRecipeSelect} />
+        <CalendarDay date="Saturday" onSelect={handleRecipeSelect} />
       </div>
     </>
   );

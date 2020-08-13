@@ -11,7 +11,6 @@ import "./CreateRecipe.scss";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
-  console.log(ingredients);
 
   const handleIngredientInput = (id: string, quantity: number) => {
     setIngredients({ ...ingredients, [id]: quantity });

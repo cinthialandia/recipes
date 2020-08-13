@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import FormControl from "react-bootstrap/FormControl";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import { fakeIngredients } from "../Mock";
-import { Ingredient } from "../types";
 import "./NewIngredient.scss";
 import { UNITS } from "../constants";
 

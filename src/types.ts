@@ -1,3 +1,5 @@
+export type RecipeType = "breakfast" | "lunch" | "dinner";
+
 export interface Recipe {
   id: string;
   name: string;
@@ -6,7 +8,7 @@ export interface Recipe {
   menu: {
     timestamp: number;
     date: string;
-    type: "breakfast" | "lunch" | "dinner";
+    type: RecipeType;
   }[];
   ingredients: {
     id: string;
