@@ -1,19 +1,31 @@
 import React from "react";
 import SearchBox from "./searhBox";
 import { RecipeType } from "../types";
+import { format } from "date-fns";
+import "./CalendarDay.scss";
+
+const formatDateNumber = (date: Date) => format(date, "d");
+const formatDateName = (date: Date) => format(date, "EEEE");
 
 interface Props {
-  date: string;
-  onSelect: (id: string, type: RecipeType, date: string) => void;
+  date: Date;
+  onSelect: (id: string, type: RecipeType, date: Date) => void;
 }
 
 const CalendarDay: React.FC<Props> = ({ date, onSelect }) => {
+  const weekDateToDay = formatDateNumber(date);
+  const weekDateToDayName = formatDateName(date);
+
   const handleOnSelect = (id: string, type: RecipeType) => {
     onSelect(id, type, date);
   };
+
   return (
     <>
-      <div className="title">{date}</div>
+      <div className="calendar-day-title">
+        <div>{weekDateToDayName}</div>
+        <span>{weekDateToDay}</span>
+      </div>
       <div>
         <SearchBox onSelect={(id) => handleOnSelect(id, "breakfast")} />
       </div>

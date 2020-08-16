@@ -7,6 +7,8 @@ import FormControl from "react-bootstrap/FormControl";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Media from "react-bootstrap/Media";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { fakeRecipes } from "../Mock";
 import { Recipe } from "../types";
 import "./SearchBox.scss";
@@ -42,11 +44,11 @@ const SearchBox: React.FC<Props> = ({ onSelect }) => {
   return (
     <div className="SearchBox">
       {" "}
-      <Button variant="primary" onClick={() => setShow(true)}>
-        select
+      <Button variant="link" onClick={() => setShow(true)}>
+        add <FontAwesomeIcon icon={faUtensils} />
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="search-box-input-dropdown">
           <Modal.Title>
             <InputGroup>
               <FormControl onChange={handleChange} placeholder="Search" />
@@ -55,7 +57,7 @@ const SearchBox: React.FC<Props> = ({ onSelect }) => {
           <DropdownButton
             as={InputGroup.Prepend}
             variant="outline-secondary"
-            title="Dropdown"
+            title="Filter by Protein"
             id="input-group-dropdown-1"
           >
             <Dropdown.Item href="#">Chicken</Dropdown.Item>
@@ -78,11 +80,12 @@ const SearchBox: React.FC<Props> = ({ onSelect }) => {
                   />
                   <Media.Body>
                     <h5>{name}</h5>
-                    <button
+                    <Button
+                      variant="light"
                       onClick={() => handleClick(id)}
                       className="stretched-link searchBox-recipe-button"
                       aria-label={`select ${name} recipe`}
-                    ></button>
+                    ></Button>
                   </Media.Body>
                 </Media>
               </div>

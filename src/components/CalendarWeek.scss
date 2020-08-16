@@ -1,24 +1,68 @@
-$border: 1px solid black;
+$border: 1px solid #e2ebfc;
 
 .title-calendar {
   text-align: center;
   padding: 20px 0;
 }
+.title-meal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #343a40;
+}
+
 .CalendarWeek {
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-rows: 20px repeat(3, 40px);
+  grid-template-rows: repeat(4, auto);
   grid-auto-flow: column;
   border-bottom: $border;
   border-right: $border;
   text-align: center;
+  background-color: #f5f5fd;
+  margin: 30px;
+
+  div {
+    color: #343a40;
+    font-weight: 400;
+  }
 }
 
 .CalendarWeek > * {
   border-left: $border;
   border-top: $border;
+  padding: 35px;
 }
 
-.CalendarWeek > .title {
-  font-weight: bold;
+.calendar-week-container-button-and-date {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  button {
+    color: #7b7e81;
+    max-height: 40px;
+  }
+  h2 {
+    font-size: 25px;
+    padding: 10px;
+    color: #878d95;
+  }
+}
+
+.title-meal-month-year-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 30px;
+    color: black;
+  }
+
+  h3 {
+    font-size: 15px;
+    color: #878d95;
+  }
 }
