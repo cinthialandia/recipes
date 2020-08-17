@@ -1,40 +1,32 @@
-import React from "react";
-import Table from "react-bootstrap/Table";
-import { fakeRecipe } from "../Mock";
+import React, { useState } from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { fakeIngredients } from "../Mock";
+import "./List.scss";
 
 const List: React.FC = () => {
+  const [ingredientsList, setIngredientsList] = useState({
+    ...fakeIngredients,
+  });
+
+  const handleClickCheckButton = (id: string, quantity: number) => {};
+
   return (
     <div className="List">
-      <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>box</th>
-            <th>Item</th>
-            <th>unit</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Larry the Bird</td>
-            <td>uhh</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table>
+      {Object.values(ingredientsList).map(({ id, name, quantity, unit }) => (
+        <Card key={id}>
+          <Card.Body className="container-list">
+            <div>{name}</div>
+            <div>{quantity}</div>
+            <div>{unit}</div>
+            <Button onClick={() => handleClickCheckButton(id, quantity)}>
+              <FontAwesomeIcon icon={faCheck} />
+            </Button>
+          </Card.Body>
+        </Card>
+      ))}
     </div>
   );
 };

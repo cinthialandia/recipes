@@ -1,5 +1,7 @@
 export type RecipeType = "breakfast" | "lunch" | "dinner";
 
+export type Keyword = string[];
+
 export interface Recipe {
   id: string;
   name: string;

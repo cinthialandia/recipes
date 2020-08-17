@@ -8,8 +8,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Media from "react-bootstrap/Media";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
-import { fakeRecipes } from "../Mock";
+import { faUtensils, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { fakeRecipes, KeywordFilter } from "../Mock";
 import { Recipe } from "../types";
 import "./SearchBox.scss";
 
@@ -41,6 +41,10 @@ const SearchBox: React.FC<Props> = ({ onSelect }) => {
     setShow(false);
   };
 
+  const handleSelectFilter = (select: string) => {
+    console.log(select);
+  };
+
   return (
     <div className="SearchBox">
       {" "}
@@ -48,23 +52,28 @@ const SearchBox: React.FC<Props> = ({ onSelect }) => {
         add <FontAwesomeIcon icon={faUtensils} />
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton className="search-box-input-dropdown">
-          <Modal.Title>
-            <InputGroup>
+        <Modal.Header closeButton>
+          <Modal.Title className="search-box-input-dropdown">
+            <InputGroup className="search-box-input">
               <FormControl onChange={handleChange} placeholder="Search" />
             </InputGroup>
+            <DropdownButton
+              className="search-box-dropdown"
+              as={InputGroup.Prepend}
+              variant="outline-secondary"
+              title={<FontAwesomeIcon icon={faFilter} />}
+            >
+              {" "}
+              {KeywordFilter.map((element) => (
+                <Dropdown.Item
+                  key={element}
+                  onClick={() => handleSelectFilter(element)}
+                >
+                  {element}
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
           </Modal.Title>
-          <DropdownButton
-            as={InputGroup.Prepend}
-            variant="outline-secondary"
-            title="Filter by Protein"
-            id="input-group-dropdown-1"
-          >
-            <Dropdown.Item href="#">Chicken</Dropdown.Item>
-            <Dropdown.Item href="#">Beans</Dropdown.Item>
-            <Dropdown.Item href="#">Red Meat</Dropdown.Item>
-            <Dropdown.Item href="#">Fish</Dropdown.Item>
-          </DropdownButton>
         </Modal.Header>
         <Modal.Body>
           {result.map(({ name, id, photo }) => {

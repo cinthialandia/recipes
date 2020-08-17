@@ -13,5 +13,9 @@
 
 .search-box-input-dropdown {
   display: flex;
-  flex-direction: column;
+  flex: 1;
+}
+
+.search-box-input {
+  margin-right: 15px;
 }

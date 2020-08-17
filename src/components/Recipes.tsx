@@ -4,7 +4,6 @@ import { fakeRecipes } from "../Mock";
 import "./Recipes.scss";
 
 function Recipes() {
-  console.log(fakeRecipes);
   return (
     <div className="Recipes">
       {fakeRecipes.map((recipe) => (

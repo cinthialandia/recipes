@@ -9,13 +9,7 @@ import {
 } from "date-fns";
 import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleLeft,
-  faChevronRight,
-  faCoffee,
-  faDrumstickBite,
-  faHamburger,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./CalendarWeek.scss";
 import CalendarDay from "./CalendarDay";
 import { RecipeType } from "../types";
