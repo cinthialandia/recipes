@@ -11,22 +11,37 @@ const List: React.FC = () => {
     ...fakeIngredients,
   });
 
-  const handleClickCheckButton = (id: string, quantity: number) => {};
+  const handleClickCheckButton = (id: string, quantity: number) => {
+    const ingredientSelectedReady = Object.values(ingredientsList).find(
+      ({ id }) => id === "545df"
+    );
+    if (!ingredientSelectedReady) {
+      return;
+    }
+
+    ingredientSelectedReady.quantity = 0;
+    setIngredientsList({
+      ...ingredientsList,
+      [ingredientSelectedReady.id]: ingredientSelectedReady,
+    });
+  };
 
   return (
     <div className="List">
-      {Object.values(ingredientsList).map(({ id, name, quantity, unit }) => (
-        <Card key={id}>
-          <Card.Body className="container-list">
-            <div>{name}</div>
-            <div>{quantity}</div>
-            <div>{unit}</div>
-            <Button onClick={() => handleClickCheckButton(id, quantity)}>
-              <FontAwesomeIcon icon={faCheck} />
-            </Button>
-          </Card.Body>
-        </Card>
-      ))}
+      {Object.values(ingredientsList)
+        .filter(({ quantity }) => quantity > 0)
+        .map(({ id, name, quantity, unit }) => (
+          <Card key={id}>
+            <Card.Body className="container-list">
+              <div>{name}</div>
+              <div>{quantity}</div>
+              <div>{unit}</div>
+              <Button onClick={() => handleClickCheckButton(id, quantity)}>
+                <FontAwesomeIcon icon={faCheck} />
+              </Button>
+            </Card.Body>
+          </Card>
+        ))}
     </div>
   );
 };

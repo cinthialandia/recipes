@@ -9,6 +9,7 @@ interface Props extends RouteComponentProps {
 
 const Recipe: React.FC<Props> = ({ recipeId }) => {
   const recipe = fakeRecipes.find(({ id }) => id === recipeId);
+  console.log(recipe);
 
   return recipe ? (
     <div className="Recipe">

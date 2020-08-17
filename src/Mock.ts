@@ -269,7 +269,7 @@ export const fakeIngredients: { [id: string]: Ingredient } = {
   "54gghhj5df": {
     id: "54gghhj5df",
     name: "potato",
-    quantity: 3,
+    quantity: 0,
     unit: "gr",
   },
   dfgfgh: {
