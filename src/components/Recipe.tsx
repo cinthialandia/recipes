@@ -8,6 +8,7 @@ import {
   faChargingStation,
   faEgg,
   faBacon,
+  faTag,
 } from "@fortawesome/free-solid-svg-icons";
 import { fakeRecipe as recipe, fakeIngredients, fakeRecipes } from "../Mock";
 import { RouteComponentProps } from "@reach/router";
@@ -28,6 +29,9 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
         <img style={{ width: "400px" }} src={recipe.photo} alt="food" />
       </div>
       <div className="description-of-the-recipe">
+        <div>
+          <FontAwesomeIcon icon={faTag} /> {`Keyword: ${recipe.keyword}`}
+        </div>
         <div>
           <FontAwesomeIcon icon={faUserFriends} />{" "}
           {`Serving: ${recipe.serving}`}

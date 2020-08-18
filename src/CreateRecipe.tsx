@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import SelectIngredient from "./components/SelectIngredient";
-import { fakeIngredients } from "./Mock";
+import { fakeRecipe as recipe, fakeIngredients, fakeRecipes } from "./Mock";
 import NewIngredient from "./components/NewIngredient";
 import "./CreateRecipe.scss";
+import Recipe from "./components/Recipe";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
@@ -50,10 +52,61 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
             />
           </Form.Group>
         </div>
-        <div className="create-recipe-preparation">
+        <div className="details-of-the-recipe">
           <Form.Group>
-            <Form.Label>Preparation</Form.Label>
-            <Form.Control as="textarea" />
+            <Form.Label>Serving</Form.Label>
+            <InputGroup>
+              <Form.Control
+                type="number"
+                min="0"
+                placeholder="number of people"
+              />
+            </InputGroup>
+            <Form.Label>Time</Form.Label>
+            <InputGroup>
+              <Form.Control
+                type="number"
+                min="0"
+                placeholder="time in minutes"
+              />
+              <InputGroup.Append>
+                <InputGroup.Text>min</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
+            <Form.Label>Difficulty</Form.Label>
+            <Form.Control as="select" custom>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </Form.Control>
+            <Form.Label>Calories</Form.Label>
+            <InputGroup>
+              <Form.Control type="number" min="0" placeholder="" />
+              <InputGroup.Append>
+                <InputGroup.Text>Kcal</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
+            <Form.Label>Carbohydrates</Form.Label>
+            <InputGroup>
+              <Form.Control type="number" min="0" placeholder="" />
+              <InputGroup.Append>
+                <InputGroup.Text>gr</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
+            <Form.Label>Proteins</Form.Label>
+            <InputGroup>
+              <Form.Control type="number" min="0" placeholder="" />
+              <InputGroup.Append>
+                <InputGroup.Text>gr</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
+            <Form.Label>Fats</Form.Label>
+            <InputGroup>
+              <Form.Control type="number" min="0" placeholder="" />
+              <InputGroup.Append>
+                <InputGroup.Text>gr</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
           </Form.Group>
         </div>
         <div>
@@ -78,6 +131,12 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
         </div>
         <div className="create-recipe-component-new-ingredient">
           <NewIngredient />
+        </div>
+        <div className="create-recipe-preparation">
+          <Form.Group>
+            <Form.Label>Preparation</Form.Label>
+            <Form.Control as="textarea" />
+          </Form.Group>
         </div>
         <Button
           className="button-create-recipe-save"

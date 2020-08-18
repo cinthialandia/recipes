@@ -31,7 +31,7 @@ const NewIngredient: React.FC = () => {
           <Form.Control as="select" defaultValue="Choose the unit">
             <option>Choose the unit</option>
             {UNITS.map((unit) => (
-              <option>{unit}</option>
+              <option key={unit}>{unit}</option>
             ))}
           </Form.Control>
         </Form.Group>
