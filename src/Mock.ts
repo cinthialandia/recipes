@@ -11,6 +11,7 @@ export const KeywordFilter: Keyword = [
 export const fakeRecipes: Recipe[] = [
   {
     id: "12345677777789",
+    keyword: "chicken",
     name: "chicken with potatos",
     photo: "/img/photo2.png",
     preparation:
@@ -48,6 +49,7 @@ export const fakeRecipes: Recipe[] = [
   },
   {
     id: "9101118888821314",
+    keyword: "chicken",
     name: "Carbonara pasta",
     photo: "/img/photo3.jpg",
     preparation:
@@ -85,6 +87,7 @@ export const fakeRecipes: Recipe[] = [
   },
   {
     id: "1516171899995444419",
+    keyword: "chicken",
     name: "ice cream with chocolate",
     photo: "/img/photo3.jpg",
     preparation:
@@ -122,6 +125,7 @@ export const fakeRecipes: Recipe[] = [
   },
   {
     id: "78965444441232",
+    keyword: "chicken",
     name: "Chinese rice",
     photo: "/img/photo4.jpg",
     preparation:
@@ -159,6 +163,7 @@ export const fakeRecipes: Recipe[] = [
   },
   {
     id: "154896425555556452",
+    keyword: "chicken",
     name: "Arepa with tuna",
     photo: "/img/photo5.jpg",
     preparation:
@@ -196,6 +201,7 @@ export const fakeRecipes: Recipe[] = [
   },
   {
     id: "123456666666789",
+    keyword: "beans",
     name: "sald with black beans",
     photo: "/img/photo6.jpg",
     preparation:
@@ -235,6 +241,7 @@ export const fakeRecipes: Recipe[] = [
 
 export const fakeRecipe = {
   id: "123456789",
+  keyword: "chicken",
   name: "chicken with potatos",
   photo: "/img/photo2.png",
   preparation:

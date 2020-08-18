@@ -4,6 +4,7 @@ export type Keyword = string[];
 
 export interface Recipe {
   id: string;
+  keyword: string;
   name: string;
   photo: string;
   preparation: string;

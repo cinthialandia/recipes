@@ -10,6 +10,7 @@ interface Ingredient {
 
 interface Recipe {
   id: string;
+  keyword: string;
   name: string;
   photo: string;
   preparation: string;
@@ -48,6 +49,7 @@ interface DB {
   "recipes": [
     {
       "ïd": "sdf54541",
+      "keyword": "chicken",
       "name": "Chicken with mushroom",
       "photo": "urlverguita",
       "preparation": ".....",

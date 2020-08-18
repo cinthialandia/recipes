@@ -5,24 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { fakeIngredients } from "../Mock";
 import "./List.scss";
+import { Ingredient } from "../types";
 
 const List: React.FC = () => {
   const [ingredientsList, setIngredientsList] = useState({
     ...fakeIngredients,
   });
 
-  const handleClickCheckButton = (id: string, quantity: number) => {
-    const ingredientSelectedReady = Object.values(ingredientsList).find(
-      ({ id }) => id === "545df"
-    );
-    if (!ingredientSelectedReady) {
-      return;
-    }
-
-    ingredientSelectedReady.quantity = 0;
+  const handleClickCheckButton = (ingredient: Ingredient) => {
+    ingredient.quantity = 0;
     setIngredientsList({
       ...ingredientsList,
-      [ingredientSelectedReady.id]: ingredientSelectedReady,
+      [ingredient.id]: ingredient,
     });
   };
 
@@ -30,13 +24,12 @@ const List: React.FC = () => {
     <div className="List">
       {Object.values(ingredientsList)
         .filter(({ quantity }) => quantity > 0)
-        .map(({ id, name, quantity, unit }) => (
-          <Card key={id}>
+        .map((ingredient) => (
+          <Card className="ingredient-card" key={ingredient.id}>
             <Card.Body className="container-list">
-              <div>{name}</div>
-              <div>{quantity}</div>
-              <div>{unit}</div>
-              <Button onClick={() => handleClickCheckButton(id, quantity)}>
+              <div className="list-ingredient">{ingredient.name}</div>
+              <div className="list-ingredient">{`${ingredient.quantity} ${ingredient.unit} `}</div>
+              <Button onClick={() => handleClickCheckButton(ingredient)}>
                 <FontAwesomeIcon icon={faCheck} />
               </Button>
             </Card.Body>

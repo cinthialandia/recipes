@@ -1,4 +1,10 @@
 .container-list {
   display: flex;
   justify-content: space-between;
+  padding: 2px;
+}
+
+.list-ingredient {
+  flex-basis: 25%;
+  text-align: center;
 }
