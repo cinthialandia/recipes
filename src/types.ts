@@ -17,6 +17,15 @@ export interface Recipe {
     id: string;
     quantity: number;
   }[];
+  serving: number;
+  time: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  nutrition: {
+    calories: number;
+    carbohydrates: number;
+    fats: number;
+    proteins: number;
+  };
 }
 
 export interface Ingredient {

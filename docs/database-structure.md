@@ -23,6 +23,15 @@ interface Recipe {
     id: string;
     quantity: number;
   }[];
+  serving: number;
+  time: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  nutrition: {
+    calories: number;
+    carbohydrates: number;
+    fats: number;
+    proteins: number;
+  };
 }
 
 interface DB {
@@ -63,6 +72,7 @@ interface DB {
       "name": "Salmon with salad",
       "photo": "urlverguita",
       "preparation": ".....",
+
       "menu": [
         {
           "timestamp": 1596686319469,
@@ -94,6 +104,15 @@ interface DB {
       "quantity": 3,
       "unit": "gr"
     }
-  ]
+  ],
+  "serving": 2,
+  "time": "70 min",
+  "difficulty": "Easy",
+  "nutrition": {
+    "calories": 440,
+    "carbohydrates": 30,
+    "fats": 60,
+    "proteins": 40
+  }
 }
 ```

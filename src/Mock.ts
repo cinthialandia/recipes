@@ -46,6 +46,15 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
+    serving: 4,
+    time: "70 min",
+    difficulty: "Easy",
+    nutrition: {
+      calories: 440,
+      carbohydrates: 30,
+      fats: 20,
+      proteins: 30,
+    },
   },
   {
     id: "9101118888821314",
@@ -84,6 +93,15 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
+    serving: 5,
+    time: "78 min",
+    difficulty: "Hard",
+    nutrition: {
+      calories: 300,
+      carbohydrates: 20,
+      fats: 30,
+      proteins: 22,
+    },
   },
   {
     id: "1516171899995444419",
@@ -122,6 +140,15 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
+    serving: 3,
+    time: "50 min",
+    difficulty: "Medium",
+    nutrition: {
+      calories: 200,
+      carbohydrates: 10,
+      fats: 15,
+      proteins: 30,
+    },
   },
   {
     id: "78965444441232",
@@ -160,6 +187,15 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
+    serving: 2,
+    time: "30 min",
+    difficulty: "Easy",
+    nutrition: {
+      calories: 200,
+      carbohydrates: 25,
+      fats: 20,
+      proteins: 30,
+    },
   },
   {
     id: "154896425555556452",
@@ -198,6 +234,15 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
+    serving: 2,
+    time: "20 min",
+    difficulty: "Easy",
+    nutrition: {
+      calories: 100,
+      carbohydrates: 15,
+      fats: 20,
+      proteins: 15,
+    },
   },
   {
     id: "123456666666789",
@@ -236,6 +281,15 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
+    serving: 8,
+    time: "92 min",
+    difficulty: "Easy",
+    nutrition: {
+      calories: 200,
+      carbohydrates: 30,
+      fats: 20,
+      proteins: 30,
+    },
   },
 ];
 
