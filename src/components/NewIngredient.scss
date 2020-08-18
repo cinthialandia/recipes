@@ -1,25 +1,22 @@
 .container-select-ingredient {
   display: flex;
+  justify-content: space-between;
 }
 
 .select-new-ingredient {
-  flex-grow: 2;
-  margin: 0 20px;
+  flex-basis: 40%;
 }
 
 .select-ingredient-quantity {
-  flex-shrink: 1;
-  margin: 0 20px;
+  flex-basis: 20%;
 }
 
 .select-ingredient-choose {
-  flex-shrink: 1;
-  margin: 0 20px 0 20px;
+  flex-basis: 20%;
 }
 
 .button-save-new-ingredient {
+  flex-basis: 5%;
   display: flex;
-  justify-content: center;
   align-self: center;
-  margin: 0 20px;
 }

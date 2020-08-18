@@ -9,18 +9,6 @@
   justify-content: center;
 }
 
-.create-recipe-name-of-the-recipe {
-  margin: 0 20px;
-}
-
-.create-recipe-upload-file {
-  margin: 0 20px;
-}
-
-.create-recipe-preparation {
-  margin: 0 20px;
-}
-
 .title-ingredients-create-recipe {
   text-align: center;
   padding: 30px 0;
@@ -35,10 +23,23 @@
   padding: 10px 0;
 }
 
-.create-recipe-ingredient-select-delete {
-  margin: 0 20px;
+.container-keyword {
+  display: flex;
+
+  justify-content: space-between;
 }
 
-.button-create-recipe-save {
-  margin: 20px 0;
+.container-serving-time-difficulty {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-calories-car-pro-fats {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.create-recipe-calories {
+  flex-basis: 15%;
 }

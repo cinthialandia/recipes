@@ -10,6 +10,8 @@ import { fakeRecipe as recipe, fakeIngredients, fakeRecipes } from "./Mock";
 import NewIngredient from "./components/NewIngredient";
 import "./CreateRecipe.scss";
 import Recipe from "./components/Recipe";
+import NewKeyword from "./components/NewKeyword";
+import SelectNewKeyword from "./components/SelectNewKeyword";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
@@ -51,63 +53,89 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
               feedbackTooltip
             />
           </Form.Group>
+          <h4 className="title-ingredients-create-recipe">
+            Details of the recipe
+          </h4>
         </div>
         <div className="details-of-the-recipe">
           <Form.Group>
-            <Form.Label>Serving</Form.Label>
-            <InputGroup>
-              <Form.Control
-                type="number"
-                min="0"
-                placeholder="number of people"
-              />
-            </InputGroup>
-            <Form.Label>Time</Form.Label>
-            <InputGroup>
-              <Form.Control
-                type="number"
-                min="0"
-                placeholder="time in minutes"
-              />
-              <InputGroup.Append>
-                <InputGroup.Text>min</InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-            <Form.Label>Difficulty</Form.Label>
-            <Form.Control as="select" custom>
-              <option>Easy</option>
-              <option>Medium</option>
-              <option>Hard</option>
-            </Form.Control>
-            <Form.Label>Calories</Form.Label>
-            <InputGroup>
-              <Form.Control type="number" min="0" placeholder="" />
-              <InputGroup.Append>
-                <InputGroup.Text>Kcal</InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-            <Form.Label>Carbohydrates</Form.Label>
-            <InputGroup>
-              <Form.Control type="number" min="0" placeholder="" />
-              <InputGroup.Append>
-                <InputGroup.Text>gr</InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-            <Form.Label>Proteins</Form.Label>
-            <InputGroup>
-              <Form.Control type="number" min="0" placeholder="" />
-              <InputGroup.Append>
-                <InputGroup.Text>gr</InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-            <Form.Label>Fats</Form.Label>
-            <InputGroup>
-              <Form.Control type="number" min="0" placeholder="" />
-              <InputGroup.Append>
-                <InputGroup.Text>gr</InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
+            <div className="container-keyword">
+              <NewKeyword />
+              <SelectNewKeyword />
+            </div>
+            <div className="container-serving-time-difficulty">
+              <div className="container-serving">
+                <Form.Label>Serving</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    type="number"
+                    min="0"
+                    placeholder="number of people"
+                  />
+                </InputGroup>
+              </div>
+
+              <div className="container-time">
+                <Form.Label>Time</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    type="number"
+                    min="0"
+                    placeholder="time in minutes"
+                  />
+                  <InputGroup.Append>
+                    <InputGroup.Text>min</InputGroup.Text>
+                  </InputGroup.Append>
+                </InputGroup>
+              </div>
+              <div className="container-difficulty">
+                <Form.Label>Difficulty</Form.Label>
+                <Form.Control as="select" custom>
+                  <option>Easy</option>
+                  <option>Medium</option>
+                  <option>Hard</option>
+                </Form.Control>
+              </div>
+            </div>
           </Form.Group>
+          <div className="container-calories-car-pro-fats">
+            <div className="create-recipe-calories">
+              <Form.Label>Calories</Form.Label>
+              <InputGroup>
+                <Form.Control type="number" min="0" placeholder="" />
+                <InputGroup.Append>
+                  <InputGroup.Text>Kcal</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </div>
+            <div className="create-recipe-calories">
+              <Form.Label>Carbohydrates</Form.Label>
+              <InputGroup>
+                <Form.Control type="number" min="0" placeholder="" />
+                <InputGroup.Append>
+                  <InputGroup.Text>gr</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </div>
+            <div className="create-recipe-calories">
+              <Form.Label>Proteins</Form.Label>
+              <InputGroup>
+                <Form.Control type="number" min="0" placeholder="" />
+                <InputGroup.Append>
+                  <InputGroup.Text>gr</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </div>
+            <div className="create-recipe-calories">
+              <Form.Label>Fats</Form.Label>
+              <InputGroup>
+                <Form.Control type="number" min="0" placeholder="" />
+                <InputGroup.Append>
+                  <InputGroup.Text>gr</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </div>
+          </div>
         </div>
         <div>
           <h4 className="title-ingredients-create-recipe">Ingredients</h4>
@@ -134,7 +162,7 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
         </div>
         <div className="create-recipe-preparation">
           <Form.Group>
-            <Form.Label>Preparation</Form.Label>
+            <h4 className="title-ingredients-create-recipe">Preparation</h4>
             <Form.Control as="textarea" />
           </Form.Group>
         </div>

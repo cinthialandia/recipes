@@ -1,21 +1,17 @@
 .select-ingredient {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .ingredient {
-  flex-grow: 3;
-  margin: 0 20px;
+  flex-basis: 60%;
 }
 
 .quantity {
-  flex-shrink: 2;
-  margin: 0 20px;
+  flex-basis: 25%;
 }
 
 .button-save-ingredient {
-  display: flex;
-  justify-content: center;
+  flex-basis: 5%;
   align-self: center;
-  margin: 0 20px;
 }

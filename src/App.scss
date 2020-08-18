@@ -1,9 +1,27 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~react-bootstrap-typeahead/css/Typeahead.css";
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Sniglet&family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
 
 .nav-container {
   display: flex;
   justify-content: space-evenly;
+}
+
+h2 {
+  font-family: "Bad Script", cursive;
+  font-size: 40px;
+  color: #e25523;
+}
+
+h4 {
+  font-family: "Caveat", cursive;
+  font-size: 30px;
+}
+
+body {
+  font-family: "Baloo Da 2", cursive;
 }
 
 @media (prefers-reduced-motion: no-preference) {
