@@ -25,9 +25,8 @@ function App() {
         </Link>
       </header>
       <Router>
-        <Home path="/">
-          <Recipe path="/recipe/:recipeId" />
-        </Home>
+        <Home path="/" />
+        <Recipe path="/recipe/:recipeId" />
         <Calendar path="calendar" />
         <ShoppingList path="shopping-list" />
         <CreateRecipe path="create-recipe" />

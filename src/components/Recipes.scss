@@ -1,10 +1,23 @@
 .Recipes {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .recipes-link {
-  padding: 10px 0;
+  flex-basis: 28%;
+  margin: 20px 15px;
+}
+
+.recipes-title-name {
+  text-align: center;
+  font-size: 40px;
+  color: black;
+}
+
+.recipes-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
   color: black;
 }
