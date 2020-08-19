@@ -6,15 +6,16 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import SelectIngredient from "./components/SelectIngredient";
-import { fakeRecipe as recipe, fakeIngredients, fakeRecipes } from "./Mock";
+import { fakeRecipe as recipe, fakeIngredients } from "./Mock";
 import NewIngredient from "./components/NewIngredient";
 import "./CreateRecipe.scss";
-import Recipe from "./components/Recipe";
 import NewKeyword from "./components/NewKeyword";
 import SelectNewKeyword from "./components/SelectNewKeyword";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
+  const [keywordActive, setKeywordActive] = useState(true);
+  const [ingredientdActive, setIngredientActive] = useState(true);
 
   const handleIngredientInput = (id: string, quantity: number) => {
     setIngredients({ ...ingredients, [id]: quantity });
@@ -27,6 +28,15 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
     }
     setIngredients(newIngredients);
   };
+
+  const toggleKeywordActive = () => {
+    setKeywordActive(!keywordActive);
+  };
+
+  const toggleIngredientActive = () => {
+    setIngredientActive(!ingredientdActive);
+  };
+
   return (
     <div className="container-Create-Recipe">
       <Form>
@@ -60,9 +70,23 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
         <div className="details-of-the-recipe">
           <Form.Group>
             <div className="container-keyword">
-              <NewKeyword />
-              <SelectNewKeyword />
+              {keywordActive ? (
+                <div className="keyword-selected">
+                  <SelectNewKeyword />
+                  <Button variant="link" onClick={toggleKeywordActive}>
+                    Enter a new Keyword
+                  </Button>
+                </div>
+              ) : (
+                <div className="keyword-new">
+                  <NewKeyword />
+                  <Button variant="link" onClick={toggleKeywordActive}>
+                    Select a new Keyword
+                  </Button>
+                </div>
+              )}
             </div>
+
             <div className="container-serving-time-difficulty">
               <div className="container-serving">
                 <Form.Label>Serving</Form.Label>
@@ -154,12 +178,22 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
             ))}
           </ul>
         </div>
-        <div className="create-recipe-component-select-ingredient">
-          <SelectIngredient onInput={handleIngredientInput} />
-        </div>
-        <div className="create-recipe-component-new-ingredient">
-          <NewIngredient />
-        </div>
+        {ingredientdActive ? (
+          <div className="create-recipe-component-select-ingredient">
+            <SelectIngredient onInput={handleIngredientInput} />
+            <Button variant="link" onClick={toggleIngredientActive}>
+              Enter a new ingredient
+            </Button>
+          </div>
+        ) : (
+          <div className="create-recipe-component-new-ingredient">
+            <NewIngredient />
+            <Button variant="link" onClick={toggleIngredientActive}>
+              Select an ingredient
+            </Button>
+          </div>
+        )}
+
         <div className="create-recipe-preparation">
           <Form.Group>
             <h4 className="title-ingredients-create-recipe">Preparation</h4>
