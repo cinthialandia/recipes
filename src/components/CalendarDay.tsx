@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBox from "./searhBox";
+import SelectRecipeModal from "./SelectRecipeModal";
 import { RecipeType } from "../types";
 import { format } from "date-fns";
 import "./CalendarDay.scss";
@@ -27,13 +27,13 @@ const CalendarDay: React.FC<Props> = ({ date, onSelect }) => {
         <span>{weekDateToDay}</span>
       </div>
       <div>
-        <SearchBox onSelect={(id) => handleOnSelect(id, "breakfast")} />
+        <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "breakfast")} />
       </div>
       <div>
-        <SearchBox onSelect={(id) => handleOnSelect(id, "lunch")} />
+        <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "lunch")} />
       </div>
       <div>
-        <SearchBox onSelect={(id) => handleOnSelect(id, "dinner")} />
+        <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "dinner")} />
       </div>
     </>
   );
