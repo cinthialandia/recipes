@@ -30,6 +30,23 @@ body {
   padding: 0 25px;
 }
 
+@media only screen and (max-width: 800px) {
+  .App {
+    display: none;
+  }
+  //  this for the nav stick on the screen
+  .App2 {
+    position: sticky;
+  }
+  // this is for the nav stick on the button
+  .nav-container {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .App {
     padding: 0 1px;
