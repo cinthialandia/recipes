@@ -24,8 +24,14 @@ body {
   font-family: "Baloo Da 2", cursive;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+@media only screen and (max-width: 400px) {
+  .App {
+    padding: 0 1px;
   }
 }

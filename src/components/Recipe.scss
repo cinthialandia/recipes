@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: #cec3be;
-  margin: 10px;
 }
 
 .recipe-name {
@@ -28,6 +26,7 @@
 .recipe-preparation {
   padding: 20px 0;
 }
+
 .description-of-the-recipe {
   display: flex;
   justify-content: space-around;
@@ -40,5 +39,37 @@
   padding: 20px 0;
 }
 
+.Recipe-mobile {
+  display: none;
+}
+
 @media only screen and (max-width: 800px) {
+  .description-of-the-recipe {
+    flex-wrap: wrap;
+  }
+
+  .nutrition-of-the-recipe {
+    flex-direction: column;
+  }
+
+  .title-nutrition {
+    text-align: center;
+    font-weight: 900;
+  }
+
+  .container-Recipe-ingredients {
+    padding: 20px 0;
+  }
+
+  .tabs {
+    font-size: 15px;
+  }
+
+  .Recipe {
+    display: none;
+  }
+
+  .Recipe-mobile {
+    display: block;
+  }
 }
