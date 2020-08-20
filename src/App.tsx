@@ -18,21 +18,21 @@ import Recipe from "./components/Recipe";
 function App() {
   return (
     <>
+      <header>
+        <Link className="nav" to="/">
+          Home
+        </Link>
+        <Link className="nav" to="calendar">
+          Calendar
+        </Link>
+        <Link className="nav" to="shopping-list">
+          Shopping List
+        </Link>
+        <Link className="nav" to="create-recipe">
+          Create recipe
+        </Link>
+      </header>
       <div className="App">
-        <header className="nav-container">
-          <Link className="nav" to="/">
-            Home
-          </Link>
-          <Link className="nav" to="calendar">
-            Calendar
-          </Link>
-          <Link className="nav" to="shopping-list">
-            Shopping List
-          </Link>
-          <Link className="nav" to="create-recipe">
-            Create recipe
-          </Link>
-        </header>
         <Router>
           <Home path="/" />
           <Recipe path="/recipe/:recipeId" />
@@ -41,44 +41,30 @@ function App() {
           <CreateRecipe path="create-recipe" />
         </Router>
       </div>
-      <div className="App2">
-        <footer>
-          <Navbar
-            className="nav-container"
-            expand="lg"
-            bg="dark"
-            variant="dark"
-          >
-            <Navbar.Brand>
-              <Link className="nav" to="/">
-                <FontAwesomeIcon icon={faHome} />
-              </Link>
-            </Navbar.Brand>
-            <Navbar.Brand>
-              <Link className="nav" to="calendar">
-                <FontAwesomeIcon icon={faCalendarAlt} />
-              </Link>
-            </Navbar.Brand>
-            <Navbar.Brand>
-              <Link className="nav" to="shopping-list">
-                <FontAwesomeIcon icon={faShoppingCart} />
-              </Link>
-            </Navbar.Brand>
-            <Navbar.Brand>
-              <Link className="nav" to="create-recipe">
-                <FontAwesomeIcon icon={faFile} />
-              </Link>
-            </Navbar.Brand>
-          </Navbar>
-        </footer>
-        <Router>
-          <Home path="/" />
-          <Recipe path="/recipe/:recipeId" />
-          <Calendar path="calendar" />
-          <ShoppingList path="shopping-list" />
-          <CreateRecipe path="create-recipe" />
-        </Router>
-      </div>
+      <footer>
+        <Navbar className="nav-container" expand="lg" bg="dark" variant="dark">
+          <Navbar.Brand>
+            <Link className="nav" to="/">
+              <FontAwesomeIcon icon={faHome} />
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Link className="nav" to="calendar">
+              <FontAwesomeIcon icon={faCalendarAlt} />
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Link className="nav" to="shopping-list">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Link className="nav" to="create-recipe">
+              <FontAwesomeIcon icon={faFile} />
+            </Link>
+          </Navbar.Brand>
+        </Navbar>
+      </footer>
     </>
   );
 }

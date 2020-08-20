@@ -20,3 +20,9 @@
   display: flex;
   align-self: center;
 }
+
+@media only screen and (max-width: 800px) {
+  .container-select-ingredient {
+    flex-direction: column;
+  }
+}

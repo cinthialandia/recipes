@@ -4,12 +4,6 @@ import Button from "react-bootstrap/Button";
 import "./NewIngredient.scss";
 import { UNITS } from "../constants";
 
-// const SelectIngredientToObject = Object.values(fakeIngredients);
-
-// interface Props {
-//   onInput: (id: string, quantity: number) => void;
-// }
-
 const NewIngredient: React.FC = () => {
   return (
     <div className="container-select-ingredient">

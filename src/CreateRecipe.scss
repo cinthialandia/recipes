@@ -37,3 +37,17 @@
 .create-recipe-calories {
   flex-basis: 15%;
 }
+
+@media only screen and (max-width: 800px) {
+  .container-Create-Recipe {
+    margin: 0 20px;
+  }
+
+  .container-serving-time-difficulty {
+    flex-direction: column;
+  }
+
+  .container-calories-car-pro-fats {
+    flex-direction: column;
+  }
+}

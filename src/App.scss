@@ -4,11 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Sniglet&family=Space+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
 
-.nav-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 h2 {
   font-family: "Bad Script", cursive;
   font-size: 40px;
@@ -30,25 +25,32 @@ body {
   padding: 0 25px;
 }
 
+header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+footer {
+  display: none;
+}
+
 @media only screen and (max-width: 800px) {
-  .App {
+  header {
     display: none;
   }
+
   //  this for the nav stick on the screen
-  .App2 {
-    position: sticky;
-  }
-  // this is for the nav stick on the button
-  .nav-container {
+  footer {
     overflow: hidden;
     position: fixed;
     bottom: 0;
+    display: block;
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .App {
-    padding: 0 1px;
+    padding: 0;
   }
 }
