@@ -22,6 +22,8 @@ $border: 1px solid #e2ebfc;
   text-align: center;
   background-color: #f5f5fd;
   margin: 30px;
+  max-width: 100%;
+  overflow-x: auto;
 
   div {
     color: #343a40;
