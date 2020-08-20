@@ -66,3 +66,27 @@ $border: 1px solid #e2ebfc;
     color: #878d95;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .CalendarWeek > * {
+    border-left: $border;
+    border-top: $border;
+    padding: 10px;
+  }
+
+  .title-meal {
+    font-size: 15px;
+  }
+
+  .calendar-week-container-button-and-date {
+    button {
+      color: #7b7e81;
+      max-height: 20px;
+    }
+    h2 {
+      font-size: 25px;
+      padding: 5px;
+      color: #878d95;
+    }
+  }
+}
