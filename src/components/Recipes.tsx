@@ -1,16 +1,20 @@
 import React from "react";
-import { Link } from "@reach/router";
+import { Link, RouteComponentProps } from "@reach/router";
 import { fakeRecipes } from "../Mock";
 import "./Recipes.scss";
 import Card from "react-bootstrap/esm/Card";
-import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faChargingStation } from "@fortawesome/free-solid-svg-icons";
+import { Recipe } from "../types";
 
-function Recipes() {
+interface Props {
+  results: Recipe[];
+}
+
+const Recipes: React.FC<Props> = ({ results }) => {
   return (
     <div className="Recipes">
-      {fakeRecipes.map((recipe) => (
+      {results.map((recipe) => (
         <Link
           className="recipes-link"
           key={recipe.id}
@@ -41,6 +45,6 @@ function Recipes() {
       ))}
     </div>
   );
-}
+};
 
 export default Recipes;

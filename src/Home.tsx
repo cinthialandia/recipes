@@ -4,7 +4,6 @@ import Recipes from "./components/Recipes";
 import "./Home.scss";
 import SearchBox from "./components/SearchBox";
 import { Recipe } from "./types";
-import Button from "react-bootstrap/esm/Button";
 
 const Home: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
@@ -21,7 +20,7 @@ const Home: React.FC<RouteComponentProps> = () => {
       </div>
 
       <div className="home-recipe-container">
-        <Recipes />
+        <Recipes results={result} />
       </div>
     </div>
   );
