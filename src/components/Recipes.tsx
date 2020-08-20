@@ -18,23 +18,22 @@ function Recipes() {
         >
           <Card>
             <Card.Img
-              style={{ maxWidth: "100%", height: "200px" }}
+              style={{ maxWidth: "100%", height: "auto" }}
               variant="top"
               src={recipe.photo}
             />
-            <Card.Body>
-              <Card.Title className="recipes-title-name">
-                {recipe.name}
-                <Button variant="link"></Button>
+            <Card.Body className="details">
+              <Card.Title>
+                <div className="recipes-title-name"> {recipe.name}</div>
               </Card.Title>
               <div className="recipes-details">
-                <p>
+                <div>
                   <FontAwesomeIcon icon={faClock} /> {`Time: ${recipe.time}`}
-                </p>
-                <p>
+                </div>
+                <div>
                   <FontAwesomeIcon icon={faChargingStation} />{" "}
                   {`Calories: ${recipe.nutrition.calories} Calories`}
-                </p>
+                </div>
               </div>
             </Card.Body>
           </Card>

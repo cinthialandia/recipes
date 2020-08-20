@@ -2,16 +2,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 30px;
 }
 
 .recipes-link {
-  flex-basis: 28%;
-  margin: 20px 15px;
+  flex-basis: 30%;
+  margin: 10px 10px;
+  padding: 2px;
 }
 
 .recipes-title-name {
   text-align: center;
-  font-size: 40px;
+  font-size: 25px;
   color: black;
 }
 
@@ -20,4 +22,44 @@
   justify-content: space-between;
   font-size: 15px;
   color: black;
+}
+
+.card-body.details {
+  padding: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .Recipes {
+    margin: 30px;
+  }
+
+  .recipes-link {
+    flex-basis: 47%;
+    margin: 5px 5px;
+  }
+
+  .recipes-title-name {
+    font-size: 10px;
+  }
+
+  .recipes-details {
+    flex-direction: column;
+    align-items: center;
+    font-size: 7px;
+  }
+
+  .card-body.details {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Recipes {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+  }
+  .recipes-link {
+    flex-basis: 80%;
+  }
 }

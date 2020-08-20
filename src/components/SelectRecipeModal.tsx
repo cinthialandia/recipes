@@ -34,7 +34,7 @@ const SelectRecipeModal: React.FC<Props> = ({ onSelect }) => {
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title className="Select-Recipe-Modal-input-dropdown">
+          <Modal.Title>
             <SearchBox onResults={handleResult} />
           </Modal.Title>
         </Modal.Header>
