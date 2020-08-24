@@ -6,7 +6,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
-import { fakeRecipes, KeywordFilter } from "../Mock";
+import { fakeRecipes } from "../Mock";
 import { Recipe } from "../types";
 import "./SearchBox.scss";
 
@@ -45,15 +45,14 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
         variant="outline-secondary"
         title={<FontAwesomeIcon icon={faFilter} />}
       >
-        {" "}
-        {KeywordFilter.map((element) => (
+        {/* {KeywordFilter.map((element) => (
           <Dropdown.Item
             key={element}
             onClick={() => handleSelectFilter(element)}
           >
             {element}
           </Dropdown.Item>
-        ))}
+        ))} */}
       </DropdownButton>
     </div>
   );

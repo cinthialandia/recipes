@@ -1,6 +1,13 @@
 export type RecipeType = "breakfast" | "lunch" | "dinner";
 
-export type Keyword = string[];
+export interface Keyword {
+  id: string;
+  name: string;
+}
+
+export interface KeywordMap {
+  [id: string]: Keyword;
+}
 
 export interface Recipe {
   id: string;

@@ -15,6 +15,7 @@ import ShoppingList from "./ShoppingList";
 import CreateRecipe from "./CreateRecipe";
 import Recipe from "./components/Recipe";
 import IngredientsProvider from "./components/IngredientProvider";
+import KeywordProvider from "./components/KeywordProvider";
 
 function App() {
   return (
@@ -35,13 +36,15 @@ function App() {
       </header>
       <div className="App">
         <IngredientsProvider>
-          <Router>
-            <Home path="/" />
-            <Recipe path="/recipe/:recipeId" />
-            <Calendar path="calendar" />
-            <ShoppingList path="shopping-list" />
-            <CreateRecipe path="create-recipe" />
-          </Router>
+          <KeywordProvider>
+            <Router>
+              <Home path="/" />
+              <Recipe path="/recipe/:recipeId" />
+              <Calendar path="calendar" />
+              <ShoppingList path="shopping-list" />
+              <CreateRecipe path="create-recipe" />
+            </Router>
+          </KeywordProvider>
         </IngredientsProvider>
       </div>
       <footer>

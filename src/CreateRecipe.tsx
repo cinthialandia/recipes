@@ -20,10 +20,16 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const { value: ingredientMap, loading, error } = useContext(
     IngredientContext
   );
+  const [keyword, setKeyword] = useState("");
 
   const handleIngredientInput = (id: string, quantity: number) => {
     console.log(id, quantity);
     setIngredients({ ...ingredients, [id]: quantity });
+  };
+
+  const handleKeywordInput = (id: string) => {
+    setKeyword(id);
+    setKeywordActive(true);
   };
 
   const handleClickRemoveButton = (idToDelete: string) => {
@@ -77,14 +83,17 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
             <div className="container-keyword">
               {keywordActive ? (
                 <div className="keyword-selected">
-                  <SelectNewKeyword />
+                  <SelectNewKeyword
+                    selected={keyword}
+                    onInput={handleKeywordInput}
+                  />
                   <Button variant="link" onClick={toggleKeywordActive}>
                     Enter a new Keyword
                   </Button>
                 </div>
               ) : (
                 <div className="keyword-new">
-                  <NewKeyword />
+                  <NewKeyword onInput={handleKeywordInput} />
                   <Button variant="link" onClick={toggleKeywordActive}>
                     Select a new Keyword
                   </Button>

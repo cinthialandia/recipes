@@ -1,5 +1,5 @@
 import React from "react";
-import { IngredientMap } from "./types";
+import { IngredientMap, KeywordMap } from "./types";
 
 interface Context<T> {
   loading: boolean;
@@ -8,5 +8,9 @@ interface Context<T> {
 }
 
 export const IngredientContext = React.createContext<Context<IngredientMap>>({
+  loading: true,
+});
+
+export const KeywordContext = React.createContext<Context<KeywordMap>>({
   loading: true,
 });

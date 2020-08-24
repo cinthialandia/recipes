@@ -11,8 +11,6 @@ const IngredientsProvider: React.FC = ({ children }) => {
       idField: "id",
     }
   );
-
-  console.log(value);
   const valueAsMap = value
     ? value.reduce((acc, item) => {
         acc[item.id] = item;
