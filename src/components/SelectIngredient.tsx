@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Typeahead } from "react-bootstrap-typeahead";
-import { fakeIngredients } from "../Mock";
 import { Ingredient } from "../types";
 import "./SelectIngredient.scss";
-
-const SelectIngredientToObject = Object.values(fakeIngredients);
+import { IngredientContext } from "../context";
 
 interface Props {
   onInput: (id: string, quantity: number) => void;
@@ -16,6 +14,11 @@ interface Props {
 const SelectIngredient: React.FC<Props> = ({ onInput }) => {
   const [ingredientSelect, setIngredienteSelect] = useState<Ingredient>();
   const [ingredientQuantity, setIngredientQauntity] = useState<number>(0);
+  const { value: ingredientMap, loading, error } = useContext(
+    IngredientContext
+  );
+
+  const ingredientList = ingredientMap ? Object.values(ingredientMap) : [];
 
   const handleAddClick = () => {
     if (ingredientSelect === undefined) {
@@ -43,7 +46,7 @@ const SelectIngredient: React.FC<Props> = ({ onInput }) => {
         <Form.Label>Ingredient</Form.Label>
         <Typeahead
           id="select-ingredient"
-          options={SelectIngredientToObject}
+          options={ingredientList}
           labelKey="name"
           placeholder="Choose a ingredient"
           onChange={handleIngredientSelect}

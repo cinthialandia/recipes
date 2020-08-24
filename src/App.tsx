@@ -14,6 +14,7 @@ import Calendar from "./Calendar";
 import ShoppingList from "./ShoppingList";
 import CreateRecipe from "./CreateRecipe";
 import Recipe from "./components/Recipe";
+import IngredientsProvider from "./components/IngredientProvider";
 
 function App() {
   return (
@@ -33,13 +34,15 @@ function App() {
         </Link>
       </header>
       <div className="App">
-        <Router>
-          <Home path="/" />
-          <Recipe path="/recipe/:recipeId" />
-          <Calendar path="calendar" />
-          <ShoppingList path="shopping-list" />
-          <CreateRecipe path="create-recipe" />
-        </Router>
+        <IngredientsProvider>
+          <Router>
+            <Home path="/" />
+            <Recipe path="/recipe/:recipeId" />
+            <Calendar path="calendar" />
+            <ShoppingList path="shopping-list" />
+            <CreateRecipe path="create-recipe" />
+          </Router>
+        </IngredientsProvider>
       </div>
       <footer>
         <Navbar className="nav-container" expand="lg" bg="dark" variant="dark">

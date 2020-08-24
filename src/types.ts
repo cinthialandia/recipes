@@ -34,3 +34,7 @@ export interface Ingredient {
   quantity: number;
   unit?: string;
 }
+
+export interface IngredientMap {
+  [id: string]: Ingredient;
+}

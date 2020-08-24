@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { RouteComponentProps } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -11,13 +11,18 @@ import NewIngredient from "./components/NewIngredient";
 import "./CreateRecipe.scss";
 import NewKeyword from "./components/NewKeyword";
 import SelectNewKeyword from "./components/SelectNewKeyword";
+import { IngredientContext } from "./context";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
   const [keywordActive, setKeywordActive] = useState(true);
   const [ingredientdActive, setIngredientActive] = useState(true);
+  const { value: ingredientMap, loading, error } = useContext(
+    IngredientContext
+  );
 
   const handleIngredientInput = (id: string, quantity: number) => {
+    console.log(id, quantity);
     setIngredients({ ...ingredients, [id]: quantity });
   };
 
@@ -164,18 +169,19 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
         <div>
           <h4 className="title-ingredients-create-recipe">Ingredients</h4>
           <ul className="create-recipe-ingredient-select-container">
-            {Object.entries(ingredients).map(([id, quantity]) => (
-              <li className="create-recipe-ingredient-select" key={id}>
-                {fakeIngredients[id].name}: {quantity}{" "}
-                {fakeIngredients[id].unit}
-                <Button
-                  onClick={() => handleClickRemoveButton(id)}
-                  className="create-recipe-ingredient-select-delete"
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </Button>
-              </li>
-            ))}
+            {Object.entries(ingredients).map(([id, quantity]) =>
+              ingredientMap && ingredientMap[id] ? (
+                <li className="create-recipe-ingredient-select" key={id}>
+                  {ingredientMap[id].name}: {quantity} {ingredientMap[id].unit}
+                  <Button
+                    onClick={() => handleClickRemoveButton(id)}
+                    className="create-recipe-ingredient-select-delete"
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </Button>
+                </li>
+              ) : null
+            )}
           </ul>
         </div>
         {ingredientdActive ? (
@@ -187,7 +193,7 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
           </div>
         ) : (
           <div className="create-recipe-component-new-ingredient">
-            <NewIngredient />
+            <NewIngredient onInput={handleIngredientInput} />
             <Button variant="link" onClick={toggleIngredientActive}>
               Select an ingredient
             </Button>

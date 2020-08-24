@@ -1,5 +1,7 @@
 import { Recipe, Ingredient, Keyword } from "./types";
 
+export const USER_ID = "fake";
+
 export const KeywordFilter: Keyword = [
   "chicken",
   "red meat",
