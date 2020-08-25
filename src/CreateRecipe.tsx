@@ -1,52 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import SelectIngredient from "./components/SelectIngredient";
-import { fakeRecipe as recipe, fakeIngredients } from "./Mock";
-import NewIngredient from "./components/NewIngredient";
 import "./CreateRecipe.scss";
-import NewKeyword from "./components/NewKeyword";
-import SelectNewKeyword from "./components/SelectNewKeyword";
-import { IngredientContext } from "./context";
+import Ingredients from "./components/Ingredients";
+import Keyword from "./components/Keyword";
+import Photo from "./components/Photo";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
-  const [keywordActive, setKeywordActive] = useState(true);
-  const [ingredientdActive, setIngredientActive] = useState(true);
-  const { value: ingredientMap, loading, error } = useContext(
-    IngredientContext
-  );
   const [keyword, setKeyword] = useState("");
-
-  const handleIngredientInput = (id: string, quantity: number) => {
-    console.log(id, quantity);
-    setIngredients({ ...ingredients, [id]: quantity });
-  };
-
-  const handleKeywordInput = (id: string) => {
-    setKeyword(id);
-    setKeywordActive(true);
-  };
-
-  const handleClickRemoveButton = (idToDelete: string) => {
-    const newIngredients = { ...ingredients };
-    if (newIngredients.hasOwnProperty(idToDelete)) {
-      delete newIngredients[idToDelete];
-    }
-    setIngredients(newIngredients);
-  };
-
-  const toggleKeywordActive = () => {
-    setKeywordActive(!keywordActive);
-  };
-
-  const toggleIngredientActive = () => {
-    setIngredientActive(!ingredientdActive);
-  };
 
   return (
     <div className="container-Create-Recipe">
@@ -62,45 +26,15 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
           </Form.Group>
         </div>
         <div className="create-recipe-upload-file">
-          <Form.Group>
-            <Form.File
-              required
-              name="file"
-              label="Upload a photo"
-              // onChange={handleChange}
-              // isInvalid={!!errors.file}
-              // feedback={errors.file}
-              id="validationFormik107"
-              feedbackTooltip
-            />
-          </Form.Group>
+          <Photo />
           <h4 className="title-ingredients-create-recipe">
             Details of the recipe
           </h4>
         </div>
-        <div className="details-of-the-recipe">
-          <Form.Group>
-            <div className="container-keyword">
-              {keywordActive ? (
-                <div className="keyword-selected">
-                  <SelectNewKeyword
-                    selected={keyword}
-                    onInput={handleKeywordInput}
-                  />
-                  <Button variant="link" onClick={toggleKeywordActive}>
-                    Enter a new Keyword
-                  </Button>
-                </div>
-              ) : (
-                <div className="keyword-new">
-                  <NewKeyword onInput={handleKeywordInput} />
-                  <Button variant="link" onClick={toggleKeywordActive}>
-                    Select a new Keyword
-                  </Button>
-                </div>
-              )}
-            </div>
 
+        <div className="details-of-the-recipe">
+          <Keyword keyword={keyword} setKeyword={setKeyword} />
+          <Form.Group>
             <div className="container-serving-time-difficulty">
               <div className="container-serving">
                 <Form.Label>Serving</Form.Label>
@@ -175,40 +109,11 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
             </div>
           </div>
         </div>
-        <div>
-          <h4 className="title-ingredients-create-recipe">Ingredients</h4>
-          <ul className="create-recipe-ingredient-select-container">
-            {Object.entries(ingredients).map(([id, quantity]) =>
-              ingredientMap && ingredientMap[id] ? (
-                <li className="create-recipe-ingredient-select" key={id}>
-                  {ingredientMap[id].name}: {quantity} {ingredientMap[id].unit}
-                  <Button
-                    onClick={() => handleClickRemoveButton(id)}
-                    className="create-recipe-ingredient-select-delete"
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </Button>
-                </li>
-              ) : null
-            )}
-          </ul>
-        </div>
-        {ingredientdActive ? (
-          <div className="create-recipe-component-select-ingredient">
-            <SelectIngredient onInput={handleIngredientInput} />
-            <Button variant="link" onClick={toggleIngredientActive}>
-              Enter a new ingredient
-            </Button>
-          </div>
-        ) : (
-          <div className="create-recipe-component-new-ingredient">
-            <NewIngredient onInput={handleIngredientInput} />
-            <Button variant="link" onClick={toggleIngredientActive}>
-              Select an ingredient
-            </Button>
-          </div>
-        )}
-
+        <h4 className="title-ingredients-create-recipe">Ingredients</h4>
+        <Ingredients
+          ingredients={ingredients}
+          setIngredients={setIngredients}
+        />
         <div className="create-recipe-preparation">
           <Form.Group>
             <h4 className="title-ingredients-create-recipe">Preparation</h4>

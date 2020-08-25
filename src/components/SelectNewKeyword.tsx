@@ -25,6 +25,7 @@ const SelectNewKeyword: React.FC<Props> = ({ selected, onInput }) => {
           as="select"
           custom
         >
+          <option value="">Choose the keyword</option>
           {keywordList.map((keyword) => (
             <option value={keyword.id} key={keyword.id}>
               {keyword.name}
