@@ -3,10 +3,11 @@ import NewIngredient from "./NewIngredient";
 import SelectIngredient from "./SelectIngredient";
 import Button from "react-bootstrap/esm/Button";
 import ShowIngredients from "./ShowIngredients";
+import { Recipe } from "../types";
 
 interface Props {
-  ingredients: { [id: string]: number };
-  setIngredients: (state: { [id: string]: number }) => void;
+  ingredients: Recipe["ingredients"];
+  setIngredients: (state: Recipe["ingredients"]) => void;
 }
 
 const Ingredients: React.FC<Props> = ({ ingredients, setIngredients }) => {
@@ -17,15 +18,12 @@ const Ingredients: React.FC<Props> = ({ ingredients, setIngredients }) => {
   };
 
   const removeIngredient = (idToDelete: string) => {
-    const newIngredients = { ...ingredients };
-    if (newIngredients.hasOwnProperty(idToDelete)) {
-      delete newIngredients[idToDelete];
-    }
+    const newIngredients = ingredients.filter((item) => item.id !== idToDelete);
     setIngredients(newIngredients);
   };
 
   const handleIngredientInput = (id: string, quantity: number) => {
-    setIngredients({ ...ingredients, [id]: quantity });
+    setIngredients([...ingredients, { id, quantity }]);
   };
 
   return (
