@@ -40,7 +40,7 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
-    serving: 4,
+    serving: "4",
     time: "70 min",
     difficulty: "Easy",
     nutrition: {
@@ -87,7 +87,7 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
-    serving: 5,
+    serving: "5",
     time: "78 min",
     difficulty: "Hard",
     nutrition: {
@@ -134,7 +134,7 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
-    serving: 3,
+    serving: "3",
     time: "50 min",
     difficulty: "Medium",
     nutrition: {
@@ -181,7 +181,7 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
-    serving: 2,
+    serving: "2",
     time: "30 min",
     difficulty: "Easy",
     nutrition: {
@@ -228,7 +228,7 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
-    serving: 2,
+    serving: "2",
     time: "20 min",
     difficulty: "Easy",
     nutrition: {
@@ -275,7 +275,7 @@ export const fakeRecipes: Recipe[] = [
         quantity: 1,
       },
     ],
-    serving: 8,
+    serving: "8",
     time: "92 min",
     difficulty: "Easy",
     nutrition: {

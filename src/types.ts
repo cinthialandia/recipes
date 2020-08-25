@@ -9,10 +9,23 @@ export interface KeywordMap {
   [id: string]: Keyword;
 }
 
-export interface Recipe {
+export interface RecipeDetails {
+  name: string;
+  serving: string;
+  time: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+}
+
+export interface RecipeNutrition {
+  calories: number;
+  carbohydrates: number;
+  fats: number;
+  proteins: number;
+}
+
+export interface Recipe extends RecipeDetails {
   id: string;
   keyword: string;
-  name: string;
   photo: string;
   preparation: string;
   menu: {
@@ -24,15 +37,7 @@ export interface Recipe {
     id: string;
     quantity: number;
   }[];
-  serving: number;
-  time: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  nutrition: {
-    calories: number;
-    carbohydrates: number;
-    fats: number;
-    proteins: number;
-  };
+  nutrition: RecipeNutrition;
 }
 
 export interface Ingredient {

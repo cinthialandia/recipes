@@ -7,108 +7,45 @@ import "./CreateRecipe.scss";
 import Ingredients from "./components/Ingredients";
 import Keyword from "./components/Keyword";
 import Photo from "./components/Photo";
+import DetailsRecipe from "./components/DetailsRecipe";
+import { RecipeDetails, RecipeNutrition } from "./types";
+import Nutrition from "./components/Nutrition";
 
 const CreateRecipe: React.FC<RouteComponentProps> = () => {
   const [ingredients, setIngredients] = useState<{ [id: string]: number }>({});
   const [keyword, setKeyword] = useState("");
+  const [details, setDetails] = useState<RecipeDetails>({
+    name: "",
+    time: "",
+    difficulty: "Easy",
+    serving: "",
+  });
+  const [nutrition, setNutrition] = useState<RecipeNutrition>({
+    calories: 0,
+    carbohydrates: 0,
+    fats: 0,
+    proteins: 0,
+  });
 
   return (
     <div className="container-Create-Recipe">
       <Form>
         <h2 className="title-create-new-recipe">Create new recipe</h2>
         <div className="create-recipe-name-of-the-recipe">
-          <Form.Group>
-            <Form.Label>Name of the recipe</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter the name of the recipe"
-            />
-          </Form.Group>
+          <Photo />
         </div>
         <div className="create-recipe-upload-file">
-          <Photo />
           <h4 className="title-ingredients-create-recipe">
             Details of the recipe
           </h4>
         </div>
 
         <div className="details-of-the-recipe">
-          <Keyword keyword={keyword} setKeyword={setKeyword} />
-          <Form.Group>
-            <div className="container-serving-time-difficulty">
-              <div className="container-serving">
-                <Form.Label>Serving</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    type="number"
-                    min="0"
-                    placeholder="number of people"
-                  />
-                </InputGroup>
-              </div>
-
-              <div className="container-time">
-                <Form.Label>Time</Form.Label>
-                <InputGroup>
-                  <Form.Control
-                    type="number"
-                    min="0"
-                    placeholder="time in minutes"
-                  />
-                  <InputGroup.Append>
-                    <InputGroup.Text>min</InputGroup.Text>
-                  </InputGroup.Append>
-                </InputGroup>
-              </div>
-              <div className="container-difficulty">
-                <Form.Label>Difficulty</Form.Label>
-                <Form.Control as="select" custom>
-                  <option>Easy</option>
-                  <option>Medium</option>
-                  <option>Hard</option>
-                </Form.Control>
-              </div>
-            </div>
-          </Form.Group>
-          <div className="container-calories-car-pro-fats">
-            <div className="create-recipe-calories">
-              <Form.Label>Calories</Form.Label>
-              <InputGroup>
-                <Form.Control type="number" min="0" placeholder="" />
-                <InputGroup.Append>
-                  <InputGroup.Text>Kcal</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </div>
-            <div className="create-recipe-calories">
-              <Form.Label>Carbohydrates</Form.Label>
-              <InputGroup>
-                <Form.Control type="number" min="0" placeholder="" />
-                <InputGroup.Append>
-                  <InputGroup.Text>gr</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </div>
-            <div className="create-recipe-calories">
-              <Form.Label>Proteins</Form.Label>
-              <InputGroup>
-                <Form.Control type="number" min="0" placeholder="" />
-                <InputGroup.Append>
-                  <InputGroup.Text>gr</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </div>
-            <div className="create-recipe-calories">
-              <Form.Label>Fats</Form.Label>
-              <InputGroup>
-                <Form.Control type="number" min="0" placeholder="" />
-                <InputGroup.Append>
-                  <InputGroup.Text>gr</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </div>
-          </div>
+          <DetailsRecipe details={details} setDetails={setDetails} />
+          <h4 className="title-ingredients-create-recipe">Nutrition</h4>
+          <Nutrition nutrition={nutrition} setNutrition={setNutrition} />
         </div>
+        <Keyword keyword={keyword} setKeyword={setKeyword} />
         <h4 className="title-ingredients-create-recipe">Ingredients</h4>
         <Ingredients
           ingredients={ingredients}
