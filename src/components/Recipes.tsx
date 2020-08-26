@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, RouteComponentProps } from "@reach/router";
-import { fakeRecipes } from "../Mock";
+import { Link } from "@reach/router";
 import "./Recipes.scss";
 import Card from "react-bootstrap/esm/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

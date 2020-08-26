@@ -12,7 +12,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./CalendarWeek.scss";
 import CalendarDay from "./CalendarDay";
-import { RecipeType } from "../types";
+import { RecipeType, Recipe } from "../types";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { db } from "../firebase";
 
 const getWeekDates = (date: Date) => {
   const start = startOfWeek(date);
@@ -21,11 +23,26 @@ const getWeekDates = (date: Date) => {
   return weekDates;
 };
 
+const getWeekTimestamps = (dates: Date[]) => {
+  return dates.map((date) => date.getTime());
+};
+
 const CalendarWeek: React.FC = () => {
   const [activeDate, setActiveDate] = useState(new Date());
   const weekDates = getWeekDates(activeDate);
+  const weekTimestamps = getWeekTimestamps(weekDates);
   const actualYear = format(activeDate, "yyyy");
   const actualMonth = format(activeDate, "LLLL");
+  const [recipes, loading, error] = useCollectionData<Recipe>(
+    db
+      .collection("users/fake/recipes")
+      .where("timestamps", "array-contains-any", weekTimestamps),
+    {
+      idField: "id",
+    }
+  );
+  console.log(weekTimestamps);
+  console.log(recipes);
 
   const handleNextWeek = () => {
     const endOfWeek = weekDates[weekDates.length - 1];
@@ -84,11 +101,16 @@ const CalendarWeek: React.FC = () => {
           </span>
         </div>
 
-        {weekDates.map((date) => (
+        {weekTimestamps.map((timestamp) => (
           <CalendarDay
-            key={format(date, "yyyy-MM-dd")}
-            date={date}
+            key={timestamp}
+            timestamp={timestamp}
             onSelect={handleRecipeSelect}
+            recipes={
+              recipes?.filter((recipe) =>
+                recipe.timestamps?.includes(timestamp)
+              ) || []
+            }
           />
         ))}
       </div>

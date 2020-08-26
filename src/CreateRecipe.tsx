@@ -11,6 +11,7 @@ import { RecipeDetails, RecipeNutrition, Recipe } from "./types";
 import Nutrition from "./components/Nutrition";
 import Preparation from "./components/Preparation";
 import { db } from "./firebase";
+import createTokens from "./utils/createTokens";
 
 const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [ingredients, setIngredients] = useState<Recipe["ingredients"]>([]);
@@ -31,13 +32,16 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
 
   const handleClickAddDateBase = async (e: React.FormEvent) => {
     e.preventDefault();
+    const tokens = createTokens(details.name);
     const recipe: Omit<Recipe, "id"> = {
-      ingredients: ingredients,
-      keyword: keyword,
-      nutrition: nutrition,
-      preparation: preparation,
+      ingredients,
+      keyword,
+      nutrition,
+      preparation,
+      tokens,
       ...details,
     };
+
     // Add a new document with a generated id.
     const docRef = await db.collection("users/fake/recipes").add(recipe);
     if (navigate) {

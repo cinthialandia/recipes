@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { debounce } from "debounce";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
@@ -17,12 +17,14 @@ interface Props {
 }
 
 const SearchBox: React.FC<Props> = ({ onResults }) => {
-  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
   const [keyword, setKeyword] = useState("");
-  let dbQuery: firebase.firestore.Query = db.collection("users/fake/recipes");
-  dbQuery = keyword !== "" ? dbQuery.where("keyword", "==", keyword) : dbQuery;
+  let query: firebase.firestore.Query = db.collection("users/fake/recipes");
+  query = keyword !== "" ? query.where("keyword", "==", keyword) : query;
+  query =
+    search !== "" ? query.where("tokens", "array-contains", search) : query;
 
-  const [values] = useCollectionData<Recipe>(dbQuery, { idField: "id" });
+  const [values] = useCollectionData<Recipe>(query, { idField: "id" });
 
   useEffect(
     debounce(() => {
@@ -36,7 +38,7 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    setSearch(e.target.value);
   };
 
   const handleSelectFilter = (select: string) => {
@@ -50,7 +52,7 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
     <div className="container-search-box">
       <InputGroup className="search-box-input">
         <FormControl
-          value={query}
+          value={search}
           onChange={handleChange}
           placeholder="Search"
         />

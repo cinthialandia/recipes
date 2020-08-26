@@ -28,16 +28,16 @@ export interface Recipe extends RecipeDetails {
   keyword: string;
   photo?: string;
   preparation: string;
-  menu?: {
-    timestamp: number;
-    date: string;
-    type: RecipeType;
-  }[];
   ingredients: {
     id: string;
     quantity: number;
   }[];
   nutrition: RecipeNutrition;
+  tokens?: string[];
+  timestamps?: number[];
+  menu?: {
+    [timestamp: number]: RecipeType[];
+  };
 }
 
 export interface Ingredient {
