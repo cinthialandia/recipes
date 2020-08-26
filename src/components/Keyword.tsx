@@ -21,23 +21,21 @@ const Keyword: React.FC<Props> = ({ keyword, setKeyword }) => {
 
   return (
     <div>
-      <div className="container-keyword">
-        {keywordActive ? (
-          <div className="keyword-selected">
-            <SelectNewKeyword selected={keyword} onInput={handleKeywordInput} />
-            <Button variant="link" onClick={toggleKeywordActive}>
-              Enter a new Keyword
-            </Button>
-          </div>
-        ) : (
-          <div className="keyword-new">
-            <NewKeyword onInput={handleKeywordInput} />
-            <Button variant="link" onClick={toggleKeywordActive}>
-              Select a new Keyword
-            </Button>
-          </div>
-        )}
-      </div>
+      {keywordActive ? (
+        <div>
+          <SelectNewKeyword selected={keyword} onInput={handleKeywordInput} />
+          <Button variant="link" onClick={toggleKeywordActive}>
+            Enter a new Keyword
+          </Button>
+        </div>
+      ) : (
+        <div>
+          <NewKeyword onInput={handleKeywordInput} />
+          <Button variant="link" onClick={toggleKeywordActive}>
+            Select a new Keyword
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

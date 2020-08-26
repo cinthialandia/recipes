@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import { db } from "../firebase";
+import "./NewKeyword.scss";
 
 interface Props {
   onInput: (id: string) => void;
@@ -23,8 +24,8 @@ const NewKeyword: React.FC<Props> = ({ onInput }) => {
   };
 
   return (
-    <div className="container-select-new-keyword">
-      <Form.Group>
+    <div className="container-newKeyword">
+      <Form.Group className="newKeyword-input">
         <Form.Label>Enter a new Keyword</Form.Label>
         <Form.Control
           value={newKeyword}
@@ -32,8 +33,10 @@ const NewKeyword: React.FC<Props> = ({ onInput }) => {
           type="text"
           placeholder="Enter an keyword"
         />
-        <Button onClick={handleAddClick}>Create</Button>
       </Form.Group>
+      <Button className="newKeyword-button" onClick={handleAddClick}>
+        Create
+      </Button>
     </div>
   );
 };

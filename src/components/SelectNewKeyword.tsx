@@ -16,7 +16,7 @@ const SelectNewKeyword: React.FC<Props> = ({ selected, onInput }) => {
 
   const keywordList = keywordMap ? Object.values(keywordMap) : [];
   return (
-    <div className="container-select-keyword">
+    <div>
       <Form.Group>
         <Form.Label>Select an existing Keyword</Form.Label>
         <Form.Control

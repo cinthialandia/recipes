@@ -1,0 +1,24 @@
+.container-newKeyword {
+  display: flex;
+  justify-content: space-between;
+}
+
+.newKeyword-input {
+  flex-basis: 70%;
+}
+
+.newKeyword-button {
+  flex-basis: 5%;
+  align-self: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .container-newKeyword {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .newKeyword-button {
+    align-self: flex-start;
+  }
+}
