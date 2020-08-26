@@ -72,10 +72,11 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
           preparation={preparation}
           setPreparation={setPreparation}
         />
-
-        <Button variant="primary" type="submit">
-          Save
-        </Button>
+        <div className="button-submit-create-recipe">
+          <Button variant="primary" type="submit">
+            Save
+          </Button>
+        </div>
       </Form>
     </div>
   );

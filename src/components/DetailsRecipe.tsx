@@ -43,7 +43,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
           />
         </Form.Group>
         <div className="container-serving-time-difficulty">
-          <div>
+          <div className="details">
             <Form.Label>Serving</Form.Label>
             <InputGroup>
               <Form.Control
@@ -56,7 +56,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
             </InputGroup>
           </div>
 
-          <div>
+          <div className="details">
             <Form.Label>Time</Form.Label>
             <InputGroup>
               <Form.Control
@@ -71,7 +71,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
               </InputGroup.Append>
             </InputGroup>
           </div>
-          <div>
+          <div className="details">
             <Form.Label>Difficulty</Form.Label>
             <Form.Control
               as="select"
