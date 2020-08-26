@@ -33,14 +33,14 @@ const Ingredients: React.FC<Props> = ({ ingredients, setIngredients }) => {
         ingredients={ingredients}
       />
       {ingredientdActive ? (
-        <div className="create-recipe-component-select-ingredient">
+        <div>
           <SelectIngredient onInput={handleIngredientInput} />
           <Button variant="link" onClick={toggleIngredientActive}>
             Enter a new ingredient
           </Button>
         </div>
       ) : (
-        <div className="create-recipe-component-new-ingredient">
+        <div>
           <NewIngredient onInput={handleIngredientInput} />
           <Button variant="link" onClick={toggleIngredientActive}>
             Select an ingredient

@@ -1,6 +1,7 @@
 .select-ingredient {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .ingredient {
@@ -19,5 +20,9 @@
 @media only screen and (max-width: 800px) {
   .select-ingredient {
     flex-direction: column;
+  }
+
+  .button-save-ingredient {
+    align-self: flex-start;
   }
 }
