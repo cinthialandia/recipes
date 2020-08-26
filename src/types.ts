@@ -26,9 +26,9 @@ export interface RecipeNutrition {
 export interface Recipe extends RecipeDetails {
   id: string;
   keyword: string;
-  photo: string;
+  photo?: string;
   preparation: string;
-  menu: {
+  menu?: {
     timestamp: number;
     date: string;
     type: RecipeType;

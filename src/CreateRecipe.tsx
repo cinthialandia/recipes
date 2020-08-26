@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { RouteComponentProps } from "@reach/router";
+import React, { useState, useEffect } from "react";
+import { RouteComponentProps, Redirect } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./CreateRecipe.scss";
@@ -12,7 +12,7 @@ import Nutrition from "./components/Nutrition";
 import Preparation from "./components/Preparation";
 import { db } from "./firebase";
 
-const CreateRecipe: React.FC<RouteComponentProps> = () => {
+const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [ingredients, setIngredients] = useState<Recipe["ingredients"]>([]);
   const [keyword, setKeyword] = useState("");
   const [details, setDetails] = useState<RecipeDetails>({
@@ -27,20 +27,27 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
     fats: 0,
     proteins: 0,
   });
+  const [preparation, setPreparation] = useState("");
 
-  // const handleClickAddDateBase = async () => {
-  //   // Add a new document with a generated id.
-  //   const docRef = await db.collection("users/fake/recipes").add({
-  //     difficulty: details.difficulty,
-  //     ingredients:
-  //     }
-  //   });
-  //   onInput(docRef.id, parseFloat(quantity));
-  // };
+  const handleClickAddDateBase = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const recipe: Omit<Recipe, "id"> = {
+      ingredients: ingredients,
+      keyword: keyword,
+      nutrition: nutrition,
+      preparation: preparation,
+      ...details,
+    };
+    // Add a new document with a generated id.
+    const docRef = await db.collection("users/fake/recipes").add(recipe);
+    if (navigate) {
+      navigate(`/recipe/${docRef.id}`);
+    }
+  };
 
   return (
     <div className="container-Create-Recipe">
-      <Form>
+      <Form onSubmit={handleClickAddDateBase}>
         <h2 className="title-create-new-recipe">Create new recipe</h2>
         <h4 className="sub-title-create-recipe">
           Choose a photo for your recipe
@@ -61,7 +68,10 @@ const CreateRecipe: React.FC<RouteComponentProps> = () => {
         />
 
         <h4 className="sub-title-create-recipe">Preparation</h4>
-        <Preparation />
+        <Preparation
+          preparation={preparation}
+          setPreparation={setPreparation}
+        />
 
         <Button variant="primary" type="submit">
           Save

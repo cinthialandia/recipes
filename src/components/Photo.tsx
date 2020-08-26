@@ -7,7 +7,6 @@ const Photo: React.FC = () => {
       {" "}
       <Form.Group>
         <Form.File
-          required
           name="file"
           label="Upload a photo"
           // onChange={handleChange}

@@ -23,11 +23,6 @@
   padding: 10px 0;
 }
 
-.container-serving-time-difficulty {
-  display: flex;
-  justify-content: space-between;
-}
-
 .container-calories-car-pro-fats {
   display: flex;
   justify-content: space-between;
@@ -41,10 +36,6 @@
 @media only screen and (max-width: 800px) {
   .container-Create-Recipe {
     margin: 0 20px;
-  }
-
-  .container-serving-time-difficulty {
-    flex-direction: column;
   }
 
   .container-calories-car-pro-fats {

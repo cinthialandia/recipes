@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { RecipeDetails } from "../types";
+import "./DetailsRecipe.scss";
 
 interface Props {
   details: RecipeDetails;
@@ -32,17 +33,17 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
   return (
     <div>
       <Form.Group>
+        <Form.Group>
+          <Form.Label>Name of the recipe</Form.Label>
+          <Form.Control
+            value={details.name}
+            type="text"
+            placeholder="Enter the name of the recipe"
+            onChange={handleInputName}
+          />
+        </Form.Group>
         <div className="container-serving-time-difficulty">
-          <div className="container-serving">
-            <Form.Group>
-              <Form.Label>Name of the recipe</Form.Label>
-              <Form.Control
-                value={details.name}
-                type="text"
-                placeholder="Enter the name of the recipe"
-                onChange={handleInputName}
-              />
-            </Form.Group>
+          <div>
             <Form.Label>Serving</Form.Label>
             <InputGroup>
               <Form.Control
@@ -55,7 +56,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
             </InputGroup>
           </div>
 
-          <div className="container-time">
+          <div>
             <Form.Label>Time</Form.Label>
             <InputGroup>
               <Form.Control
@@ -70,7 +71,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
               </InputGroup.Append>
             </InputGroup>
           </div>
-          <div className="container-difficulty">
+          <div>
             <Form.Label>Difficulty</Form.Label>
             <Form.Control
               as="select"
