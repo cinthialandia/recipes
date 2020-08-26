@@ -1,0 +1,15 @@
+.container-calories-car-pro-fats {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.create-recipe-calories {
+  flex-basis: 15%;
+}
+
+@media only screen and (max-width: 800px) {
+  .container-calories-car-pro-fats {
+    flex-direction: column;
+  }
+}
