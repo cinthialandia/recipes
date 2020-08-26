@@ -17,7 +17,7 @@ const IngredientsProvider: React.FC = ({ children }) => {
 
         return acc;
       }, {} as IngredientMap)
-    : {};
+    : undefined;
 
   return (
     <IngredientContext.Provider value={{ value: valueAsMap, loading, error }}>

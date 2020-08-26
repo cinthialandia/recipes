@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { RouteComponentProps } from "@reach/router";
-import { useDocument } from "react-firebase-hooks/firestore";
 import Recipes from "./components/Recipes";
 import "./Home.scss";
 import SearchBox from "./components/SearchBox";
 import { Recipe } from "./types";
-import { db } from "./firebase";
+import { IngredientContext } from "./context";
 
 const Home: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
-  const [snapshot, loading, error] = useDocument(db.doc("users/fake"));
 
-  console.log(snapshot?.data());
+  const letter = "dWADrdBN0mY16libdNV8";
+  const finded = result.map(function (element) {
+    if (element.keyword === letter) {
+      return element;
+    }
+  });
+  console.log(finded);
 
-  const handleResult = (result: Recipe[]) => {
+  const handleResult = useCallback((result: Recipe[]) => {
     setResult(result);
-  };
+  }, []);
 
   return (
     <div className="home-container">

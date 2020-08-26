@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserFriends,
@@ -12,18 +12,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import { fakeRecipe as recipe, fakeIngredients, fakeRecipes } from "../Mock";
 import { RouteComponentProps } from "@reach/router";
 import "./Recipe.scss";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { db } from "../firebase";
+import { Recipe as IRecipe } from "../types";
+import { IngredientContext } from "../context";
 
 interface Props extends RouteComponentProps {
   recipeId?: string;
 }
 
 const Recipe: React.FC<Props> = ({ recipeId }) => {
-  const recipe = fakeRecipes.find(({ id }) => id === recipeId);
+  const [recipe] = useDocumentData<IRecipe>(
+    db.doc(`users/fake/recipes/${recipeId}`)
+  );
 
-  return recipe ? (
+  const { value: ingredientMap } = useContext(IngredientContext);
+
+  return recipe && ingredientMap ? (
     <>
       <div className="Recipe">
         <div>
@@ -83,10 +90,10 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
               {recipe.ingredients.map(({ quantity, id }) => (
                 <li className="recipe-ingredients" key={id}>
                   <span className="recipe-ingredient-name">
-                    {fakeIngredients[id].name}:
+                    {ingredientMap[id].name}:
                   </span>
                   {quantity}
-                  {fakeIngredients[id].unit}
+                  {ingredientMap[id].unit}
                 </li>
               ))}
             </ul>
@@ -158,10 +165,10 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
                 {recipe.ingredients.map(({ quantity, id }) => (
                   <li className="recipe-ingredients" key={id}>
                     <span className="recipe-ingredient-name">
-                      {fakeIngredients[id].name}:
+                      {ingredientMap[id].name}:
                     </span>
                     {quantity}
-                    {fakeIngredients[id].unit}
+                    {ingredientMap[id].unit}
                   </li>
                 ))}
               </ul>

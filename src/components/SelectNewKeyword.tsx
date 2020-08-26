@@ -8,7 +8,7 @@ interface Props {
 }
 
 const SelectNewKeyword: React.FC<Props> = ({ selected, onInput }) => {
-  const { value: keywordMap, loading, error } = useContext(KeywordContext);
+  const { value: keywordMap } = useContext(KeywordContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInput(e.target.value);
