@@ -28,7 +28,11 @@ const SelectRecipeModal: React.FC<Props> = ({ onSelect }) => {
   return (
     <div className="SelectRecipeModal">
       {" "}
-      <Button variant="link" onClick={() => setShow(true)}>
+      <Button
+        className="button-selectRecipeModal"
+        variant="link"
+        onClick={() => setShow(true)}
+      >
         add <FontAwesomeIcon icon={faUtensils} />
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
