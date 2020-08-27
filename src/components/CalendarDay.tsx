@@ -9,7 +9,7 @@ import Button from "react-bootstrap/esm/Button";
 import { db } from "../firebase";
 import Modal from "react-bootstrap/esm/Modal";
 import ShowRecipe from "./ShowRecipe";
-import { id } from "date-fns/locale";
+import { Link } from "@reach/router";
 
 const formatDateNumber = (date: Date) => format(date, "d");
 const formatDateName = (date: Date) => format(date, "EEEE");
@@ -25,6 +25,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
   const weekDateToDayName = formatDateName(date);
   const [show, setShow] = useState(false);
   const [idRecipe, setIdRecipe] = useState("");
+  const [type, setType] = useState("");
 
   const filterRecipeByType = (recipes: Recipe[], recipeType: RecipeType) =>
     recipes.filter(
@@ -45,7 +46,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
     const timestamps = data.timestamps ? data.timestamps : [];
     const types = data.menu && data.menu[timestamp] ? data.menu[timestamp] : [];
 
-    dbRef.update({
+    await dbRef.update({
       timestamps: [...timestamps, timestamp],
       menu: {
         ...data.menu,
@@ -61,18 +62,20 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
     const timestamps = data.timestamps ? data.timestamps : [];
     const types = data.menu && data.menu[timestamp] ? data.menu[timestamp] : [];
 
-    dbRef.update({
+    await dbRef.update({
       timestamps: timestamps.filter((_timestamp) => _timestamp !== timestamp),
       menu: {
         ...data.menu,
         [timestamp]: types.filter((_type) => _type !== type),
       },
     });
+    setShow(false);
   };
 
-  const handleClickModal = (id: string) => {
-    setShow(true);
+  const handleClickModal = (id: string, type: string) => {
     setIdRecipe(id);
+    setType(type);
+    setShow(true);
   };
 
   return (
@@ -81,6 +84,15 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
         <Modal.Body>
           <ShowRecipe recipeId={idRecipe} />
         </Modal.Body>
+        <Modal.Footer className="modal-buttons">
+          <Link to={`/recipe/${idRecipe}`}>Go to the recipe</Link>
+          <Button
+            variant="danger"
+            onClick={() => handleClickRemove(idRecipe, type)}
+          >
+            Remove from menu
+          </Button>
+        </Modal.Footer>
       </Modal>
       <div className="calendar-day-title">
         <div>{weekDateToDayName}</div>
@@ -89,9 +101,9 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
       <div>
         {breakfast.map((recipe) => (
           <Button
+            className="button-modal-calendar-day"
             variant="primary"
-            onClick={() => handleClickModal(recipe.id)}
-            // onClick={() => handleClickRemove(recipe.id, "breakfast")}
+            onClick={() => handleClickModal(recipe.id, "breakfast")}
             key={recipe.id}
           >
             {recipe.name}
@@ -102,9 +114,9 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
       <div>
         {lunch.map((recipe) => (
           <Button
+            className="button-modal-calendar-day"
             variant="primary"
-            onClick={() => handleClickModal(recipe.id)}
-            // onClick={() => handleClickRemove(recipe.id, "lunch")}
+            onClick={() => handleClickModal(recipe.id, "lunch")}
             key={recipe.id}
           >
             {recipe.name}
@@ -115,9 +127,9 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
       <div>
         {dinner.map((recipe) => (
           <Button
+            className="button-modal-calendar-day"
             variant="primary"
-            onClick={() => handleClickModal(recipe.id)}
-            // onClick={() => handleClickRemove(recipe.id, "dinner")}
+            onClick={() => handleClickModal(recipe.id, "dinner")}
             key={recipe.id}
           >
             {recipe.name}

@@ -1,5 +1,6 @@
-.description-of-the-recipe {
-  flex-wrap: wrap;
+.description-of-the-recipe-show {
+  display: flex;
+  flex-direction: column;
 }
 
 .nutrition-of-the-recipe {
@@ -25,4 +26,11 @@
 
 .Recipe-mobile {
   display: block;
+}
+
+@media only screen and (max-width: 800px) {
+  .description-of-the-recipe-show {
+    padding: 20px 0;
+    flex-direction: column;
+  }
 }

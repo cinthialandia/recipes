@@ -17,7 +17,7 @@ const Recipes: React.FC<Props> = ({ results }) => {
         <Link
           className="recipes-link"
           key={recipe.id}
-          to={`recipe/${recipe.id}`}
+          to={`/recipe/${recipe.id}`}
         >
           <Card>
             <Card.Img

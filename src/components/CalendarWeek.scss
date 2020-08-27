@@ -34,7 +34,8 @@ $border: 1px solid #e2ebfc;
 .CalendarWeek > * {
   border-left: $border;
   border-top: $border;
-  padding: 35px;
+  padding: 5px;
+  min-height: 100px;
 }
 
 .calendar-week-container-button-and-date {

@@ -118,11 +118,13 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
 
         <Tabs className="tabs">
           <Tab eventKey="home" title="Details">
-            <div className="description-of-the-recipe">
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faTag} />{" "}
-                {`Keyword: ${recipe.keyword}`}
-              </div>
+            <div className="description-of-the-recipe-show">
+              {keywordMap ? (
+                <div>
+                  <FontAwesomeIcon style={{ color: "#E25523" }} icon={faTag} />{" "}
+                  {`Keyword: ${keywordMap[recipe.keyword].name}`}
+                </div>
+              ) : null}
               <div>
                 <FontAwesomeIcon
                   style={{ color: "#E25523" }}

@@ -6,3 +6,18 @@
     font-size: 30px;
   }
 }
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-modal-calendar-day {
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+  margin: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
