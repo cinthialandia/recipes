@@ -8,6 +8,8 @@ import "./CalendarDay.scss";
 import Button from "react-bootstrap/esm/Button";
 import { db } from "../firebase";
 import Modal from "react-bootstrap/esm/Modal";
+import ShowRecipe from "./ShowRecipe";
+import { id } from "date-fns/locale";
 
 const formatDateNumber = (date: Date) => format(date, "d");
 const formatDateName = (date: Date) => format(date, "EEEE");
@@ -22,6 +24,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
   const weekDateToDay = formatDateNumber(date);
   const weekDateToDayName = formatDateName(date);
   const [show, setShow] = useState(false);
+  const [idRecipe, setIdRecipe] = useState("");
 
   const filterRecipeByType = (recipes: Recipe[], recipeType: RecipeType) =>
     recipes.filter(
@@ -67,69 +70,58 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
     });
   };
 
+  const handleClickModal = (id: string) => {
+    setShow(true);
+    setIdRecipe(id);
+  };
+
   return (
     <>
+      <Modal show={show} onHide={() => setShow(false)}>
+        <Modal.Body>
+          <ShowRecipe recipeId={idRecipe} />
+        </Modal.Body>
+      </Modal>
       <div className="calendar-day-title">
         <div>{weekDateToDayName}</div>
         <span>{weekDateToDay}</span>
       </div>
       <div>
         {breakfast.map((recipe) => (
-          <>
-            <Button
-              variant="primary"
-              onClick={() => setShow(true)}
-              // onClick={() => handleClickRemove(recipe.id, "breakfast")}
-              key={recipe.id}
-            >
-              {recipe.name}
-            </Button>
-            <Modal show={show} onHide={() => setShow(false)}>
-              <Modal.Body>
-                <p>{recipe.name}</p>
-              </Modal.Body>
-            </Modal>
-          </>
+          <Button
+            variant="primary"
+            onClick={() => handleClickModal(recipe.id)}
+            // onClick={() => handleClickRemove(recipe.id, "breakfast")}
+            key={recipe.id}
+          >
+            {recipe.name}
+          </Button>
         ))}
         <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "breakfast")} />
       </div>
       <div>
         {lunch.map((recipe) => (
-          <>
-            <Button
-              variant="primary"
-              onClick={() => setShow(true)}
-              // onClick={() => handleClickRemove(recipe.id, "lunch")}
-              key={recipe.id}
-            >
-              {recipe.name}
-            </Button>
-            <Modal show={show} onHide={() => setShow(false)}>
-              <Modal.Body>
-                <p>{recipe.name}</p>
-              </Modal.Body>
-            </Modal>
-          </>
+          <Button
+            variant="primary"
+            onClick={() => handleClickModal(recipe.id)}
+            // onClick={() => handleClickRemove(recipe.id, "lunch")}
+            key={recipe.id}
+          >
+            {recipe.name}
+          </Button>
         ))}
         <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "lunch")} />
       </div>
       <div>
         {dinner.map((recipe) => (
-          <>
-            <Button
-              variant="primary"
-              onClick={() => setShow(true)}
-              // onClick={() => handleClickRemove(recipe.id, "dinner")}
-              key={recipe.id}
-            >
-              {recipe.name}
-            </Button>
-            <Modal show={show} onHide={() => setShow(false)}>
-              <Modal.Body>
-                <p>{recipe.name}</p>
-              </Modal.Body>
-            </Modal>
-          </>
+          <Button
+            variant="primary"
+            onClick={() => handleClickModal(recipe.id)}
+            // onClick={() => handleClickRemove(recipe.id, "dinner")}
+            key={recipe.id}
+          >
+            {recipe.name}
+          </Button>
         ))}
         <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "dinner")} />
       </div>

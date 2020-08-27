@@ -1,0 +1,28 @@
+.description-of-the-recipe {
+  flex-wrap: wrap;
+}
+
+.nutrition-of-the-recipe {
+  flex-direction: column;
+}
+
+.title-nutrition {
+  text-align: center;
+  font-weight: 900;
+}
+
+.container-Recipe-ingredients {
+  padding: 20px 0;
+}
+
+.tabs {
+  font-size: 15px;
+}
+
+.Recipe {
+  display: none;
+}
+
+.Recipe-mobile {
+  display: block;
+}

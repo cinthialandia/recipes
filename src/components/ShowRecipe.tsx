@@ -12,24 +12,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import { RouteComponentProps } from "@reach/router";
-import "./Recipe.scss";
+import "./ShowRecipe.scss";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import { Recipe as IRecipe } from "../types";
 import { IngredientContext, KeywordContext } from "../context";
 
-interface Props extends RouteComponentProps {
+interface Props {
   recipeId?: string;
 }
 
-const Recipe: React.FC<Props> = ({ recipeId }) => {
+const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
   const [recipe] = useDocumentData<IRecipe>(
     db.doc(`users/fake/recipes/${recipeId}`)
   );
 
-  const { value: ingredientMap } = useContext(IngredientContext);
   const { value: keywordMap } = useContext(KeywordContext);
+
+  const { value: ingredientMap } = useContext(IngredientContext);
 
   return recipe && ingredientMap ? (
     <>
@@ -188,4 +188,4 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
   );
 };
 
-export default Recipe;
+export default ShowRecipe;
