@@ -4,18 +4,9 @@ import Recipes from "./components/Recipes";
 import "./Home.scss";
 import SearchBox from "./components/SearchBox";
 import { Recipe } from "./types";
-import { IngredientContext } from "./context";
 
 const Home: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
-
-  const letter = "dWADrdBN0mY16libdNV8";
-  const finded = result.map(function (element) {
-    if (element.keyword === letter) {
-      return element;
-    }
-  });
-  console.log(finded);
 
   const handleResult = useCallback((result: Recipe[]) => {
     setResult(result);

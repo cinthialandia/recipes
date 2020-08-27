@@ -15,9 +15,7 @@ const ShowIngredients: React.FC<Props> = ({
   removeIngredient,
   ingredients,
 }) => {
-  const { value: ingredientMap, loading, error } = useContext(
-    IngredientContext
-  );
+  const { value: ingredientMap } = useContext(IngredientContext);
   return (
     <ul className="showIngredient-list">
       {ingredients.map(({ id, quantity }) =>

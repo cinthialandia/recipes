@@ -33,7 +33,7 @@ const CalendarWeek: React.FC = () => {
   const weekTimestamps = getWeekTimestamps(weekDates);
   const actualYear = format(activeDate, "yyyy");
   const actualMonth = format(activeDate, "LLLL");
-  const [recipes, loading, error] = useCollectionData<Recipe>(
+  const [recipes] = useCollectionData<Recipe>(
     db
       .collection("users/fake/recipes")
       .where("timestamps", "array-contains-any", weekTimestamps),
@@ -41,8 +41,6 @@ const CalendarWeek: React.FC = () => {
       idField: "id",
     }
   );
-  console.log(weekTimestamps);
-  console.log(recipes);
 
   const handleNextWeek = () => {
     const endOfWeek = weekDates[weekDates.length - 1];
@@ -54,10 +52,6 @@ const CalendarWeek: React.FC = () => {
     const startOfWeek = weekDates[0];
     const endOfPrevWeek = subDays(startOfWeek, 1);
     setActiveDate(endOfPrevWeek);
-  };
-
-  const handleRecipeSelect = (id: string, type: RecipeType, date: Date) => {
-    console.log(id, type, date);
   };
 
   return (
@@ -105,7 +99,6 @@ const CalendarWeek: React.FC = () => {
           <CalendarDay
             key={timestamp}
             timestamp={timestamp}
-            onSelect={handleRecipeSelect}
             recipes={
               recipes?.filter((recipe) =>
                 recipe.timestamps?.includes(timestamp)

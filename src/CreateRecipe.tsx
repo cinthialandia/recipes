@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { RouteComponentProps, Redirect } from "@reach/router";
+import React, { useState } from "react";
+import { RouteComponentProps } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./CreateRecipe.scss";

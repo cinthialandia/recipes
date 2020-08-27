@@ -14,9 +14,7 @@ interface Props {
 const SelectIngredient: React.FC<Props> = ({ onInput }) => {
   const [ingredientSelect, setIngredienteSelect] = useState<Ingredient>();
   const [ingredientQuantity, setIngredientQauntity] = useState<number>(0);
-  const { value: ingredientMap, loading, error } = useContext(
-    IngredientContext
-  );
+  const { value: ingredientMap } = useContext(IngredientContext);
 
   const ingredientList = ingredientMap ? Object.values(ingredientMap) : [];
 
