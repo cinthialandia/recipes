@@ -9,6 +9,17 @@ export interface KeywordMap {
   [id: string]: Keyword;
 }
 
+export interface Ingredient {
+  id: string;
+  name: string;
+  quantity: number;
+  unit?: string;
+}
+
+export interface IngredientMap {
+  [id: string]: Ingredient;
+}
+
 export interface RecipeDetails {
   name: string;
   serving: string;
@@ -40,13 +51,9 @@ export interface Recipe extends RecipeDetails {
   };
 }
 
-export interface Ingredient {
-  id: string;
+export interface ShoppingList {
   name: string;
-  quantity: number;
-  unit?: string;
-}
-
-export interface IngredientMap {
-  [id: string]: Ingredient;
+  ingredients: {
+    [id: string]: number;
+  };
 }

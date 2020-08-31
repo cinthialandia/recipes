@@ -16,6 +16,7 @@ import CreateRecipe from "./CreateRecipe";
 import Recipe from "./components/Recipe";
 import IngredientsProvider from "./components/IngredientProvider";
 import KeywordProvider from "./components/KeywordProvider";
+import CreateShoppingList from "./CreateShoppingList";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
               <Calendar path="calendar" />
               <ShoppingList path="shopping-list" />
               <CreateRecipe path="create-recipe" />
+              <CreateShoppingList path="/create-shopping-list" />
             </Router>
           </KeywordProvider>
         </IngredientsProvider>

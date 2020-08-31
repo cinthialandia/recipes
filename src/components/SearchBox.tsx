@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import { debounce } from "debounce";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
@@ -19,10 +19,14 @@ interface Props {
 const SearchBox: React.FC<Props> = ({ onResults }) => {
   const [search, setSearch] = useState("");
   const [keyword, setKeyword] = useState("");
-  let query: firebase.firestore.Query = db.collection("users/fake/recipes");
-  query = keyword !== "" ? query.where("keyword", "==", keyword) : query;
-  query =
-    search !== "" ? query.where("tokens", "array-contains", search) : query;
+  const query = useMemo(() => {
+    let _query: firebase.firestore.Query = db.collection("users/fake/recipes");
+    _query = keyword !== "" ? _query.where("keyword", "==", keyword) : _query;
+    _query =
+      search !== "" ? _query.where("tokens", "array-contains", search) : _query;
+
+    return _query;
+  }, [keyword, search]);
 
   const [values] = useCollectionData<Recipe>(query, { idField: "id" });
 
