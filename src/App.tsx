@@ -16,7 +16,7 @@ import CreateRecipe from "./CreateRecipe";
 import Recipe from "./components/Recipe";
 import IngredientsProvider from "./components/IngredientProvider";
 import KeywordProvider from "./components/KeywordProvider";
-import CreateShoppingList from "./CreateShoppingList";
+import CreateShoppingList from "./components/CreateShoppingList";
 
 function App() {
   return (

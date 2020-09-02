@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import "./CompleteShoppingList.scss";
 import Card from "react-bootstrap/esm/Card";
 import Button from "react-bootstrap/esm/Button";
-import { ShoppingList, Recipe } from "./types";
-import { IngredientContext } from "./context";
+import { ShoppingList, Recipe } from "../types";
+import { IngredientContext } from "../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
