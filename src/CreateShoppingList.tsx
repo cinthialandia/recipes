@@ -16,7 +16,7 @@ import CompleteShoppingList from "./CompleteShoppingList";
 import ListOfRecipes from "./components/ListOfRecipes";
 import ListOfRecipesSelected from "./components/ListOfRecipesSelected";
 
-const CreateShoppingList: React.FC<RouteComponentProps> = () => {
+const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [result, setResult] = useState<Recipe[]>([]);
   const [show, setShow] = useState(false);
   const [weekTimestamp, setWeektimestamps] = useState<number[]>([]);
@@ -63,7 +63,9 @@ const CreateShoppingList: React.FC<RouteComponentProps> = () => {
       name,
       ingredients,
     });
-    setName("");
+    if (navigate) {
+      navigate(`/shopping-list/`);
+    }
   };
 
   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
