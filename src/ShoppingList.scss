@@ -7,3 +7,40 @@
   max-width: 600px;
   margin: 0 auto;
 }
+
+.button-create-shopping-list {
+  display: flex;
+  justify-content: center;
+}
+
+.container-card-create-list-shopping {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-create-list-shopping {
+  max-width: 400px;
+  width: 400px;
+  margin: 20px;
+}
+
+.button-delete-create-shopping-list {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .container-card-create-list-shopping {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .card-create-list-shopping {
+    max-width: 300px;
+    width: 300px;
+    margin: 20px;
+  }
+}

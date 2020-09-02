@@ -75,7 +75,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   };
 
   return (
-    <div>
+    <div className="container-create-shopping-list">
       <h2 className="create-shopping-list-title">Create shopping lists</h2>
       <h3 className="select-list-title">Create name for your shooping list</h3>
       <Form.Label>Name of the list</Form.Label>

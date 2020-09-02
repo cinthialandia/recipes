@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { RouteComponentProps, Link } from "@reach/router";
 import "./ShoppingList.scss";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -32,41 +32,47 @@ const ShoppingList: React.FC<RouteComponentProps> = () => {
   };
 
   return (
-    <>
+    <div className="container-shooping-list">
       <h2 className="shopping-list-title">Shopping lists</h2>
-      <Link to="/create-shopping-list">Create shopping list</Link>
-
-      {values
-        ? values.map((list) => (
-            <div key={list.id}>
-              <Card>
-                <Card.Header>{list.name}</Card.Header>
-                <ul style={{ listStyle: "none", paddingLeft: "0" }}>
-                  {Object.entries(list.ingredients).map(([id, quantity]) =>
-                    ingredientMap && ingredientMap[id] ? (
-                      <li key={id} className="showIngredient-selected">
-                        <Button
-                          onClick={() => onRemove(id, list)}
-                          variant="link"
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </Button>
-                        {ingredientMap[id].name}: {quantity}{" "}
-                        {ingredientMap[id].unit}
-                      </li>
-                    ) : null
-                  )}
-                </ul>
-                <div>
-                  <Button onClick={() => clickRemove(list)} variant="danger">
-                    Delete the list
-                  </Button>
-                </div>
-              </Card>
-            </div>
-          ))
-        : null}
-    </>
+      <div className="button-create-shopping-list">
+        {" "}
+        <Button variant="light">
+          <Link to="/create-shopping-list">Create shopping list</Link>
+        </Button>
+      </div>
+      <div className="container-card-create-list-shopping">
+        {values
+          ? values.map((list) => (
+              <div key={list.id}>
+                <Card className="card-create-list-shopping">
+                  <Card.Header>{list.name}</Card.Header>
+                  <ul style={{ listStyle: "none", paddingLeft: "0" }}>
+                    {Object.entries(list.ingredients).map(([id, quantity]) =>
+                      ingredientMap && ingredientMap[id] ? (
+                        <li key={id} className="showIngredient-selected">
+                          <Button
+                            onClick={() => onRemove(id, list)}
+                            variant="link"
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                          </Button>
+                          {ingredientMap[id].name}: {quantity}{" "}
+                          {ingredientMap[id].unit}
+                        </li>
+                      ) : null
+                    )}
+                  </ul>
+                  <div className="button-delete-create-shopping-list">
+                    <Button onClick={() => clickRemove(list)} variant="danger">
+                      Delete the list
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            ))
+          : null}
+      </div>
+    </div>
   );
 };
 export default ShoppingList;

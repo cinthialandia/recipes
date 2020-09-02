@@ -22,7 +22,7 @@ body {
 .App {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 25px;
+  padding-bottom: 30px;
 }
 
 header {
@@ -52,5 +52,6 @@ footer {
 @media only screen and (max-width: 400px) {
   .App {
     padding: 0;
+    padding-bottom: 50px;
   }
 }
