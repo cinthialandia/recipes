@@ -78,6 +78,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   return (
     <div>
       <h2 className="create-shopping-list-title">Create shopping lists</h2>
+      <h3 className="select-list-title">Create name for your shooping list</h3>
       <Form.Label>Name of the list</Form.Label>
       <Form.Control
         value={name}
@@ -85,19 +86,38 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
         type="text"
         placeholder="Enter a name"
       />
-      <DatePicker onChange={handleDateChange} />
-      <Button onClick={handleCreateListClick}>Create shopping list</Button>
+      <h3 className="select-list-title">
+        All the recipes selected for the week
+      </h3>
+      <div className="container-date-picker-list">
+        <div className="datePicke-create-shopping-list">
+          <DatePicker onChange={handleDateChange} />
+        </div>
+        <div className="list-of-Recipe">
+          <ListOfRecipes listOfRecipes={recipesOfTheWeek} />
+        </div>
+      </div>
+      <h3 className="select-list-title">
+        Select another recipe to include on the shopping list
+      </h3>
+      <div className="container-recipe-modal-list-recipe">
+        <div className="select-recipe-modal">
+          <SelectRecipeModal onSelect={handleRecipeSelect} />
+        </div>
+        <div className="list-of-recipe">
+          <ListOfRecipesSelected
+            listOfRecipesSelected={selectedRecipes}
+            onRemove={removeRecipe}
+          />
+        </div>
+      </div>
+      <h3 className="select-list-title">Shopping list to create</h3>
       <CompleteShoppingList
         nameOfRecipe={name}
         ingredientsOfRecipe={ingredients}
         onRemove={removeIngredient}
+        handleCreateListClick={handleCreateListClick}
       />
-      <ListOfRecipes listOfRecipes={recipesOfTheWeek} />
-      <ListOfRecipesSelected
-        listOfRecipesSelected={selectedRecipes}
-        onRemove={removeRecipe}
-      />
-      <SelectRecipeModal onSelect={handleRecipeSelect} />
     </div>
   );
 };

@@ -1,9 +1,6 @@
 import React from "react";
 import { RouteComponentProps, Link } from "@reach/router";
-import List from "./components/List";
 import "./ShoppingList.scss";
-import Button from "react-bootstrap/esm/Button";
-import DatePicker from "./components/DatePicker";
 
 const ShoppingList: React.FC<RouteComponentProps> = () => {
   return (

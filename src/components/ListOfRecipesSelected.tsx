@@ -19,14 +19,15 @@ const ListOfRecipesSelected: React.FC<Props> = ({
       <Card>
         <Card.Header>Lista de recipes</Card.Header>
         <Card.Body>
-          <ul>
+          <ul style={{ listStyle: "none", paddingLeft: "0" }}>
             {listOfRecipesSelected.map(({ name, id }) => (
-              <>
+              <li>
+                {" "}
                 <Button variant="link" onClick={() => onRemove(id)}>
                   <FontAwesomeIcon icon={faTrash} />
                 </Button>
-                <li>{name}</li>
-              </>
+                {name}
+              </li>
             ))}
           </ul>
         </Card.Body>

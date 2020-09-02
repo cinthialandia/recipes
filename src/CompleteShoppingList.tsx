@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./ShoppingList.scss";
+import "./CompleteShoppingList.scss";
 import Card from "react-bootstrap/esm/Card";
 import Button from "react-bootstrap/esm/Button";
 import { ShoppingList, Recipe } from "./types";
@@ -11,18 +11,20 @@ interface Props {
   nameOfRecipe?: string;
   ingredientsOfRecipe: ShoppingList["ingredients"];
   onRemove: (id: string) => void;
+  handleCreateListClick: () => void;
 }
 
 const CompleteShoppingList: React.FC<Props> = ({
   nameOfRecipe,
   ingredientsOfRecipe,
   onRemove,
+  handleCreateListClick,
 }) => {
   const { value: ingredientMap } = useContext(IngredientContext);
   const ingredientsArr = Object.entries(ingredientsOfRecipe);
   console.log(ingredientMap);
   return (
-    <>
+    <div className="container-card-list-of-ingredients">
       <Card>
         <Card.Header>{nameOfRecipe}</Card.Header>
         <Card.Body>
@@ -39,8 +41,11 @@ const CompleteShoppingList: React.FC<Props> = ({
             )}
           </ul>
         </Card.Body>
+        <div className="button-create-shopping-list">
+          <Button onClick={handleCreateListClick}>Create shopping list</Button>
+        </div>
       </Card>
-    </>
+    </div>
   );
 };
 
