@@ -1,40 +1,90 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
-import { Recipe } from "./types";
+import { Recipe, ShoppingList } from "./types";
 import "./CreateShoppingList.scss";
 import Button from "react-bootstrap/esm/Button";
+import Form from "react-bootstrap/Form";
 import DatePicker from "./components/DatePicker";
 import SearchBox from "./components/SearchBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/esm/Modal";
 import Media from "react-bootstrap/esm/Media";
+import useRecipesByTimestamps from "./hooks/useRecipesByTimestamps";
+import { db } from "./firebase";
+import CompleteShoppingList from "./CompleteShoppingList";
+import ListOfRecipes from "./components/ListOfRecipes";
 
 const CreateShoppingList: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
   const [show, setShow] = useState(false);
-  const [resultSearchBox, setResultSearchBox] = useState("");
   const [weekTimestamp, setWeektimestamps] = useState<number[]>([]);
+  const recipesOfTheWeek = useRecipesByTimestamps(weekTimestamp);
+  const [ingredients, setIngredients] = useState<ShoppingList["ingredients"]>(
+    {}
+  );
+  const [selectedRecipes, setSelectedRecipes] = useState<Recipe[]>([]);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const _recipes = [...recipesOfTheWeek, ...selectedRecipes];
+    const _ingredients = _recipes.reduce((acc, recipe) => {
+      recipe.ingredients.forEach((ingredient) => {
+        if (acc[ingredient.id]) {
+          acc[ingredient.id] = acc[ingredient.id] + ingredient.quantity;
+        } else {
+          acc[ingredient.id] = ingredient.quantity;
+        }
+      });
+      return acc;
+    }, {} as ShoppingList["ingredients"]);
+    console.log(_ingredients);
+
+    setIngredients(_ingredients);
+  }, [recipesOfTheWeek, selectedRecipes]);
 
   const handleDateChange = useCallback((timestamps: number[]) => {
     setWeektimestamps(timestamps);
   }, []);
 
-  console.log(weekTimestamp);
-  console.log(resultSearchBox);
-
   const handleResult = (result: Recipe[]) => {
     setResult(result);
-    console.log(result);
   };
 
-  const handleClick = (id: string) => {
-    setResultSearchBox(id);
+  const handleSelectRecipe = (recipe: Recipe) => {
+    setSelectedRecipes([...selectedRecipes, recipe]);
     setShow(false);
   };
+
+  const handleClick = async () => {
+    // Add the ingrdients in the data base
+    const docRef = await db.collection("users/fake/shoppingLists").add({
+      name,
+      ingredients,
+    });
+    setName("");
+  };
+
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const removeIngredient = (idToDelete: string) => {
+    const newIngredients = { ...ingredients };
+    delete newIngredients[idToDelete];
+    setIngredients(newIngredients);
+  };
+
   return (
     <div>
       <h2 className="create-shopping-list-title">Create shopping lists</h2>
+      <Form.Label>Name of the list</Form.Label>
+      <Form.Control
+        value={name}
+        onChange={handleChangeName}
+        type="text"
+        placeholder="Enter a name"
+      />
       <DatePicker onChange={handleDateChange} />
       <Button
         className="button-selectRecipeModal"
@@ -50,24 +100,24 @@ const CreateShoppingList: React.FC<RouteComponentProps> = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {result.map(({ name, id, photo }) => {
+          {result.map((recipe) => {
             return (
-              <div key={id} className="Select-Recipe-Modal-recipe-photo">
+              <div key={recipe.id} className="Select-Recipe-Modal-recipe-photo">
                 <Media>
                   <img
                     width={70}
                     height={48}
                     className="mr-3"
-                    src={photo}
+                    src={recipe.photo}
                     alt="recipe"
                   />
                   <Media.Body>
-                    <h5>{name}</h5>
+                    <h5>{recipe.name}</h5>
                     <Button
                       variant="light"
-                      onClick={() => handleClick(id)}
+                      onClick={() => handleSelectRecipe(recipe)}
                       className="stretched-link Select-Recipe-Modal-button"
-                      aria-label={`select ${name} recipe`}
+                      aria-label={`select ${recipe.name} recipe`}
                     ></Button>
                   </Media.Body>
                 </Media>
@@ -76,6 +126,14 @@ const CreateShoppingList: React.FC<RouteComponentProps> = () => {
           })}
         </Modal.Body>
       </Modal>
+
+      <Button onClick={handleClick}>Create shopping list</Button>
+      <CompleteShoppingList
+        nameOfRecipe={name}
+        ingredientsOfRecipe={ingredients}
+        onRemove={removeIngredient}
+      />
+      <ListOfRecipes listOfRecipes={recipesOfTheWeek} />
     </div>
   );
 };

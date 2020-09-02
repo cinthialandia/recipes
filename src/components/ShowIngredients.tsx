@@ -17,14 +17,17 @@ const ShowIngredients: React.FC<Props> = ({
 }) => {
   const { value: ingredientMap } = useContext(IngredientContext);
   return (
-    <ul className="showIngredient-list">
+    <ul
+      style={{ listStyle: "none", paddingLeft: "0" }}
+      className="showIngredient-list"
+    >
       {ingredients.map(({ id, quantity }) =>
         ingredientMap && ingredientMap[id] ? (
           <li className="showIngredient-selected" key={id}>
-            {ingredientMap[id].name}: {quantity} {ingredientMap[id].unit}
-            <Button onClick={() => removeIngredient(id)}>
+            <Button variant="link" onClick={() => removeIngredient(id)}>
               <FontAwesomeIcon icon={faTrash} />
             </Button>
+            {ingredientMap[id].name}: {quantity} {ingredientMap[id].unit}
           </li>
         ) : null
       )}
