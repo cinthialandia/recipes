@@ -14,6 +14,7 @@ import useRecipesByTimestamps from "./hooks/useRecipesByTimestamps";
 import { db } from "./firebase";
 import CompleteShoppingList from "./CompleteShoppingList";
 import ListOfRecipes from "./components/ListOfRecipes";
+import ListOfRecipesSelected from "./components/ListOfRecipesSelected";
 
 const CreateShoppingList: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
@@ -56,7 +57,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = () => {
     setShow(false);
   };
 
-  const handleClick = async () => {
+  const handleCreateListClick = async () => {
     // Add the ingrdients in the data base
     const docRef = await db.collection("users/fake/shoppingLists").add({
       name,
@@ -73,6 +74,14 @@ const CreateShoppingList: React.FC<RouteComponentProps> = () => {
     const newIngredients = { ...ingredients };
     delete newIngredients[idToDelete];
     setIngredients(newIngredients);
+  };
+
+  const removeRecipe = (idToDelete: string) => {
+    setSelectedRecipes(
+      selectedRecipes.filter(({ id }) => {
+        return idToDelete !== id;
+      })
+    );
   };
 
   return (
@@ -127,13 +136,17 @@ const CreateShoppingList: React.FC<RouteComponentProps> = () => {
         </Modal.Body>
       </Modal>
 
-      <Button onClick={handleClick}>Create shopping list</Button>
+      <Button onClick={handleCreateListClick}>Create shopping list</Button>
       <CompleteShoppingList
         nameOfRecipe={name}
         ingredientsOfRecipe={ingredients}
         onRemove={removeIngredient}
       />
       <ListOfRecipes listOfRecipes={recipesOfTheWeek} />
+      <ListOfRecipesSelected
+        listOfRecipesSelected={selectedRecipes}
+        onRemove={removeRecipe}
+      />
     </div>
   );
 };
