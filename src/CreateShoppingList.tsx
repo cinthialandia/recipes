@@ -5,20 +5,14 @@ import "./CreateShoppingList.scss";
 import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
 import DatePicker from "./components/DatePicker";
-import SearchBox from "./components/SearchBox";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
-import Modal from "react-bootstrap/esm/Modal";
-import Media from "react-bootstrap/esm/Media";
 import useRecipesByTimestamps from "./hooks/useRecipesByTimestamps";
 import { db } from "./firebase";
 import CompleteShoppingList from "./CompleteShoppingList";
 import ListOfRecipes from "./components/ListOfRecipes";
 import ListOfRecipesSelected from "./components/ListOfRecipesSelected";
+import SelectRecipeModal from "./components/SelectRecipeModal";
 
 const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
-  const [result, setResult] = useState<Recipe[]>([]);
-  const [show, setShow] = useState(false);
   const [weekTimestamp, setWeektimestamps] = useState<number[]>([]);
   const recipesOfTheWeek = useRecipesByTimestamps(weekTimestamp);
   const [ingredients, setIngredients] = useState<ShoppingList["ingredients"]>(
@@ -48,13 +42,8 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
     setWeektimestamps(timestamps);
   }, []);
 
-  const handleResult = (result: Recipe[]) => {
-    setResult(result);
-  };
-
-  const handleSelectRecipe = (recipe: Recipe) => {
+  const handleRecipeSelect = (recipe: Recipe) => {
     setSelectedRecipes([...selectedRecipes, recipe]);
-    setShow(false);
   };
 
   const handleCreateListClick = async () => {
@@ -97,47 +86,6 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
         placeholder="Enter a name"
       />
       <DatePicker onChange={handleDateChange} />
-      <Button
-        className="button-selectRecipeModal"
-        variant="link"
-        onClick={() => setShow(true)}
-      >
-        Select a recipe <FontAwesomeIcon icon={faUtensils} />
-      </Button>
-      <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            <SearchBox onResults={handleResult} />
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {result.map((recipe) => {
-            return (
-              <div key={recipe.id} className="Select-Recipe-Modal-recipe-photo">
-                <Media>
-                  <img
-                    width={70}
-                    height={48}
-                    className="mr-3"
-                    src={recipe.photo}
-                    alt="recipe"
-                  />
-                  <Media.Body>
-                    <h5>{recipe.name}</h5>
-                    <Button
-                      variant="light"
-                      onClick={() => handleSelectRecipe(recipe)}
-                      className="stretched-link Select-Recipe-Modal-button"
-                      aria-label={`select ${recipe.name} recipe`}
-                    ></Button>
-                  </Media.Body>
-                </Media>
-              </div>
-            );
-          })}
-        </Modal.Body>
-      </Modal>
-
       <Button onClick={handleCreateListClick}>Create shopping list</Button>
       <CompleteShoppingList
         nameOfRecipe={name}
@@ -149,6 +97,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
         listOfRecipesSelected={selectedRecipes}
         onRemove={removeRecipe}
       />
+      <SelectRecipeModal onSelect={handleRecipeSelect} />
     </div>
   );
 };

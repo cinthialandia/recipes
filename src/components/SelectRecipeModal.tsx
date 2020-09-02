@@ -9,15 +9,15 @@ import "./SelectRecipeModal.scss";
 import SearchBox from "./SearchBox";
 
 interface Props {
-  onSelect: (id: string) => void;
+  onSelect: (recipe: Recipe) => void;
 }
 
 const SelectRecipeModal: React.FC<Props> = ({ onSelect }) => {
   const [show, setShow] = useState(false);
   const [result, setResult] = useState<Recipe[]>([]);
 
-  const handleClick = (id: string) => {
-    onSelect(id);
+  const handleClick = (recipe: Recipe) => {
+    onSelect(recipe);
     setShow(false);
   };
 
@@ -42,24 +42,24 @@ const SelectRecipeModal: React.FC<Props> = ({ onSelect }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {result.map(({ name, id, photo }) => {
+          {result.map((recipe) => {
             return (
-              <div key={id} className="Select-Recipe-Modal-recipe-photo">
+              <div key={recipe.id} className="Select-Recipe-Modal-recipe-photo">
                 <Media>
                   <img
                     width={70}
                     height={48}
                     className="mr-3"
-                    src={photo}
+                    src={recipe.photo}
                     alt="recipe"
                   />
                   <Media.Body>
-                    <h5>{name}</h5>
+                    <h5>{recipe.name}</h5>
                     <Button
                       variant="light"
-                      onClick={() => handleClick(id)}
+                      onClick={() => handleClick(recipe)}
                       className="stretched-link Select-Recipe-Modal-button"
-                      aria-label={`select ${name} recipe`}
+                      aria-label={`select ${recipe.name} recipe`}
                     ></Button>
                   </Media.Body>
                 </Media>

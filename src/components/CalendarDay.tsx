@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import SelectRecipeModal from "./SelectRecipeModal";
 import { RecipeType, Recipe } from "../types";
 import { format } from "date-fns";
 import "./CalendarDay.scss";
@@ -10,6 +7,7 @@ import { db } from "../firebase";
 import Modal from "react-bootstrap/esm/Modal";
 import ShowRecipe from "./ShowRecipe";
 import { Link } from "@reach/router";
+import SelectRecipeModal from "./SelectRecipeModal";
 
 const formatDateNumber = (date: Date) => format(date, "d");
 const formatDateName = (date: Date) => format(date, "EEEE");
@@ -109,7 +107,9 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
             {recipe.name}
           </Button>
         ))}
-        <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "breakfast")} />
+        <SelectRecipeModal
+          onSelect={({ id }) => handleOnSelect(id, "breakfast")}
+        />
       </div>
       <div>
         {lunch.map((recipe) => (
@@ -122,7 +122,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
             {recipe.name}
           </Button>
         ))}
-        <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "lunch")} />
+        <SelectRecipeModal onSelect={({ id }) => handleOnSelect(id, "lunch")} />
       </div>
       <div>
         {dinner.map((recipe) => (
@@ -135,7 +135,9 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
             {recipe.name}
           </Button>
         ))}
-        <SelectRecipeModal onSelect={(id) => handleOnSelect(id, "dinner")} />
+        <SelectRecipeModal
+          onSelect={({ id }) => handleOnSelect(id, "dinner")}
+        />
       </div>
     </>
   );
