@@ -78,13 +78,14 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
     <div className="container-create-shopping-list">
       <h2 className="create-shopping-list-title">Create shopping lists</h2>
       <h3 className="select-list-title">Create name for your shooping list</h3>
-      <Form.Label>Name of the list</Form.Label>
-      <Form.Control
-        value={name}
-        onChange={handleChangeName}
-        type="text"
-        placeholder="Enter a name"
-      />
+      <div className="input-name-of-the-list">
+        <Form.Control
+          value={name}
+          onChange={handleChangeName}
+          type="text"
+          placeholder="Enter a name"
+        />
+      </div>
       <h3 className="select-list-title">
         All the recipes selected for the week
       </h3>

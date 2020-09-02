@@ -10,3 +10,15 @@
   margin: 0 auto;
   padding: 20px 0;
 }
+
+@media only screen and (max-width: 800px) {
+  .container-card-list-of-ingredients {
+    max-width: 300px;
+    width: 300px;
+    padding: 10px 0;
+  }
+
+  .button-create-shopping-list {
+    padding: 10px 0;
+  }
+}

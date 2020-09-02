@@ -4,6 +4,7 @@ import { Recipe } from "../types";
 import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./ListOfRecipesSelected.scss";
 
 interface Props {
   listOfRecipesSelected: Recipe[];
@@ -15,7 +16,7 @@ const ListOfRecipesSelected: React.FC<Props> = ({
   onRemove,
 }) => {
   return (
-    <>
+    <div className="container-list-of-recipes-selected">
       <Card>
         <Card.Header>Lista de recipes</Card.Header>
         <Card.Body>
@@ -32,7 +33,7 @@ const ListOfRecipesSelected: React.FC<Props> = ({
           </ul>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 };
 

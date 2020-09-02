@@ -5,6 +5,12 @@
   padding: 35px 0;
 }
 
+.input-name-of-the-list {
+  width: 600px;
+  display: flex;
+  align-self: center;
+}
+
 .create-shopping-list-title {
   text-align: center;
   padding: 20px 0;
@@ -12,18 +18,12 @@
 
 .container-date-picker-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .select-list-title {
   text-align: center;
   padding: 40px 0;
-}
-
-.list-of-Recipe {
-  width: 600px;
-  max-width: 600px;
-  height: auto;
 }
 
 .container-recipe-modal-list-recipe {
@@ -32,7 +32,22 @@
   align-items: center;
 }
 
-.list-of-recipe {
-  width: 600px;
-  max-width: 600px;
+@media only screen and (max-width: 800px) {
+  .container-create-shopping-list {
+    padding: 30px;
+  }
+
+  .input-name-of-the-list {
+    width: 300px;
+  }
+
+  .container-date-picker-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .list-of-Recipe {
+    width: 300px;
+    max-width: 300px;
+  }
 }
