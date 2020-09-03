@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import { db } from "../firebase";
 import "./NewKeyword.scss";
+import { useAuth } from "../providers/AuthProvider";
 
 interface Props {
   onInput: (id: string) => void;
@@ -10,6 +11,7 @@ interface Props {
 
 const NewKeyword: React.FC<Props> = ({ onInput }) => {
   const [newKeyword, setNewKeyword] = useState("");
+  const { value: user } = useAuth();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewKeyword(e.target.value);
@@ -17,7 +19,7 @@ const NewKeyword: React.FC<Props> = ({ onInput }) => {
 
   const handleAddClick = async () => {
     // Add a new document with a generated id.
-    const docRef = await db.collection("users/fake/keywords").add({
+    const docRef = await db.collection(`users/${user!.uid}/keywords`).add({
       name: newKeyword,
     });
     onInput(docRef.id);

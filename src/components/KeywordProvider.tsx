@@ -3,10 +3,12 @@ import { KeywordContext } from "../context";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Keyword, KeywordMap } from "../types";
 import { db } from "../firebase";
+import { useAuth } from "../providers/AuthProvider";
 
 const KeywordProvider: React.FC = ({ children }) => {
+  const { value: user } = useAuth();
   const [value, loading, error] = useCollectionData<Keyword>(
-    db.collection("users/fake/keywords"),
+    db.collection(`users/${user!.uid}/keywords`),
     {
       idField: "id",
     }

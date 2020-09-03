@@ -11,16 +11,20 @@ import "./SearchBox.scss";
 import { db } from "../firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { KeywordContext } from "../context";
+import { useAuth } from "../providers/AuthProvider";
 
 interface Props {
   onResults: (results: Recipe[]) => void;
 }
 
 const SearchBox: React.FC<Props> = ({ onResults }) => {
+  const { value: user } = useAuth();
   const [search, setSearch] = useState("");
   const [keyword, setKeyword] = useState("");
   const query = useMemo(() => {
-    let _query: firebase.firestore.Query = db.collection("users/fake/recipes");
+    let _query: firebase.firestore.Query = db.collection(
+      `users/${user!.uid}/recipes`
+    );
     _query = keyword !== "" ? _query.where("keyword", "==", keyword) : _query;
     _query =
       search !== "" ? _query.where("tokens", "array-contains", search) : _query;

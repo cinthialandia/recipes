@@ -10,6 +10,7 @@ import CompleteShoppingList from "./CompleteShoppingList";
 import ListOfRecipes from "./ListOfRecipes";
 import ListOfRecipesSelected from "./ListOfRecipesSelected";
 import SelectRecipeModal from "./SelectRecipeModal";
+import { useAuth } from "../providers/AuthProvider";
 
 const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [weekTimestamp, setWeektimestamps] = useState<number[]>([]);
@@ -19,6 +20,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   );
   const [selectedRecipes, setSelectedRecipes] = useState<Recipe[]>([]);
   const [name, setName] = useState("");
+  const { value: user } = useAuth();
 
   useEffect(() => {
     const _recipes = [...recipesOfTheWeek, ...selectedRecipes];
@@ -47,7 +49,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
 
   const handleCreateListClick = async () => {
     // Add the ingrdients in the data base
-    const docRef = await db.collection("users/fake/shoppingLists").add({
+    const docRef = await db.collection(`users/${user!.uid}/shoppingLists`).add({
       name,
       ingredients,
     });

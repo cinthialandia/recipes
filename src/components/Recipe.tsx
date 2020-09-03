@@ -18,14 +18,16 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import { Recipe as IRecipe } from "../types";
 import { IngredientContext, KeywordContext } from "../context";
+import { useAuth } from "../providers/AuthProvider";
 
 interface Props extends RouteComponentProps {
   recipeId?: string;
 }
 
 const Recipe: React.FC<Props> = ({ recipeId }) => {
+  const { value: user } = useAuth();
   const [recipe] = useDocumentData<IRecipe>(
-    db.doc(`users/fake/recipes/${recipeId}`)
+    db.doc(`users/${user!.uid}/recipes/${recipeId}`)
   );
 
   const { value: ingredientMap } = useContext(IngredientContext);

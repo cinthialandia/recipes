@@ -8,6 +8,7 @@ import Modal from "react-bootstrap/esm/Modal";
 import ShowRecipe from "./ShowRecipe";
 import { Link } from "@reach/router";
 import SelectRecipeModal from "./SelectRecipeModal";
+import { useAuth } from "../providers/AuthProvider";
 
 const formatDateNumber = (date: Date) => format(date, "d");
 const formatDateName = (date: Date) => format(date, "EEEE");
@@ -24,6 +25,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
   const [show, setShow] = useState(false);
   const [idRecipe, setIdRecipe] = useState("");
   const [type, setType] = useState("");
+  const { value: user } = useAuth();
 
   const filterRecipeByType = (recipes: Recipe[], recipeType: RecipeType) =>
     recipes.filter(
@@ -38,7 +40,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
   const dinner = filterRecipeByType(recipes, "dinner");
 
   const handleOnSelect = async (id: string, type: RecipeType) => {
-    const dbRef = db.doc(`users/fake/recipes/${id}`);
+    const dbRef = db.doc(`users/${user!.uid}/recipes/${id}`);
     const doc = await dbRef.get();
     const data = doc.data() as Recipe;
     const timestamps = data.timestamps ? data.timestamps : [];
@@ -54,7 +56,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
   };
 
   const handleClickRemove = async (id: string, type: string) => {
-    const dbRef = db.doc(`users/fake/recipes/${id}`);
+    const dbRef = db.doc(`users/${user!.uid}/recipes/${id}`);
     const doc = await dbRef.get();
     const data = doc.data() as Recipe;
     const timestamps = data.timestamps ? data.timestamps : [];

@@ -12,6 +12,7 @@ import Nutrition from "./components/Nutrition";
 import Preparation from "./components/Preparation";
 import { db } from "./firebase";
 import createTokens from "./utils/createTokens";
+import { useAuth } from "./providers/AuthProvider";
 
 const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [ingredients, setIngredients] = useState<Recipe["ingredients"]>([]);
@@ -29,9 +30,11 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     proteins: 0,
   });
   const [preparation, setPreparation] = useState("");
+  const { value: user } = useAuth();
 
   const handleClickAddDateBase = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const tokens = createTokens(details.name);
     const recipe: Omit<Recipe, "id"> = {
       ingredients,
@@ -43,7 +46,9 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     };
 
     // Add a new document with a generated id.
-    const docRef = await db.collection("users/fake/recipes").add(recipe);
+    const docRef = await db
+      .collection(`users/${user!.uid}/recipes`)
+      .add(recipe);
     if (navigate) {
       navigate(`/recipe/${docRef.id}`);
     }

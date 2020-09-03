@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { Recipe } from "../types";
+import { useAuth } from "../providers/AuthProvider";
 
 const useRecipesByTimestamps = (timestamps: number[]) => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const { value: user } = useAuth();
 
   useEffect(() => {
     if (timestamps.length === 0) {
@@ -11,7 +13,7 @@ const useRecipesByTimestamps = (timestamps: number[]) => {
       return;
     }
     const unsubscribe = db
-      .collection("users/fake/recipes")
+      .collection(`users/${user!.uid}/recipes`)
       .where("timestamps", "array-contains-any", timestamps)
       .onSnapshot((querySnapshot) => {
         const _recipes: Recipe[] = [];
@@ -22,7 +24,7 @@ const useRecipesByTimestamps = (timestamps: number[]) => {
       });
 
     return () => unsubscribe();
-  }, [timestamps]);
+  }, [timestamps, user]);
 
   return recipes;
 };

@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./NewIngredient.scss";
 import { UNITS } from "../constants";
 import { db } from "../firebase";
+import { useAuth } from "../providers/AuthProvider";
 
 interface Props {
   onInput: (id: string, quantity: number) => void;
@@ -13,6 +14,7 @@ const NewIngredient: React.FC<Props> = ({ onInput }) => {
   const [ingredient, setIngredient] = useState("");
   const [quantity, setQuantity] = useState("0");
   const [unit, setUnit] = useState("");
+  const { value: user } = useAuth();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIngredient(e.target.value);
@@ -30,7 +32,7 @@ const NewIngredient: React.FC<Props> = ({ onInput }) => {
 
   const handleClick = async () => {
     // Add a new document with a generated id.
-    const docRef = await db.collection("users/fake/ingredients").add({
+    const docRef = await db.collection(`users/${user!.uid}/ingredients`).add({
       name: ingredient,
       quantity: 0,
       unit: unit,

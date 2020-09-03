@@ -9,10 +9,12 @@ import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Card from "react-bootstrap/esm/Card";
+import { useAuth } from "./providers/AuthProvider";
 
 const ShoppingList: React.FC<RouteComponentProps> = () => {
+  const { value: user } = useAuth();
   const [values] = useCollectionData<IShoppingList>(
-    db.collection("users/fake/shoppingLists"),
+    db.collection(`users/${user!.uid}/shoppingLists`),
     { idField: "id" }
   );
 
@@ -20,14 +22,14 @@ const ShoppingList: React.FC<RouteComponentProps> = () => {
 
   const onRemove = async (ingredientId: string, list: IShoppingList) => {
     delete list.ingredients[ingredientId];
-    const dbRef = db.doc(`users/fake/shoppingLists/${list.id}`);
+    const dbRef = db.doc(`users/${user!.uid}/shoppingLists/${list.id}`);
     await dbRef.update({
       ingredients: list.ingredients,
     });
   };
 
   const clickRemove = async (list: IShoppingList) => {
-    const dbRef = db.doc(`users/fake/shoppingLists/${list.id}`);
+    const dbRef = db.doc(`users/${user!.uid}/shoppingLists/${list.id}`);
     await dbRef.delete();
   };
 
