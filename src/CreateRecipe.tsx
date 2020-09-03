@@ -10,7 +10,7 @@ import DetailsRecipe from "./components/DetailsRecipe";
 import { RecipeDetails, RecipeNutrition, Recipe } from "./types";
 import Nutrition from "./components/Nutrition";
 import Preparation from "./components/Preparation";
-import { db } from "./firebase";
+import { db, storage } from "./firebase";
 import createTokens from "./utils/createTokens";
 import { useAuth } from "./providers/AuthProvider";
 
@@ -30,9 +30,10 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     proteins: 0,
   });
   const [preparation, setPreparation] = useState("");
+  const [photo, setPhoto] = useState<File>();
   const { value: user } = useAuth();
 
-  const handleClickAddDateBase = async (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const tokens = createTokens(details.name);
@@ -49,19 +50,33 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     const docRef = await db
       .collection(`users/${user!.uid}/recipes`)
       .add(recipe);
+
+    //upload photo
+    if (photo) {
+      const photoRef = storage.ref().child(`${user!.uid}/${docRef.id}`);
+      await photoRef.put(photo);
+
+      const photoUrl = await photoRef.getDownloadURL();
+      await docRef.update({ photo: photoUrl });
+    }
+
     if (navigate) {
       navigate(`/recipe/${docRef.id}`);
     }
   };
 
+  const handlePhotoChange = (file: File) => {
+    setPhoto(file);
+  };
+
   return (
     <div className="container-Create-Recipe">
-      <Form onSubmit={handleClickAddDateBase}>
+      <Form onSubmit={handleFormSubmit}>
         <h2 className="title-create-new-recipe">Create new recipe</h2>
         <h4 className="sub-title-create-recipe">
           Choose a photo for your recipe
         </h4>
-        <Photo />
+        <Photo onChange={handlePhotoChange} />
         <h4 className="sub-title-create-recipe">Details of the recipe</h4>
         <DetailsRecipe details={details} setDetails={setDetails} />
         <h4 className="sub-title-create-recipe">Nutrition</h4>

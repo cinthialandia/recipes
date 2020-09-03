@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 
-const Photo: React.FC = () => {
+interface Props {
+  onChange: (file: File) => void;
+}
+
+const Photo: React.FC<Props> = ({ onChange }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return;
+    }
+
+    onChange(e.target.files[0]);
+  };
+
   return (
     <div>
       {" "}
@@ -9,7 +21,7 @@ const Photo: React.FC = () => {
         <Form.File
           name="file"
           label="Upload a photo"
-          // onChange={handleChange}
+          onChange={handleChange}
           // isInvalid={!!errors.file}
           // feedback={errors.file}
           id="validationFormik107"
