@@ -9,37 +9,8 @@
   margin: 0 auto;
   align-items: center;
   padding: 20px 0;
-
-  Button {
-    background-color: #f93c64;
-    border-color: #f93c64;
-  }
-}
-
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #f93c64;
-  border-color: #f93c64;
 }
 
 .register-user-button {
   text-align: center;
-}
-
-.btn-primary:focus,
-.btn-primary.focus {
-  color: #fff;
-  background-color: #f93c64;
-  border-color: #f93c64;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #f93c64;
-  border-color: #f93c64;
-}
-
-@media only screen and (max-width: 800px) {
 }

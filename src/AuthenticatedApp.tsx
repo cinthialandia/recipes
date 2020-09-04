@@ -19,7 +19,7 @@ import IngredientsProvider from "./components/IngredientProvider";
 import KeywordProvider from "./components/KeywordProvider";
 import CreateShoppingList from "./CreateShoppingList";
 import { auth } from "./firebase";
-import Button from "react-bootstrap/esm/Button";
+import logo from "./img/logo.png";
 
 function AuthenticatedApp() {
   const logout = () => {
@@ -29,74 +29,52 @@ function AuthenticatedApp() {
   return (
     <>
       <header>
+        <Navbar.Brand>
+          <Link to="/">
+            <img src={logo} alt="Logo" style={{ width: "50px" }} />
+          </Link>
+        </Navbar.Brand>
         <Link className="nav" to="/">
-          <Button variant="light">
-            {" "}
-            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faHome} /> Home
-          </Button>
+          Home
         </Link>
         <Link className="nav" to="calendar">
-          <Button variant="light">
-            {" "}
-            <FontAwesomeIcon
-              style={{ color: "#6C757D" }}
-              icon={faCalendarAlt}
-            />{" "}
-            Calendar
-          </Button>
+          Calendar
         </Link>
         <Link className="nav" to="shopping-list">
-          <Button variant="light">
-            {" "}
-            <FontAwesomeIcon
-              style={{ color: "#6C757D" }}
-              icon={faShoppingCart}
-            />{" "}
-            Shopping List
-          </Button>
+          Shopping List
         </Link>
         <Link className="nav" to="create-recipe">
-          <Button variant="light">
-            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faFile} />{" "}
-            Create recipe
-          </Button>
+          Create recipe
         </Link>
-        <Button variant="light" onClick={logout}>
-          <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faSignOutAlt} />{" "}
+        <Link className="nav" to="" onClick={logout}>
           Logout
-        </Button>
+        </Link>
       </header>
       <Navbar className="nav-container" expand="lg" bg="light">
         <Navbar.Brand>
           <Link className="nav" to="/">
-            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faHome} />
+            <FontAwesomeIcon icon={faHome} />
           </Link>
         </Navbar.Brand>
         <Navbar.Brand>
           <Link className="nav" to="calendar">
-            <FontAwesomeIcon
-              style={{ color: "#6C757D" }}
-              icon={faCalendarAlt}
-            />
+            <FontAwesomeIcon icon={faCalendarAlt} />
           </Link>
         </Navbar.Brand>
         <Navbar.Brand>
           <Link className="nav" to="shopping-list">
-            <FontAwesomeIcon
-              style={{ color: "#6C757D" }}
-              icon={faShoppingCart}
-            />
+            <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
         </Navbar.Brand>
         <Navbar.Brand>
           <Link className="nav" to="create-recipe">
-            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faFile} />
+            <FontAwesomeIcon icon={faFile} />
           </Link>
         </Navbar.Brand>
         <Navbar.Brand>
-          <Button variant="light" onClick={logout}>
-            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faSignOutAlt} />
-          </Button>
+          <Link onClick={logout} className="nav" to="">
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </Link>
         </Navbar.Brand>
       </Navbar>
       <div className="App">
