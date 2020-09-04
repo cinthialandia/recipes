@@ -5,8 +5,8 @@ import UnauthenticatedApp from "./UnauthenticatedApp";
 
 //copied from https://kentcdodds.com/blog/authentication-in-react-applications
 function App() {
-  const { value: user, loading, error } = useAuth();
-  console.log(user);
+  const { value: user, loading } = useAuth();
+
   return loading ? (
     <div>loading...</div>
   ) : user ? (

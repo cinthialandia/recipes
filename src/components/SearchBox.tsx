@@ -30,7 +30,7 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
       search !== "" ? _query.where("tokens", "array-contains", search) : _query;
 
     return _query;
-  }, [keyword, search]);
+  }, [keyword, search, user]);
 
   const [values] = useCollectionData<Recipe>(query, { idField: "id" });
 

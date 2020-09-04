@@ -49,7 +49,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
 
   const handleCreateListClick = async () => {
     // Add the ingrdients in the data base
-    const docRef = await db.collection(`users/${user!.uid}/shoppingLists`).add({
+    await db.collection(`users/${user!.uid}/shoppingLists`).add({
       name,
       ingredients,
     });
