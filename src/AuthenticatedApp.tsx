@@ -6,6 +6,7 @@ import {
   faCalendarAlt,
   faShoppingCart,
   faFile,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "react-bootstrap/Navbar";
 import Home from "./Home";
@@ -57,7 +58,7 @@ function AuthenticatedApp() {
         </IngredientsProvider>
       </div>
       <footer>
-        <Navbar className="nav-container" expand="lg" bg="dark" variant="dark">
+        <Navbar className="nav-container" expand="lg" bg="light">
           <Navbar.Brand>
             <Link className="nav" to="/">
               <FontAwesomeIcon icon={faHome} />
@@ -77,6 +78,11 @@ function AuthenticatedApp() {
             <Link className="nav" to="create-recipe">
               <FontAwesomeIcon icon={faFile} />
             </Link>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <Button variant="light" onClick={logout}>
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </Button>
           </Navbar.Brand>
         </Navbar>
       </footer>
