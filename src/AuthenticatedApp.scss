@@ -4,11 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Sniglet&family=Space+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
 
-// h2 {
-//   font-family: "Bad Script", cursive;
-//   font-size: 40px;
-// }
-
 h4 {
   font-family: "Caveat", cursive;
   font-size: 30px;
@@ -27,9 +22,10 @@ body {
 header {
   display: flex;
   justify-content: space-evenly;
+  margin: 20px 0;
 }
 
-footer {
+.nav-container {
   display: none;
 }
 
@@ -39,11 +35,9 @@ footer {
   }
 
   //  this for the nav stick on the screen
-  footer {
-    overflow: hidden;
-    position: fixed;
+  .nav-container {
+    display: flex;
     bottom: 0;
-    display: block;
     width: 100%;
   }
 }

@@ -30,21 +30,75 @@ function AuthenticatedApp() {
     <>
       <header>
         <Link className="nav" to="/">
-          Home
+          <Button variant="light">
+            {" "}
+            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faHome} /> Home
+          </Button>
         </Link>
         <Link className="nav" to="calendar">
-          Calendar
+          <Button variant="light">
+            {" "}
+            <FontAwesomeIcon
+              style={{ color: "#6C757D" }}
+              icon={faCalendarAlt}
+            />{" "}
+            Calendar
+          </Button>
         </Link>
         <Link className="nav" to="shopping-list">
-          Shopping List
+          <Button variant="light">
+            {" "}
+            <FontAwesomeIcon
+              style={{ color: "#6C757D" }}
+              icon={faShoppingCart}
+            />{" "}
+            Shopping List
+          </Button>
         </Link>
         <Link className="nav" to="create-recipe">
-          Create recipe
+          <Button variant="light">
+            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faFile} />{" "}
+            Create recipe
+          </Button>
         </Link>
-        <Button variant="link" onClick={logout}>
+        <Button variant="light" onClick={logout}>
+          <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faSignOutAlt} />{" "}
           Logout
         </Button>
       </header>
+      <Navbar className="nav-container" expand="lg" bg="light">
+        <Navbar.Brand>
+          <Link className="nav" to="/">
+            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faHome} />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Brand>
+          <Link className="nav" to="calendar">
+            <FontAwesomeIcon
+              style={{ color: "#6C757D" }}
+              icon={faCalendarAlt}
+            />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Brand>
+          <Link className="nav" to="shopping-list">
+            <FontAwesomeIcon
+              style={{ color: "#6C757D" }}
+              icon={faShoppingCart}
+            />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Brand>
+          <Link className="nav" to="create-recipe">
+            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faFile} />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Brand>
+          <Button variant="light" onClick={logout}>
+            <FontAwesomeIcon style={{ color: "#6C757D" }} icon={faSignOutAlt} />
+          </Button>
+        </Navbar.Brand>
+      </Navbar>
       <div className="App">
         <IngredientsProvider>
           <KeywordProvider>
@@ -59,35 +113,6 @@ function AuthenticatedApp() {
           </KeywordProvider>
         </IngredientsProvider>
       </div>
-      <footer>
-        <Navbar className="nav-container" expand="lg" bg="light">
-          <Navbar.Brand>
-            <Link className="nav" to="/">
-              <FontAwesomeIcon icon={faHome} />
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Brand>
-            <Link className="nav" to="calendar">
-              <FontAwesomeIcon icon={faCalendarAlt} />
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Brand>
-            <Link className="nav" to="shopping-list">
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Brand>
-            <Link className="nav" to="create-recipe">
-              <FontAwesomeIcon icon={faFile} />
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Brand>
-            <Button variant="light" onClick={logout}>
-              <FontAwesomeIcon icon={faSignOutAlt} />
-            </Button>
-          </Navbar.Brand>
-        </Navbar>
-      </footer>
     </>
   );
 }
