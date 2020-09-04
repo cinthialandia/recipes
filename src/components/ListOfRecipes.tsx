@@ -13,8 +13,8 @@ const ListOfRecipes: React.FC<Props> = ({ listOfRecipes }) => {
         <Card.Header>Lista de recipes</Card.Header>
         <Card.Body>
           <ul>
-            {listOfRecipes.map(({ name, id }) => {
-              return <li key={id}>{name}</li>;
+            {listOfRecipes.map(({ name }, index) => {
+              return <li key={index}>{name}</li>;
             })}
           </ul>
         </Card.Body>

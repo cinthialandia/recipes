@@ -17,7 +17,7 @@ import CreateRecipe from "./CreateRecipe";
 import Recipe from "./components/Recipe";
 import IngredientsProvider from "./components/IngredientProvider";
 import KeywordProvider from "./components/KeywordProvider";
-import CreateShoppingList from "./components/CreateShoppingList";
+import CreateShoppingList from "./CreateShoppingList";
 import { auth } from "./firebase";
 import Button from "react-bootstrap/esm/Button";
 

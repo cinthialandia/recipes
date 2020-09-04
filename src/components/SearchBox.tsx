@@ -46,7 +46,7 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
   };
 
   const handleSelectFilter = (select: string) => {

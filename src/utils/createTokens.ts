@@ -1,9 +1,10 @@
 const MIN_QUERY_LENGTH = 4;
 
 const createTokens = (str: string) => {
+  const strToLowerCase = str.toLowerCase();
   const [minChars, restStr] = [
-    str.slice(0, MIN_QUERY_LENGTH),
-    str.slice(MIN_QUERY_LENGTH),
+    strToLowerCase.slice(0, MIN_QUERY_LENGTH),
+    strToLowerCase.slice(MIN_QUERY_LENGTH),
   ];
   const arrName: string[] = [minChars];
   let curName = `${minChars}`;

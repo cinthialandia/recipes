@@ -1,20 +1,20 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
-import { Recipe, ShoppingList } from "../types";
+import { Recipe, ShoppingList } from "./types";
 import "./CreateShoppingList.scss";
 import Form from "react-bootstrap/Form";
-import DatePicker from "./DatePicker";
-import useRecipesByTimestamps from "../hooks/useRecipesByTimestamps";
-import { db } from "../firebase";
-import CompleteShoppingList from "./CompleteShoppingList";
-import ListOfRecipes from "./ListOfRecipes";
-import ListOfRecipesSelected from "./ListOfRecipesSelected";
-import SelectRecipeModal from "./SelectRecipeModal";
-import { useAuth } from "../providers/AuthProvider";
+import DatePicker from "./components/DatePicker";
+import { db } from "./firebase";
+import CompleteShoppingList from "./components/CompleteShoppingList";
+import ListOfRecipes from "./components/ListOfRecipes";
+import ListOfRecipesSelected from "./components/ListOfRecipesSelected";
+import SelectRecipeModal from "./components/SelectRecipeModal";
+import { useAuth } from "./providers/AuthProvider";
+import useAllRecipesByTimestamps from "./hooks/useAllRecipesByTimestamps";
 
 const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [weekTimestamp, setWeektimestamps] = useState<number[]>([]);
-  const recipesOfTheWeek = useRecipesByTimestamps(weekTimestamp);
+  const recipesOfTheWeek = useAllRecipesByTimestamps(weekTimestamp);
   const [ingredients, setIngredients] = useState<ShoppingList["ingredients"]>(
     {}
   );
@@ -34,7 +34,6 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
       });
       return acc;
     }, {} as ShoppingList["ingredients"]);
-    console.log(_ingredients);
 
     setIngredients(_ingredients);
   }, [recipesOfTheWeek, selectedRecipes]);
