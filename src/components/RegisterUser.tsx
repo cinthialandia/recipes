@@ -4,17 +4,17 @@ import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
 
 interface Props {
-  handleSignUp: (register: boolean) => void;
+  handleRegister: (signUp: boolean) => void;
 }
 
-const Login: React.FC<Props> = ({ handleSignUp }) => {
+const RegisterUser: React.FC<Props> = ({ handleRegister }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const values = new FormData(e.target as HTMLFormElement);
     const email = values.get("email") as string;
     const password = values.get("password") as string;
 
-    auth.signInWithEmailAndPassword(email, password);
+    auth.createUserWithEmailAndPassword(email, password);
   };
 
   return (
@@ -36,11 +36,11 @@ const Login: React.FC<Props> = ({ handleSignUp }) => {
           Submit
         </Button>
       </Form>
-      <Button variant="link" onClick={() => handleSignUp(false)}>
-        Not user yet? Sign up
+      <Button variant="link" onClick={() => handleRegister(true)}>
+        Do you have a user? Log in
       </Button>
     </div>
   );
 };
 
-export default Login;
+export default RegisterUser;
