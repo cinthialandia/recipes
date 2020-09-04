@@ -41,7 +41,9 @@ function AuthenticatedApp() {
         <Link className="nav" to="create-recipe">
           Create recipe
         </Link>
-        <Button onClick={logout}>Logout</Button>
+        <Button variant="link" onClick={logout}>
+          Logout
+        </Button>
       </header>
       <div className="App">
         <IngredientsProvider>

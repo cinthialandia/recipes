@@ -1,68 +1,126 @@
 .Recipes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 30px;
 }
 
-.recipe-name {
-  font-family: "Bad Script", cursive;
-  color: #e25523;
-}
-
 .recipes-link {
-  flex-basis: 30%;
-  margin: 10px 10px;
-  padding: 2px;
+  margin: 10px;
 }
 
 .recipes-title-name {
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
+  padding: 5px 0;
   color: black;
 }
 
 .recipes-details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: 15px;
   color: black;
+  padding: 5px 0;
 }
 
 .card-body.details {
   padding: 10px;
 }
 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  max-width: 400px;
+  height: auto;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  max-width: 400px;
+  height: auto;
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+  max-width: 400px;
+  height: auto;
+}
+
 @media screen and (max-width: 800px) {
   .Recipes {
     margin: 30px;
-  }
-
-  .recipes-link {
-    flex-basis: 40%;
+    justify-content: center;
   }
 
   .recipes-title-name {
-    font-size: 10px;
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    max-width: 250px;
+    height: auto;
   }
 
   .recipes-details {
-    flex-direction: column;
-    align-items: center;
-    font-size: 7px;
+    justify-content: space-evenly;
+    font-size: 10px;
   }
 
-  .card-body.details {
-    padding: 5px;
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+    padding: 2px 16px;
+    max-width: 250px;
+    height: auto;
+  }
+
+  img {
+    border-radius: 5px 5px 0 0;
+    max-width: 250px;
+    height: auto;
   }
 }
 
 @media screen and (max-width: 400px) {
   .Recipes {
-    display: flex;
-    justify-content: center;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: center;
   }
-  .recipes-link {
-    flex-basis: 80%;
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    max-width: 200px;
+    height: auto;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+    padding: 2px 16px;
+    max-width: 200px;
+    height: auto;
+  }
+
+  img {
+    border-radius: 5px 5px 0 0;
+    max-width: 200px;
+    height: auto;
   }
 }
