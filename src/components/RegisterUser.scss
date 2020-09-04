@@ -1,0 +1,29 @@
+.create-new-account {
+  text-align: center;
+  color: #f93c64;
+}
+
+.container-for-register-user {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  padding: 20px 0;
+
+  Button {
+    background-color: #f93c64;
+    border-color: #f93c64;
+  }
+}
+
+.log-in-button {
+  text-align: center;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #f93c64;
+  border-color: #f93c64;
+}

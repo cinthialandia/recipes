@@ -18,8 +18,8 @@ const UnauthenticatedApp = () => {
   return (
     <div>
       <div className="logo">
-        <h1>Cinthialandia Recipes</h1>
         <img src={logo} alt="Logo" />
+        <h1>Cinthialandia Recipes</h1>
       </div>
       {login ? (
         <Login handleSignUp={handleSignUp} />
