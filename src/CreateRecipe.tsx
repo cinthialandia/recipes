@@ -77,11 +77,16 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
   return (
     <div className="container-Create-Recipe">
       <Form onSubmit={handleFormSubmit}>
-        <h2 className="title-create-new-recipe">Create new recipe</h2>
+        <div className="title-create-new-recipe">Create new recipe</div>
+
         <h4 className="sub-title-create-recipe">
           Choose a photo for your recipe
         </h4>
-        <Photo onChange={setPhoto} />
+        <div className="container-photo-create-recipe">
+          {" "}
+          <Photo onChange={setPhoto} />
+        </div>
+
         <h4 className="sub-title-create-recipe">Details of the recipe</h4>
         <DetailsRecipe details={details} setDetails={setDetails} />
         <h4 className="sub-title-create-recipe">Nutrition</h4>

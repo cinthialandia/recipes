@@ -1,18 +1,25 @@
 .title-create-new-recipe {
-  font-size: 35px;
   text-align: center;
-  padding: 45px 0;
+  font-family: "Pacifico", cursive;
+
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+
+.container-photo-create-recipe {
+  display: flex;
+  justify-content: center;
 }
 
 .container-Create-Recipe {
   display: flex;
   justify-content: center;
-  padding: 35px 0;
 }
 
 .sub-title-create-recipe {
   text-align: center;
-  padding: 30px 0;
+  padding: 20px 0;
+  font-size: 20px;
 }
 
 .button-submit-create-recipe {
@@ -20,6 +27,10 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .title-create-new-recipe {
+    margin: 30px 0;
+  }
+
   .container-Create-Recipe {
     margin: 0 20px;
   }
