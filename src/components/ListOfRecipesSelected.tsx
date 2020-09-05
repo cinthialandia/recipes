@@ -5,15 +5,18 @@ import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./ListOfRecipesSelected.scss";
+import SelectRecipeModal from "./SelectRecipeModal";
 
 interface Props {
   listOfRecipesSelected: Recipe[];
   onRemove: (id: string) => void;
+  onSelect: (recipe: Recipe) => void;
 }
 
 const ListOfRecipesSelected: React.FC<Props> = ({
   listOfRecipesSelected,
   onRemove,
+  onSelect,
 }) => {
   return (
     <div className="container-list-of-recipes-selected">
@@ -31,6 +34,7 @@ const ListOfRecipesSelected: React.FC<Props> = ({
               </li>
             ))}
           </ul>
+          <SelectRecipeModal onSelect={onSelect} />
         </Card.Body>
       </Card>
     </div>

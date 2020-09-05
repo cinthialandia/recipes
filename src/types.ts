@@ -54,6 +54,7 @@ export interface Recipe extends RecipeDetails {
 export interface ShoppingList {
   id: string;
   name: string;
+  others?: string[];
   ingredients: {
     [id: string]: number;
   };

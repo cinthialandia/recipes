@@ -11,6 +11,7 @@ import ListOfRecipesSelected from "./components/ListOfRecipesSelected";
 import SelectRecipeModal from "./components/SelectRecipeModal";
 import { useAuth } from "./providers/AuthProvider";
 import useAllRecipesByTimestamps from "./hooks/useAllRecipesByTimestamps";
+import ListOfOthers from "./components/ListOfOthers";
 
 const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [weekTimestamp, setWeektimestamps] = useState<number[]>([]);
@@ -21,6 +22,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
   const [selectedRecipes, setSelectedRecipes] = useState<Recipe[]>([]);
   const [name, setName] = useState("");
   const { value: user } = useAuth();
+  const [others, setOthers] = useState<string[]>([]);
 
   useEffect(() => {
     const _recipes = [...recipesOfTheWeek, ...selectedRecipes];
@@ -51,6 +53,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
     await db.collection(`users/${user!.uid}/shoppingLists`).add({
       name,
       ingredients,
+      others,
     });
     if (navigate) {
       navigate(`/shopping-list/`);
@@ -73,6 +76,17 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
         return idToDelete !== id;
       })
     );
+  };
+
+  const handleOtherSelect = (item: string) => {
+    const newOthers = [...others, item];
+    setOthers(newOthers);
+  };
+
+  const handleOtherRemove = (index: number) => {
+    const newOthers = [...others];
+    newOthers.splice(index, 1);
+    setOthers(newOthers);
   };
 
   return (
@@ -102,15 +116,23 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
         Select another recipe to include on the shopping list
       </h3>
       <div className="container-recipe-modal-list-recipe">
-        <div className="select-recipe-modal">
-          <SelectRecipeModal onSelect={handleRecipeSelect} />
-        </div>
         <div className="list-of-recipe">
           <ListOfRecipesSelected
             listOfRecipesSelected={selectedRecipes}
+            onSelect={handleRecipeSelect}
             onRemove={removeRecipe}
           />
         </div>
+      </div>
+      <h3 className="select-list-title">
+        Add other items to your shopping list
+      </h3>
+      <div className="container-others-list">
+        <ListOfOthers
+          listOfItems={others}
+          onSelect={handleOtherSelect}
+          onRemove={handleOtherRemove}
+        />
       </div>
       <h3 className="select-list-title">Shopping list to create</h3>
       <CompleteShoppingList
@@ -118,6 +140,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
         ingredientsOfRecipe={ingredients}
         onRemove={removeIngredient}
         handleCreateListClick={handleCreateListClick}
+        listOfOthers={others}
       />
     </div>
   );

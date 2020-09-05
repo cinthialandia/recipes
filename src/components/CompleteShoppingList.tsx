@@ -6,12 +6,14 @@ import { ShoppingList } from "../types";
 import { IngredientContext } from "../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ListOfOthers from "./ListOfOthers";
 
 interface Props {
   nameOfRecipe?: string;
   ingredientsOfRecipe: ShoppingList["ingredients"];
   onRemove: (id: string) => void;
   handleCreateListClick: () => void;
+  listOfOthers?: string[];
 }
 
 const CompleteShoppingList: React.FC<Props> = ({
@@ -19,6 +21,7 @@ const CompleteShoppingList: React.FC<Props> = ({
   ingredientsOfRecipe,
   onRemove,
   handleCreateListClick,
+  listOfOthers,
 }) => {
   const { value: ingredientMap } = useContext(IngredientContext);
   const ingredientsArr = Object.entries(ingredientsOfRecipe);
@@ -39,6 +42,12 @@ const CompleteShoppingList: React.FC<Props> = ({
                 </li>
               ) : null
             )}
+          </ul>
+
+          <div>Others</div>
+          <ul>
+            {listOfOthers &&
+              listOfOthers.map((item, index) => <li key={index}>{item}</li>)}
           </ul>
         </Card.Body>
         <div className="button-create-shopping-list">

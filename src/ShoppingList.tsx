@@ -7,7 +7,7 @@ import { db } from "./firebase";
 import { IngredientContext } from "./context";
 import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Card from "react-bootstrap/esm/Card";
 import { useAuth } from "./providers/AuthProvider";
 
@@ -25,6 +25,20 @@ const ShoppingList: React.FC<RouteComponentProps> = () => {
     const dbRef = db.doc(`users/${user!.uid}/shoppingLists/${list.id}`);
     await dbRef.update({
       ingredients: list.ingredients,
+    });
+  };
+
+  const onRemoveOthers = async (index: number, list: IShoppingList) => {
+    if (!list.others) {
+      return;
+    }
+
+    const newOthers = [...list.others];
+    newOthers.splice(index, 1);
+
+    const dbRef = db.doc(`users/${user!.uid}/shoppingLists/${list.id}`);
+    await dbRef.update({
+      others: newOthers,
     });
   };
 
@@ -56,14 +70,27 @@ const ShoppingList: React.FC<RouteComponentProps> = () => {
                             onClick={() => onRemove(id, list)}
                             variant="link"
                           >
-                            <FontAwesomeIcon icon={faTrash} />
+                            <FontAwesomeIcon icon={faCheck} />
                           </Button>
                           {ingredientMap[id].name}: {quantity}{" "}
                           {ingredientMap[id].unit}
                         </li>
                       ) : null
                     )}
+                    {list.others &&
+                      list.others.map((item, index) => (
+                        <li key={index} className="showIngredient-selected">
+                          <Button
+                            onClick={() => onRemoveOthers(index, list)}
+                            variant="link"
+                          >
+                            <FontAwesomeIcon icon={faCheck} />
+                          </Button>
+                          {item}
+                        </li>
+                      ))}
                   </ul>
+
                   <div className="button-delete-create-shopping-list">
                     <Button onClick={() => clickRemove(list)} variant="danger">
                       Delete the list
