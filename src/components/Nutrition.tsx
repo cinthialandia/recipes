@@ -36,6 +36,7 @@ const DetailsRecipe: React.FC<Props> = ({ nutrition, setNutrition }) => {
             <Form.Control
               onChange={handleInpuCalories}
               type="number"
+              step="any"
               min="0"
               placeholder=""
               value={nutrition.calories}
@@ -52,6 +53,7 @@ const DetailsRecipe: React.FC<Props> = ({ nutrition, setNutrition }) => {
               value={nutrition.carbohydrates}
               onChange={handleInpuCarbs}
               type="number"
+              step="any"
               min="0"
               placeholder=""
             />
@@ -67,6 +69,7 @@ const DetailsRecipe: React.FC<Props> = ({ nutrition, setNutrition }) => {
               value={nutrition.proteins}
               onChange={handleInpuProteins}
               type="number"
+              step="any"
               min="0"
               placeholder=""
             />
@@ -82,6 +85,7 @@ const DetailsRecipe: React.FC<Props> = ({ nutrition, setNutrition }) => {
               value={nutrition.fats}
               onChange={handleInpuFats}
               type="number"
+              step="any"
               min="0"
               placeholder=""
             />

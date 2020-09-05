@@ -48,6 +48,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
             <InputGroup>
               <Form.Control
                 type="number"
+                step="any"
                 min="0"
                 placeholder="number of people"
                 onChange={handleInputServing}
@@ -62,6 +63,7 @@ const DetailsRecipe: React.FC<Props> = ({ details, setDetails }) => {
               <Form.Control
                 value={details.time}
                 type="number"
+                step="any"
                 min="0"
                 placeholder="time in minutes"
                 onChange={handleInputTime}

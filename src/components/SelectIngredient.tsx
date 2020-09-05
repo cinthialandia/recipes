@@ -58,6 +58,7 @@ const SelectIngredient: React.FC<Props> = ({ onInput }) => {
             <Form.Control
               onChange={handleQuantityChange}
               type="number"
+              step="any"
               min="0"
               placeholder="Quantity"
               value={ingredientQuantity}
