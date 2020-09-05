@@ -11,7 +11,7 @@ const ListOfRecipes: React.FC<Props> = ({ listOfRecipes }) => {
   return (
     <div className="container-list-of-recipes-card">
       <Card>
-        <Card.Header>Lista de recipes</Card.Header>
+        <Card.Header>Recipes of the week</Card.Header>
         <Card.Body>
           <ul>
             {listOfRecipes.map(({ name }, index) => {

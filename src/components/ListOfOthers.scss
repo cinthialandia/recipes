@@ -5,4 +5,13 @@
   .card {
     width: 600px;
   }
+
+  .newItem-input {
+    display: flex;
+    align-items: baseline;
+
+    .newItem-button {
+      margin: 0 15px;
+    }
+  }
 }

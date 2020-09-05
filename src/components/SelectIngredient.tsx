@@ -13,7 +13,7 @@ interface Props {
 
 const SelectIngredient: React.FC<Props> = ({ onInput }) => {
   const [ingredientSelect, setIngredienteSelect] = useState<Ingredient>();
-  const [ingredientQuantity, setIngredientQauntity] = useState<number>(0);
+  const [ingredientQuantity, setIngredientQauntity] = useState("0");
   const { value: ingredientMap } = useContext(IngredientContext);
 
   const ingredientList = ingredientMap ? Object.values(ingredientMap) : [];
@@ -23,15 +23,14 @@ const SelectIngredient: React.FC<Props> = ({ onInput }) => {
       return;
     }
 
-    onInput(ingredientSelect.id, ingredientQuantity);
+    onInput(ingredientSelect.id, parseFloat(ingredientQuantity));
     //cleaning inputs
-    setIngredientQauntity(0);
+    setIngredientQauntity("0");
     setIngredienteSelect(undefined);
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const quantity = e.target.value === "" ? 0 : parseInt(e.target.value);
-    setIngredientQauntity(quantity);
+    setIngredientQauntity(e.target.value);
   };
 
   const handleIngredientSelect = ([ingredient]: Ingredient[]) => {

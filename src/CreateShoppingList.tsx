@@ -100,19 +100,19 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
           <Col>
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
-                <Nav.Link eventKey="first">Name</Nav.Link>
+                <Nav.Link eventKey="first">1. Name</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="two">Week</Nav.Link>
+                <Nav.Link eventKey="two">2. Recipes by week</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="three">New recipe</Nav.Link>
+                <Nav.Link eventKey="three">3. Single recipes</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="four">Items</Nav.Link>
+                <Nav.Link eventKey="four">4. Other items</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="five">Shopping list</Nav.Link>
+                <Nav.Link eventKey="five">5. Shopping list</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
@@ -174,7 +174,7 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
               </Tab.Pane>
               <Tab.Pane eventKey="five">
                 <div className="title-tab-shopping-list">
-                  Create your shopping list
+                  Confirm and create your shopping list
                 </div>
                 <div className="container-list-shopping-title">
                   <CompleteShoppingList

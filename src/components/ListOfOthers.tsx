@@ -29,7 +29,6 @@ const ListOfOthers: React.FC<Props> = ({ listOfItems, onRemove, onSelect }) => {
   return (
     <div className="container-list-of-other">
       <Card>
-        <Card.Header>List of other items</Card.Header>
         <Card.Body>
           <ul style={{ listStyle: "none", paddingLeft: "0" }}>
             {listOfItems.map((item, index) => (
@@ -41,19 +40,18 @@ const ListOfOthers: React.FC<Props> = ({ listOfItems, onRemove, onSelect }) => {
               </li>
             ))}
           </ul>
-
-          <Form.Group className="newItem-input">
-            <Form.Label>Add a new item</Form.Label>
+          <div className="newItem-input">
             <Form.Control
               value={newItem}
               onChange={handleChangeInput}
               type="text"
               placeholder="Enter an item"
             />
-          </Form.Group>
-          <Button className="newItem-button" onClick={handleAddClick}>
-            Add
-          </Button>
+            <div className="newItem-button">
+              {" "}
+              <Button onClick={handleAddClick}>Add</Button>
+            </div>
+          </div>
         </Card.Body>
       </Card>
     </div>

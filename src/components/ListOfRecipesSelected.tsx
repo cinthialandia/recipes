@@ -21,7 +21,6 @@ const ListOfRecipesSelected: React.FC<Props> = ({
   return (
     <div className="container-list-of-recipes-selected">
       <Card>
-        <Card.Header>Lista de recipes</Card.Header>
         <Card.Body>
           <ul style={{ listStyle: "none", paddingLeft: "0" }}>
             {listOfRecipesSelected.map(({ name, id }) => (

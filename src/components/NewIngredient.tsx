@@ -38,6 +38,9 @@ const NewIngredient: React.FC<Props> = ({ onInput }) => {
       unit: unit,
     });
     onInput(docRef.id, parseFloat(quantity));
+    setIngredient("");
+    setQuantity("0");
+    setUnit("");
   };
 
   return (
