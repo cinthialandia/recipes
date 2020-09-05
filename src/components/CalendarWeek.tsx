@@ -24,19 +24,19 @@ const CalendarWeek: React.FC = () => {
           </span>
         </div>
         <div>
-          Breakfast{" "}
+          <div>Breakfast</div>
           <span role="img" aria-label="meal">
             🥞
           </span>
         </div>
         <div>
-          Lunch{" "}
+          <div>Lunch</div>
           <span role="img" aria-label="meal">
             🥗
           </span>
         </div>
         <div>
-          Dinner{" "}
+          <div>Dinner</div>
           <span role="img" aria-label="meal">
             🍝
           </span>

@@ -2,8 +2,10 @@ $border: 1px solid #e2ebfc;
 
 .title-calendar {
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 0;
+  font-family: "Pacifico", cursive;
 }
+
 .title-meal {
   display: flex;
   justify-content: center;
@@ -36,22 +38,7 @@ $border: 1px solid #e2ebfc;
   border-top: $border;
   padding: 5px;
   min-height: 100px;
-}
-
-.calendar-week-container-button-and-date {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-
-  button {
-    color: #7b7e81;
-    max-height: 40px;
-  }
-  h2 {
-    font-size: 25px;
-    padding: 10px;
-    color: #878d95;
-  }
+  min-width: 160px;
 }
 
 .title-meal-month-year-container {
@@ -75,6 +62,7 @@ $border: 1px solid #e2ebfc;
     border-left: $border;
     border-top: $border;
     padding: 10px;
+    min-width: 160px;
   }
 
   .title-meal {

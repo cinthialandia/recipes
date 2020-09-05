@@ -1,0 +1,23 @@
+.calendar-week-container-button-and-date {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  button {
+    color: #7b7e81;
+    max-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    padding: 10px;
+    color: #878d95;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .calendar-week-container-button-and-date {
+    h2 {
+      font-size: 15px;
+    }
+  }
+}

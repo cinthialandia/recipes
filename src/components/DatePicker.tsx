@@ -10,7 +10,7 @@ import {
 import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import "./CalendarWeek.scss";
+import "./DatePicker.scss";
 
 const getWeekDates = (date: Date) => {
   const start = startOfWeek(date);
