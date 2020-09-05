@@ -15,6 +15,7 @@ import createTokens from "./utils/createTokens";
 import { useAuth } from "./providers/AuthProvider";
 
 const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
+  const { value: user } = useAuth();
   const [ingredients, setIngredients] = useState<Recipe["ingredients"]>([]);
   const [keyword, setKeyword] = useState("");
   const [details, setDetails] = useState<RecipeDetails>({
@@ -30,8 +31,7 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     proteins: 0,
   });
   const [preparation, setPreparation] = useState("");
-  const [photo, setPhoto] = useState<File>();
-  const { value: user } = useAuth();
+  const [photo, setPhoto] = useState<Blob>();
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,10 +65,6 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     }
   };
 
-  const handlePhotoChange = (file: File) => {
-    setPhoto(file);
-  };
-
   return (
     <div className="container-Create-Recipe">
       <Form onSubmit={handleFormSubmit}>
@@ -76,7 +72,7 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
         <h4 className="sub-title-create-recipe">
           Choose a photo for your recipe
         </h4>
-        <Photo onChange={handlePhotoChange} />
+        <Photo onChange={setPhoto} />
         <h4 className="sub-title-create-recipe">Details of the recipe</h4>
         <DetailsRecipe details={details} setDetails={setDetails} />
         <h4 className="sub-title-create-recipe">Nutrition</h4>
