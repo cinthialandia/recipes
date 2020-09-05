@@ -113,7 +113,10 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
           >
             Preparation
           </h4>
-          <div className="recipe-preparation">{recipe.preparation}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: recipe.preparation }}
+            className="recipe-preparation"
+          ></div>
         </div>
       </div>
 
@@ -189,7 +192,10 @@ const Recipe: React.FC<Props> = ({ recipeId }) => {
             </div>
           </Tab>
           <Tab eventKey="contact" title="Preparation">
-            <div className="recipe-preparation">{recipe.preparation}</div>
+            <div
+              dangerouslySetInnerHTML={{ __html: recipe.preparation }}
+              className="recipe-preparation"
+            ></div>
           </Tab>
         </Tabs>
       </div>

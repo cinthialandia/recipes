@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Editor } from "react-draft-wysiwyg";
+import { convertToRaw, EditorState } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./CreateRecipe.scss";
 import Ingredients from "./components/Ingredients";
 import Keyword from "./components/Keyword";
@@ -9,7 +13,6 @@ import Photo from "./components/Photo";
 import DetailsRecipe from "./components/DetailsRecipe";
 import { RecipeDetails, RecipeNutrition, Recipe } from "./types";
 import Nutrition from "./components/Nutrition";
-import Preparation from "./components/Preparation";
 import { db, storage } from "./firebase";
 import createTokens from "./utils/createTokens";
 import { useAuth } from "./providers/AuthProvider";
@@ -30,8 +33,14 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
     fats: 0,
     proteins: 0,
   });
-  const [preparation, setPreparation] = useState("");
+  const [preparation, setPreparation] = useState(EditorState.createEmpty());
   const [photo, setPhoto] = useState<Blob>();
+  const editorOptions = {
+    options: ["inline", "list", "textAlign", "link", "emoji"],
+    inline: {
+      options: ["bold", "italic", "underline", "strikethrough"],
+    },
+  };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +50,7 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
       ingredients,
       keyword,
       nutrition,
-      preparation,
+      preparation: draftToHtml(convertToRaw(preparation.getCurrentContent())),
       tokens,
       ...details,
     };
@@ -88,9 +97,11 @@ const CreateRecipe: React.FC<RouteComponentProps> = ({ navigate }) => {
         />
 
         <h4 className="sub-title-create-recipe">Preparation</h4>
-        <Preparation
-          preparation={preparation}
-          setPreparation={setPreparation}
+        <Editor
+          editorState={preparation}
+          editorStyle={{ minHeight: "200px", border: "1px solid #b8babc" }}
+          onEditorStateChange={setPreparation}
+          toolbar={editorOptions}
         />
         <div className="button-submit-create-recipe">
           <Button variant="primary" type="submit">
