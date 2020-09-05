@@ -80,7 +80,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
 
   return (
     <>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal show={show} onHide={() => setShow(false)} size="lg">
         <Modal.Body>
           <ShowRecipe recipeId={idRecipe} />
         </Modal.Body>

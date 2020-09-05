@@ -14,7 +14,7 @@ import "./AuthenticatedApp.scss";
 import Calendar from "./Calendar";
 import ShoppingList from "./ShoppingList";
 import CreateRecipe from "./CreateRecipe";
-import Recipe from "./components/Recipe";
+import Recipe from "./Recipe";
 import IngredientsProvider from "./components/IngredientProvider";
 import KeywordProvider from "./components/KeywordProvider";
 import CreateShoppingList from "./CreateShoppingList";

@@ -29,9 +29,8 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
     db.doc(`users/${user!.uid}/recipes/${recipeId}`)
   );
 
-  const { value: keywordMap } = useContext(KeywordContext);
-
   const { value: ingredientMap } = useContext(IngredientContext);
+  const { value: keywordMap } = useContext(KeywordContext);
 
   return recipe && ingredientMap ? (
     <>
@@ -45,66 +44,78 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
               alt="food"
             />
           </div>
-          <div className="description-of-the-recipe-show">
+          <div className="title-details-of-the-recipe">
+            Details of the recipe
+          </div>
+          <div className="description-of-the-recipe">
             {keywordMap ? (
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faTag} />{" "}
+              <div className="recipe-detail">
+                <FontAwesomeIcon className="color-icon" icon={faTag} />{" "}
                 {`Keyword: ${keywordMap[recipe.keyword].name}`}
               </div>
             ) : null}
-            <div>
-              <FontAwesomeIcon
-                style={{ color: "#E25523" }}
-                icon={faUserFriends}
-              />{" "}
+            <div className="recipe-detail">
+              <FontAwesomeIcon className="color-icon" icon={faUserFriends} />{" "}
               {`Serving: ${recipe.serving}`}
             </div>
-            <div>
-              <FontAwesomeIcon style={{ color: "#E25523" }} icon={faClock} />{" "}
+            <div className="recipe-detail">
+              <FontAwesomeIcon className="color-icon" icon={faClock} />{" "}
               {`Time: ${recipe.time}`}
             </div>
-            <div>
-              <FontAwesomeIcon style={{ color: "#E25523" }} icon={faMitten} />{" "}
+            <div className="recipe-detail">
+              <FontAwesomeIcon className="color-icon" icon={faMitten} />{" "}
               {`Difficulty: ${recipe.difficulty}`}
             </div>
           </div>
-          <div className="nutrition-of-the-recipe">
-            <div>
+          <div className="title-nutrition-detail">Details of nutrition</div>
+          <div className="container-nutrition-of-the-recipe">
+            <div className="nutrition-detail">
               <FontAwesomeIcon
-                style={{ color: "#E25523" }}
+                className="color-icon"
                 icon={faChargingStation}
               />{" "}
               {`Calories: ${recipe.nutrition.calories} Calories`}
             </div>
-            <div>
-              <FontAwesomeIcon style={{ color: "#E25523" }} icon={faBacon} />{" "}
+            <div className="nutrition-detail">
+              <FontAwesomeIcon className="color-icon" icon={faBacon} />{" "}
               {`Fats: ${recipe.nutrition.fats} gr`}
             </div>
-            <div>
-              <FontAwesomeIcon style={{ color: "#E25523" }} icon={faCarrot} />{" "}
+            <div className="nutrition-detail">
+              <FontAwesomeIcon className="color-icon" icon={faCarrot} />{" "}
               {`Carbohydrates: ${recipe.nutrition.carbohydrates} gr`}
             </div>
-            <div>
-              <FontAwesomeIcon style={{ color: "#E25523" }} icon={faEgg} />{" "}
+            <div className="nutrition-detail">
+              <FontAwesomeIcon className="color-icon" icon={faEgg} />{" "}
               {`Proteins: ${recipe.nutrition.proteins} gr`}
             </div>
           </div>
           <div>
-            <h4 className="recipe-ingredient-sub-title">Ingredients</h4>
+            <h4
+              className="recipe-ingredient-sub-title"
+              style={{ color: "#f93c64" }}
+            >
+              Ingredients
+            </h4>
             <ul>
               {recipe.ingredients.map(({ quantity, id }) => (
                 <li className="recipe-ingredients" key={id}>
                   <span className="recipe-ingredient-name">
-                    {ingredientMap[id].name}:
+                    {`${quantity} ${ingredientMap[id].unit} : ${ingredientMap[id].name}`}
                   </span>
-                  {quantity}
-                  {ingredientMap[id].unit}
                 </li>
               ))}
             </ul>
           </div>
-          <h4 className="recipe-ingredient-sub-title">Preparation</h4>
-          <div className="recipe-preparation">{recipe.preparation}</div>
+          <h4
+            className="recipe-ingredient-sub-title"
+            style={{ color: "#f93c64" }}
+          >
+            Preparation
+          </h4>
+          <div
+            dangerouslySetInnerHTML={{ __html: recipe.preparation }}
+            className="recipe-preparation"
+          ></div>
         </div>
       </div>
 
@@ -120,48 +131,48 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
 
         <Tabs className="tabs">
           <Tab eventKey="home" title="Details">
-            <div className="description-of-the-recipe-show">
+            <div className="title-details-of-the-recipe">
+              Details of the recipe
+            </div>
+            <div className="description-of-the-recipe-tab">
               {keywordMap ? (
-                <div>
-                  <FontAwesomeIcon style={{ color: "#E25523" }} icon={faTag} />{" "}
+                <div className="recipe-detail">
+                  <FontAwesomeIcon className="color-icon" icon={faTag} />{" "}
                   {`Keyword: ${keywordMap[recipe.keyword].name}`}
                 </div>
               ) : null}
-              <div>
-                <FontAwesomeIcon
-                  style={{ color: "#E25523" }}
-                  icon={faUserFriends}
-                />{" "}
+              <div className="recipe-detail">
+                <FontAwesomeIcon className="color-icon" icon={faUserFriends} />{" "}
                 {`Serving: ${recipe.serving}`}
               </div>
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faClock} />{" "}
+              <div className="recipe-detail">
+                <FontAwesomeIcon className="color-icon" icon={faClock} />{" "}
                 {`Time: ${recipe.time}`}
               </div>
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faMitten} />{" "}
+              <div className="recipe-detail">
+                <FontAwesomeIcon className="color-icon" icon={faMitten} />{" "}
                 {`Difficulty: ${recipe.difficulty}`}
               </div>
             </div>
-            <div className="nutrition-of-the-recipe">
-              <div className="title-nutrition">Nutrition</div>
-              <div>
+            <div className="title-nutrition-detail">Details of nutrition</div>
+            <div className="container-nutrition-of-the-recipe">
+              <div className="nutrition-detail">
                 <FontAwesomeIcon
-                  style={{ color: "#E25523" }}
+                  className="color-icon"
                   icon={faChargingStation}
                 />{" "}
                 {`Calories: ${recipe.nutrition.calories} Calories`}
               </div>
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faCarrot} />{" "}
+              <div className="nutrition-detail">
+                <FontAwesomeIcon className="color-icon" icon={faCarrot} />{" "}
                 {`Carbohydrates: ${recipe.nutrition.carbohydrates} gr`}
               </div>
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faEgg} />{" "}
+              <div className="nutrition-detail">
+                <FontAwesomeIcon className="color-icon" icon={faEgg} />{" "}
                 {`Proteins: ${recipe.nutrition.proteins} gr`}
               </div>
-              <div>
-                <FontAwesomeIcon style={{ color: "#E25523" }} icon={faBacon} />{" "}
+              <div className="nutrition-detail">
+                <FontAwesomeIcon className="color-icon" icon={faBacon} />{" "}
                 {`Fats: ${recipe.nutrition.fats} gr`}
               </div>
             </div>
@@ -172,17 +183,18 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
                 {recipe.ingredients.map(({ quantity, id }) => (
                   <li className="recipe-ingredients" key={id}>
                     <span className="recipe-ingredient-name">
-                      {ingredientMap[id].name}:
+                      {`${quantity} ${ingredientMap[id].unit} : ${ingredientMap[id].name}`}
                     </span>
-                    {quantity}
-                    {ingredientMap[id].unit}
                   </li>
                 ))}
               </ul>
             </div>
           </Tab>
           <Tab eventKey="contact" title="Preparation">
-            <div className="recipe-preparation">{recipe.preparation}</div>
+            <div
+              dangerouslySetInnerHTML={{ __html: recipe.preparation }}
+              className="recipe-preparation"
+            ></div>
           </Tab>
         </Tabs>
       </div>
