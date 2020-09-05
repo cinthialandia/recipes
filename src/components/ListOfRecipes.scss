@@ -1,4 +1,4 @@
-.container-list-of-recipes-selected {
+.container-list-of-recipes-card {
   display: flex;
   justify-content: center;
 
@@ -7,9 +7,10 @@
   }
 }
 
-.modal-recipe-container {
-  text-align: center;
-}
-
 @media only screen and (max-width: 800px) {
+  .container-list-of-recipes-card {
+    .card {
+      width: 250px;
+    }
+  }
 }

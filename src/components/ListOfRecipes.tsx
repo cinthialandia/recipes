@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/esm/Card";
 import { Recipe } from "../types";
+import "./ListOfRecipes.scss";
 
 interface Props {
   listOfRecipes: Recipe[];
@@ -8,7 +9,7 @@ interface Props {
 
 const ListOfRecipes: React.FC<Props> = ({ listOfRecipes }) => {
   return (
-    <>
+    <div className="container-list-of-recipes-card">
       <Card>
         <Card.Header>Lista de recipes</Card.Header>
         <Card.Body>
@@ -19,7 +20,7 @@ const ListOfRecipes: React.FC<Props> = ({ listOfRecipes }) => {
           </ul>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 };
 

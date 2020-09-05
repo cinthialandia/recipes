@@ -5,16 +5,17 @@
 }
 
 .container-card-list-of-ingredients {
-  max-width: 900px;
-  width: 900px;
-  margin: 0 auto;
   padding: 20px 0;
+  display: flex;
+  justify-content: center;
+
+  .card {
+    width: 600px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .container-card-list-of-ingredients {
-    max-width: 300px;
-    width: 300px;
     padding: 10px 0;
   }
 

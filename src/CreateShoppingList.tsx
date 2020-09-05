@@ -1,5 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
+import Tab from "react-bootstrap/esm/Tab";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
+import Nav from "react-bootstrap/esm/Nav";
 import { Recipe, ShoppingList } from "./types";
 import "./CreateShoppingList.scss";
 import Form from "react-bootstrap/Form";
@@ -90,57 +94,102 @@ const CreateShoppingList: React.FC<RouteComponentProps> = ({ navigate }) => {
 
   return (
     <div className="container-create-shopping-list">
-      <h2 className="create-shopping-list-title">Create shopping lists</h2>
-      <h3 className="select-list-title">Create name for your shooping list</h3>
-      <div className="input-name-of-the-list">
-        <Form.Control
-          value={name}
-          onChange={handleChangeName}
-          type="text"
-          placeholder="Enter a name"
-        />
-      </div>
-      <h3 className="select-list-title">
-        All the recipes selected for the week
-      </h3>
-      <div className="container-date-picker-list">
-        <div className="datePicke-create-shopping-list">
-          <DatePicker onChange={handleDateChange} />
-        </div>
-        <div className="list-of-Recipe">
-          <ListOfRecipes listOfRecipes={recipesOfTheWeek} />
-        </div>
-      </div>
-      <h3 className="select-list-title">
-        Select another recipe to include on the shopping list
-      </h3>
-      <div className="container-recipe-modal-list-recipe">
-        <div className="list-of-recipe">
-          <ListOfRecipesSelected
-            listOfRecipesSelected={selectedRecipes}
-            onSelect={handleRecipeSelect}
-            onRemove={removeRecipe}
-          />
-        </div>
-      </div>
-      <h3 className="select-list-title">
-        Add other items to your shopping list
-      </h3>
-      <div className="container-others-list">
-        <ListOfOthers
-          listOfItems={others}
-          onSelect={handleOtherSelect}
-          onRemove={handleOtherRemove}
-        />
-      </div>
-      <h3 className="select-list-title">Shopping list to create</h3>
-      <CompleteShoppingList
-        nameOfRecipe={name}
-        ingredientsOfRecipe={ingredients}
-        onRemove={removeIngredient}
-        handleCreateListClick={handleCreateListClick}
-        listOfOthers={others}
-      />
+      <h2 className="create-shopping-list-title">Create shopping list</h2>
+      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Row>
+          <Col>
+            <Nav variant="pills" className="flex-column">
+              <Nav.Item>
+                <Nav.Link eventKey="first">Name</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="two">Week</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="three">New recipe</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="four">Items</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="five">Shopping list</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Col>
+          <Col sm={9}>
+            <Tab.Content>
+              <Tab.Pane eventKey="first">
+                <div className="title-tab-shopping-list">
+                  {" "}
+                  Create a name for your shopping list
+                </div>
+                <div className="input-name-of-the-list">
+                  <Form.Control
+                    value={name}
+                    onChange={handleChangeName}
+                    type="text"
+                    placeholder="Enter a name"
+                  />
+                </div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="two">
+                <div className="title-tab-shopping-list">
+                  Select all the recipes per week
+                </div>
+                <div className="container-date-picker-list">
+                  <div className="datePicke-create-shopping-list">
+                    <DatePicker onChange={handleDateChange} />
+                  </div>
+                  <div className="list-of-Recipe">
+                    <ListOfRecipes listOfRecipes={recipesOfTheWeek} />
+                  </div>
+                </div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="three">
+                {" "}
+                <div className="title-tab-shopping-list">
+                  Include new recipes to your week planning
+                </div>
+                <div className="container-recipe-modal-list-recipe">
+                  <div className="list-of-recipe">
+                    <ListOfRecipesSelected
+                      listOfRecipesSelected={selectedRecipes}
+                      onSelect={handleRecipeSelect}
+                      onRemove={removeRecipe}
+                    />
+                  </div>
+                </div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="four">
+                <div className="title-tab-shopping-list">
+                  Add items (others than ingredients) to your shopping list
+                </div>
+                <div className="container-others-list">
+                  <ListOfOthers
+                    listOfItems={others}
+                    onSelect={handleOtherSelect}
+                    onRemove={handleOtherRemove}
+                  />
+                </div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="five">
+                <div className="title-tab-shopping-list">
+                  Create your shopping list
+                </div>
+                <div className="container-list-shopping-title">
+                  <CompleteShoppingList
+                    nameOfRecipe={name}
+                    ingredientsOfRecipe={ingredients}
+                    onRemove={removeIngredient}
+                    handleCreateListClick={handleCreateListClick}
+                    listOfOthers={others}
+                  />
+                </div>
+              </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
     </div>
   );
 };

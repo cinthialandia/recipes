@@ -24,7 +24,7 @@ const CompleteShoppingList: React.FC<Props> = ({
 }) => {
   const { value: ingredientMap } = useContext(IngredientContext);
   const ingredientsArr = Object.entries(ingredientsOfRecipe);
-  console.log(ingredientMap);
+
   return (
     <div className="container-card-list-of-ingredients">
       <Card>

@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import "./ListOfRecipesSelected.scss";
+import "./ListOfOthers.scss";
 
 interface Props {
   listOfItems: string[];

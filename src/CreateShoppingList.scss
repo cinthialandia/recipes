@@ -1,24 +1,30 @@
-.container-create-shopping-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 35px 0;
-}
-
-.input-name-of-the-list {
-  width: 600px;
-  display: flex;
-  align-self: center;
-}
-
 .create-shopping-list-title {
   text-align: center;
   padding: 20px 0;
+  font-family: "Pacifico", cursive;
+}
+
+.title-tab-shopping-list {
+  padding: 20px 0;
+  font-size: 25px;
+  text-align: center;
+}
+
+.container-create-shopping-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.input-name-of-the-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .container-date-picker-list {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .select-list-title {
@@ -32,17 +38,24 @@
   align-items: center;
 }
 
+.list-of-recipe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 800px) {
+  .title-tab-shopping-list {
+    font-size: 20px;
+  }
+
   .container-create-shopping-list {
     padding: 30px;
   }
 
   .input-name-of-the-list {
-    width: 300px;
-  }
-
-  .container-date-picker-list {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
   }
 

@@ -34,7 +34,9 @@ const ListOfRecipesSelected: React.FC<Props> = ({
               </li>
             ))}
           </ul>
-          <SelectRecipeModal onSelect={onSelect} />
+          <div className="modal-recipe-container">
+            <SelectRecipeModal onSelect={onSelect} />
+          </div>
         </Card.Body>
       </Card>
     </div>
