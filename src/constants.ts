@@ -16,5 +16,5 @@ export const UNITS = [
   "cm",
   "mm",
   "inch",
-  "unidad",
+  "unit",
 ];
