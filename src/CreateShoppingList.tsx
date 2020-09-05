@@ -8,7 +8,6 @@ import { db } from "./firebase";
 import CompleteShoppingList from "./components/CompleteShoppingList";
 import ListOfRecipes from "./components/ListOfRecipes";
 import ListOfRecipesSelected from "./components/ListOfRecipesSelected";
-import SelectRecipeModal from "./components/SelectRecipeModal";
 import { useAuth } from "./providers/AuthProvider";
 import useAllRecipesByTimestamps from "./hooks/useAllRecipesByTimestamps";
 import ListOfOthers from "./components/ListOfOthers";

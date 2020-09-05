@@ -6,7 +6,6 @@ import { ShoppingList } from "../types";
 import { IngredientContext } from "../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import ListOfOthers from "./ListOfOthers";
 
 interface Props {
   nameOfRecipe?: string;
