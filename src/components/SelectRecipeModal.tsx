@@ -35,7 +35,7 @@ const SelectRecipeModal: React.FC<Props> = ({ onSelect }) => {
       >
         add <FontAwesomeIcon icon={faUtensils} />
       </Button>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal show={show} onHide={() => setShow(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
             <SearchBox onResults={handleResult} />

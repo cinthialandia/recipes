@@ -27,7 +27,7 @@ const ShowIngredients: React.FC<Props> = ({
             <Button variant="link" onClick={() => removeIngredient(id)}>
               <FontAwesomeIcon icon={faTrash} />
             </Button>
-            {ingredientMap[id].name}: {quantity} {ingredientMap[id].unit}
+            {`${quantity} ${ingredientMap[id].unit} : ${ingredientMap[id].name}`}
           </li>
         ) : null
       )}

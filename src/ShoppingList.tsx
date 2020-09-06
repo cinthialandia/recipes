@@ -72,8 +72,8 @@ const ShoppingList: React.FC<RouteComponentProps> = () => {
                           >
                             <FontAwesomeIcon icon={faCheck} />
                           </Button>
-                          {ingredientMap[id].name}: {quantity}{" "}
-                          {ingredientMap[id].unit}
+                          {`${quantity}
+                          ${ingredientMap[id].unit} : ${ingredientMap[id].name}`}
                         </li>
                       ) : null
                     )}

@@ -37,7 +37,7 @@ const CompleteShoppingList: React.FC<Props> = ({
                   <Button onClick={() => onRemove(id)} variant="link">
                     <FontAwesomeIcon icon={faTrash} />
                   </Button>
-                  {ingredientMap[id].name}: {quantity} {ingredientMap[id].unit}
+                  {`${quantity} ${ingredientMap[id].unit} : ${ingredientMap[id].name}`}
                 </li>
               ) : null
             )}
