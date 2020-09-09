@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { auth } from "../firebase";
 import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
 import "./RegisterUser.scss";
+import Alert from "react-bootstrap/esm/Alert";
 
 interface Props {
   handleRegister: (signUp: boolean) => void;
 }
 
 const RegisterUser: React.FC<Props> = ({ handleRegister }) => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState<firebase.auth.Error>();
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const values = new FormData(e.target as HTMLFormElement);
     const email = values.get("email") as string;
     const password = values.get("password") as string;
 
-    auth.createUserWithEmailAndPassword(email, password);
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      setError(error);
+    }
+    setLoading(false);
   };
 
   return (
@@ -30,6 +40,7 @@ const RegisterUser: React.FC<Props> = ({ handleRegister }) => {
               type="email"
               placeholder="Enter email"
               name="email"
+              disabled={loading}
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
@@ -39,17 +50,25 @@ const RegisterUser: React.FC<Props> = ({ handleRegister }) => {
               placeholder="Password"
               name="password"
               required
+              disabled={loading}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button disabled={loading} variant="primary" type="submit">
             Submit
           </Button>
         </Form>
       </div>
       <div className="log-in-button">
-        <Button variant="link" onClick={() => handleRegister(true)}>
+        <Button
+          disabled={loading}
+          variant="link"
+          onClick={() => handleRegister(true)}
+        >
           Do you have a user? Log in
         </Button>
+      </div>
+      <div className="alert-message">
+        {error ? <Alert variant="danger">{error?.message}</Alert> : null}
       </div>
     </div>
   );

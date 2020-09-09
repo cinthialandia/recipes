@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "react-bootstrap/Spinner";
 import { useAuth } from "./providers/AuthProvider";
 import AuthenticatedApp from "./AuthenticatedApp";
 import UnauthenticatedApp from "./UnauthenticatedApp";
@@ -8,7 +9,7 @@ function App() {
   const { value: user, loading } = useAuth();
 
   return loading ? (
-    <div>loading...</div>
+    <Spinner className="loading" animation="grow" />
   ) : user ? (
     <AuthenticatedApp />
   ) : (

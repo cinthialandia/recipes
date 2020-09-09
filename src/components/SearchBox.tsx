@@ -15,9 +15,10 @@ import { useAuth } from "../providers/AuthProvider";
 
 interface Props {
   onResults: (results: Recipe[]) => void;
+  onLoading?: (loading: boolean) => void;
 }
 
-const SearchBox: React.FC<Props> = ({ onResults }) => {
+const SearchBox: React.FC<Props> = ({ onResults, onLoading }) => {
   const { value: user } = useAuth();
   const [search, setSearch] = useState("");
   const [keyword, setKeyword] = useState("");
@@ -32,7 +33,9 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
     return _query;
   }, [keyword, search, user]);
 
-  const [values] = useCollectionData<Recipe>(query, { idField: "id" });
+  const [values, loading] = useCollectionData<Recipe>(query, {
+    idField: "id",
+  });
 
   useEffect(
     debounce(() => {
@@ -44,6 +47,10 @@ const SearchBox: React.FC<Props> = ({ onResults }) => {
     }, 700),
     [values, onResults]
   );
+
+  useEffect(() => {
+    onLoading && onLoading(loading);
+  }, [loading, onLoading]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value.toLowerCase());

@@ -4,7 +4,7 @@ import RegisterUser from "./components/RegisterUser";
 import logo from "./img/logo.png";
 import "./UnauthenticatedApp.scss";
 
-const UnauthenticatedApp = () => {
+const UnauthenticatedApp: React.FC = () => {
   const [login, setLogin] = useState(true);
 
   const handleSignUp = (register: boolean) => {

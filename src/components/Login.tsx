@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Alert from "react-bootstrap/Alert";
 import { auth } from "../firebase";
 import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
@@ -9,13 +10,22 @@ interface Props {
 }
 
 const Login: React.FC<Props> = ({ handleSignUp }) => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<firebase.auth.Error>();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const values = new FormData(e.target as HTMLFormElement);
     const email = values.get("email") as string;
     const password = values.get("password") as string;
 
-    auth.signInWithEmailAndPassword(email, password);
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      setError(error);
+    }
+    setLoading(false);
   };
 
   return (
@@ -30,6 +40,7 @@ const Login: React.FC<Props> = ({ handleSignUp }) => {
               type="email"
               placeholder="Enter email"
               name="email"
+              disabled={loading}
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
@@ -39,17 +50,25 @@ const Login: React.FC<Props> = ({ handleSignUp }) => {
               placeholder="Password"
               name="password"
               required
+              disabled={loading}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button disabled={loading} variant="primary" type="submit">
             Submit
           </Button>
         </Form>
       </div>
       <div className="register-user-button">
-        <Button variant="link" onClick={() => handleSignUp(false)}>
+        <Button
+          disabled={loading}
+          variant="link"
+          onClick={() => handleSignUp(false)}
+        >
           Not user yet? Sign up
         </Button>
+        <div className="alert-message">
+          {error ? <Alert variant="danger">{error?.message}</Alert> : null}
+        </div>
       </div>
     </div>
   );
