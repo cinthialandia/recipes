@@ -14,5 +14,12 @@
   justify-content: center;
 }
 
+.loading {
+  color: #f93c64;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
 @media only screen and (max-width: 800px) {
 }
