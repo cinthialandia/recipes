@@ -9,6 +9,7 @@ import ShowRecipe from "./ShowRecipe";
 import { Link } from "@reach/router";
 import SelectRecipeModal from "./SelectRecipeModal";
 import { useAuth } from "../providers/AuthProvider";
+import Calculator from "./Calculator";
 
 const formatDateNumber = (date: Date) => format(date, "d");
 const formatDateName = (date: Date) => format(date, "EEEE");
@@ -141,10 +142,7 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
           onSelect={({ id }) => handleOnSelect(id, "dinner")}
         />
       </div>
-      <div>20</div>
-      <div>20</div>
-      <div>20</div>
-      <div>20</div>
+      <Calculator breakfast={breakfast} lunch={lunch} dinner={dinner} />
     </>
   );
 };

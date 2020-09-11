@@ -39,6 +39,10 @@ $border: 1px solid #e2ebfc;
   padding: 5px;
   min-height: 100px;
   min-width: 160px;
+
+  &.calculator-nutrition {
+    min-height: auto;
+  }
 }
 
 .title-meal-month-year-container {

@@ -41,31 +41,30 @@ const CalendarWeek: React.FC = () => {
             🍝
           </span>
         </div>
-        <div>
+        <div className="calculator-nutrition">
           <div>Total calories</div>
           <span role="img" aria-label="meal">
             ⚡
           </span>
         </div>
-        <div>
+        <div className="calculator-nutrition">
           <div>Total protein</div>
           <span role="img" aria-label="meal">
             🐟
           </span>
         </div>
-        <div>
+        <div className="calculator-nutrition">
           <div>Total fat</div>
           <span role="img" aria-label="meal">
             🥑
           </span>
         </div>
-        <div>
+        <div className="calculator-nutrition">
           <div>Total carbohydrate</div>
           <span role="img" aria-label="meal">
             🍚
           </span>
         </div>
-
         {weekTimestamps.map((timestamp) => (
           <CalendarDay
             key={timestamp}
