@@ -17,7 +17,7 @@ $border: 1px solid #e2ebfc;
 .CalendarWeek {
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(8, auto);
   grid-auto-flow: column;
   border-bottom: $border;
   border-right: $border;

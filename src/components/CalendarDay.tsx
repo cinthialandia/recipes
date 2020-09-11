@@ -141,6 +141,10 @@ const CalendarDay: React.FC<Props> = ({ timestamp, recipes }) => {
           onSelect={({ id }) => handleOnSelect(id, "dinner")}
         />
       </div>
+      <div>20</div>
+      <div>20</div>
+      <div>20</div>
+      <div>20</div>
     </>
   );
 };

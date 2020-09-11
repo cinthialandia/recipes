@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import Spinner from "react-bootstrap/Spinner";
 import "./ShowRecipe.scss";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
@@ -200,7 +201,9 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
       </div>
     </>
   ) : (
-    <div>Recipe not found</div>
+    <div className="loading">
+      <Spinner animation="grow" />
+    </div>
   );
 };
 
