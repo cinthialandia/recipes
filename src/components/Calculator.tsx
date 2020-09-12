@@ -24,10 +24,14 @@ const Calculator: React.FC<Props> = ({ breakfast, lunch, dinner }) => {
 
   return (
     <>
-      <div className="calculator-nutrition">{nutrition.calories}</div>
-      <div className="calculator-nutrition">{nutrition.protein}</div>
-      <div className="calculator-nutrition">{nutrition.fats}</div>
-      <div className="calculator-nutrition">{nutrition.carbs}</div>
+      <div className="calculator-nutrition">
+        {Math.floor(nutrition.calories)}
+      </div>
+      <div className="calculator-nutrition">
+        {Math.floor(nutrition.protein)}
+      </div>
+      <div className="calculator-nutrition">{Math.floor(nutrition.fats)}</div>
+      <div className="calculator-nutrition">{Math.floor(nutrition.carbs)}</div>
     </>
   );
 };
