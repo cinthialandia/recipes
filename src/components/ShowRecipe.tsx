@@ -19,6 +19,7 @@ import { db } from "../firebase";
 import { Recipe as IRecipe } from "../types";
 import { IngredientContext, KeywordContext } from "../context";
 import { useAuth } from "../providers/AuthProvider";
+import { Link } from "@reach/router";
 
 interface Props {
   recipeId?: string;
@@ -36,6 +37,9 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
   return recipe && ingredientMap ? (
     <>
       <div className="Recipe">
+        <Link className="recipes-link" to={`/edit-recipe/${recipeId}`}>
+          edit recipe
+        </Link>
         <div>
           <h3 className="recipe-name">{recipe.name}</h3>
           <div className="recipe-img">

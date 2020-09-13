@@ -20,6 +20,7 @@ import KeywordProvider from "./components/KeywordProvider";
 import CreateShoppingList from "./CreateShoppingList";
 import { auth } from "./firebase";
 import logo from "./img/logo.png";
+import EditRecipe from "./EditRecipe";
 
 function AuthenticatedApp() {
   const logout = () => {
@@ -87,6 +88,7 @@ function AuthenticatedApp() {
               <ShoppingList path="shopping-list" />
               <CreateRecipe path="create-recipe" />
               <CreateShoppingList path="/create-shopping-list" />
+              <EditRecipe path="/edit-recipe/:recipeId" />
             </Router>
           </KeywordProvider>
         </IngredientsProvider>
