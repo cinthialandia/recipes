@@ -1,10 +1,13 @@
 import React, { useState, useCallback } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "react-bootstrap/Spinner";
-import { RouteComponentProps } from "@reach/router";
+import { Link, RouteComponentProps } from "@reach/router";
 import Recipes from "./components/Recipes";
 import "./Home.scss";
 import SearchBox from "./components/SearchBox";
 import { Recipe } from "./types";
+import CreateRecipe from "./CreateRecipe";
 
 const Home: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
@@ -33,6 +36,10 @@ const Home: React.FC<RouteComponentProps> = () => {
           <Recipes results={result} />
         </div>
       )}
+
+      <Link className="float-button btn btn-primary" to="create-recipe">
+        <FontAwesomeIcon icon={faPlus} />
+      </Link>
     </div>
   );
 };

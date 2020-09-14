@@ -1,5 +1,6 @@
 import React from "react";
 import { Recipe } from "../types";
+import "./Calculator.scss";
 
 interface Props {
   breakfast: Recipe[];
@@ -25,13 +26,17 @@ const Calculator: React.FC<Props> = ({ breakfast, lunch, dinner }) => {
   return (
     <>
       <div className="calculator-nutrition">
-        {Math.floor(nutrition.calories)}
+        {Math.floor(nutrition.calories)} gr
       </div>
       <div className="calculator-nutrition">
-        {Math.floor(nutrition.protein)}
+        {Math.floor(nutrition.protein)} gr
       </div>
-      <div className="calculator-nutrition">{Math.floor(nutrition.fats)}</div>
-      <div className="calculator-nutrition">{Math.floor(nutrition.carbs)}</div>
+      <div className="calculator-nutrition">
+        {Math.floor(nutrition.fats)} gr
+      </div>
+      <div className="calculator-nutrition">
+        {Math.floor(nutrition.carbs)} gr{" "}
+      </div>
     </>
   );
 };

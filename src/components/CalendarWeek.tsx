@@ -3,6 +3,9 @@ import "./CalendarWeek.scss";
 import CalendarDay from "./CalendarDay";
 import DatePicker from "./DatePicker";
 import useRecipesByTimestamps from "../hooks/useRecipesByTimestamps";
+import { Link } from "@reach/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const CalendarWeek: React.FC = () => {
   const [weekTimestamps, setWeektimestamps] = useState<number[]>([]);
@@ -77,6 +80,9 @@ const CalendarWeek: React.FC = () => {
           />
         ))}
       </div>
+      <Link className="float-button btn btn-primary" to="create-recipe">
+        <FontAwesomeIcon icon={faPlus} />
+      </Link>
     </>
   );
 };

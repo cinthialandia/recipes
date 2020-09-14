@@ -9,6 +9,7 @@ import {
   faEgg,
   faBacon,
   faTag,
+  faPencilAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
@@ -36,10 +37,13 @@ const ShowRecipe: React.FC<Props> = ({ recipeId }) => {
 
   return recipe && ingredientMap ? (
     <>
+      <Link
+        className="float-button btn btn-primary"
+        to={`/edit-recipe/${recipeId}`}
+      >
+        <FontAwesomeIcon icon={faPencilAlt} />
+      </Link>
       <div className="Recipe">
-        <Link className="recipes-link" to={`/edit-recipe/${recipeId}`}>
-          edit recipe
-        </Link>
         <div>
           <h3 className="recipe-name">{recipe.name}</h3>
           <div className="recipe-img">

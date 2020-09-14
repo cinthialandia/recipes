@@ -44,9 +44,6 @@ function AuthenticatedApp() {
         <Link className="nav" to="shopping-list">
           Shopping List
         </Link>
-        <Link className="nav" to="create-recipe">
-          Create recipe
-        </Link>
         <Link className="nav" to="" onClick={logout}>
           Logout
         </Link>
@@ -65,11 +62,6 @@ function AuthenticatedApp() {
         <Navbar.Brand>
           <Link className="nav" to="shopping-list">
             <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Brand>
-          <Link className="nav" to="create-recipe">
-            <FontAwesomeIcon icon={faFile} />
           </Link>
         </Navbar.Brand>
         <Navbar.Brand>
