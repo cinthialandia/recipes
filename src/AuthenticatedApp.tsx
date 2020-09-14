@@ -5,7 +5,6 @@ import {
   faHome,
   faCalendarAlt,
   faShoppingCart,
-  faFile,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "react-bootstrap/Navbar";

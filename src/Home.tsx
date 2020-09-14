@@ -7,7 +7,6 @@ import Recipes from "./components/Recipes";
 import "./Home.scss";
 import SearchBox from "./components/SearchBox";
 import { Recipe } from "./types";
-import CreateRecipe from "./CreateRecipe";
 
 const Home: React.FC<RouteComponentProps> = () => {
   const [result, setResult] = useState<Recipe[]>([]);
