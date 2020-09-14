@@ -70,6 +70,14 @@ const Login: React.FC<Props> = ({ handleSignUp }) => {
           {error ? <Alert variant="danger">{error?.message}</Alert> : null}
         </div>
       </div>
+      <div className="alert-message">
+        <Alert variant="warning">
+          <p>To enter the page with the demo account, please use:</p>
+          <p>
+            email: demo@demo.com <br /> password: 12345678
+          </p>
+        </Alert>
+      </div>
     </div>
   );
 };

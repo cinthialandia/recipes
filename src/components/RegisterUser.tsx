@@ -21,7 +21,7 @@ const RegisterUser: React.FC<Props> = ({ handleRegister }) => {
     const password = values.get("password") as string;
 
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(email, password);
     } catch (error) {
       setError(error);
     }
