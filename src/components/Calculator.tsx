@@ -26,7 +26,7 @@ const Calculator: React.FC<Props> = ({ breakfast, lunch, dinner }) => {
   return (
     <>
       <div className="calculator-nutrition">
-        {Math.floor(nutrition.calories)} gr
+        {Math.floor(nutrition.calories)} Kcal
       </div>
       <div className="calculator-nutrition">
         {Math.floor(nutrition.protein)} gr
